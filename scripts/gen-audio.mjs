@@ -11,7 +11,7 @@ import { loadContent } from './load-content.mjs'
 const VOICES = { f: 'ml-IN-SobhanaNeural', m: 'ml-IN-MidhunNeural' }
 const c = await loadContent()
 const jobs = [
-  ...c.allItems.map(i => ({ item: i, voice: VOICES.f })),
+  ...[...c.allItems, ...c.dictionaryOnly].map(i => ({ item: i, voice: VOICES.f })),
   ...c.dialogues.flatMap(d => d.lines.map(i => ({ item: i, voice: VOICES[c.speakers[i.speaker]?.voice ?? 'f'] }))),
 ].filter(j => !existsSync(join('public/audio', `${j.item.id}.mp3`)))
 

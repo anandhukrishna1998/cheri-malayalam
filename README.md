@@ -8,7 +8,7 @@ A web app that teaches Malayalam to a French speaker, written entirely in Mangli
 - **Apprendre:** the lesson path through Kerala, with tips for each unit and an end-of-unit challenge.
 - **Dialogues:** listen to a conversation, then play your role.
 - **Entraînement:** daily review (spaced repetition), "Mes erreurs", listening only, verb drills and a 60-second challenge.
-- **Lexique:** searchable dictionary with favourites and verb tables.
+- **Traduire:** offline French ↔ Manglish translator (phrases, verb tables, word-by-word sentence building) and the lexicon with favourites.
 - **Profil:** XP, streak, weekly chart, levels, rewards, badges, settings and backup.
 
 ## Run it on your computer
@@ -35,6 +35,7 @@ On an iPhone, open the link in Safari, tap Share, then "Sur l'écran d'accueil".
 | `src/content/verbs.json` | The 36 verbs and their 4 forms |
 | `src/content/dialogues.json` | Dialogues and characters (`voice`: `f` or `m`) |
 | `src/content/rewards.json` | Real-life rewards per level |
+| `src/content/dictionary.json` | Single words for the translator, by category: `[manglish, français, മലയാളം]` |
 
 A phrase can be written in short form:
 
@@ -51,6 +52,8 @@ or in long form, when you want a custom id, hint, or accepted spellings:
 - The id defaults to the Manglish in lowercase with dashes (`Ithu enthaanu?` → `ithu-enthaanu`). The audio file uses the same name.
 - The French pronunciation hint is written automatically (Kazhikkunnu → kazhikkounnou) unless you give one.
 - A lesson teaches verbs with `"verbs": ["kazhikkuka", "kudikkuka"], "forms": ["pres", "past"]`.
+
+To see what the translator answers for some test sentences: `node scripts/try-translate.mjs`.
 
 Run `npm run check` after editing. It catches duplicate ids, unknown verbs or characters, and phrases with no audio. `npm run build` runs it too.
 

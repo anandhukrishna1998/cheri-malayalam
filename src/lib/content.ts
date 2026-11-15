@@ -4,6 +4,7 @@ import s3 from '../content/section3.json'
 import verbsData from '../content/verbs.json'
 import dialoguesData from '../content/dialogues.json'
 import rewardsData from '../content/rewards.json'
+import dictionaryData from '../content/dictionary.json'
 import { autoHint, slug } from './hint'
 
 /* ---------- Types ---------- */
@@ -120,3 +121,32 @@ export function itemsForNode(node: PathNode): Item[] {
   return [...m.values()]
 }
 export const totalLessons = path.length
+
+/* ---------- Dictionary (single words, for translation & lexicon) ---------- */
+export interface DictCategory { id: string; title: string; emoji: string; words: Item[] }
+const dictRaw = dictionaryData as { categories: { id: string; title: string; emoji: string; words: [string, string, string][] }[] }
+const lessonByLoose = new Map(allItems.map(i => [i.manglish.toLowerCase().replace(/[^a-z]/g, ''), i]))
+/** Extra French meanings the dictionary gives to words already taught in lessons. */
+export const dictFr = new Map<string, string>()
+/** Words already taught in a lesson reuse the lesson item (and its audio). */
+export const dictCategories: DictCategory[] = dictRaw.categories.map(c => ({
+  id: c.id, title: c.title, emoji: c.emoji,
+  words: c.words.map(([manglish, fr, ml]) => {
+    const known = lessonByLoose.get(manglish.toLowerCase().replace(/[^a-z]/g, ''))
+    if (known) { dictFr.set(known.id, fr); return known }
+    return { id: `w-${slug(manglish)}`, manglish, fr, ml, hint: autoHint(manglish) }
+  }),
+}))
+/** Dictionary words that are not lesson items (they need their own audio). */
+export const dictionaryOnly: Item[] = [...new Map(dictCategories.flatMap(c => c.words).filter(w => w.id.startsWith('w-')).map(w => [w.id, w])).values()]
+
+/** Where an item comes from, for display in search results. */
+export const sourceOf = new Map<string, string>()
+for (const u of units) for (const l of u.lessons) for (const i of l.items) if (!sourceOf.has(i.id)) sourceOf.set(i.id, i.verb ? 'Verbe' : `Leçon · ${u.title}`)
+for (const d of dialogues) for (const l of d.lines) sourceOf.set(l.id, `Dialogue · ${d.title}`)
+for (const c of dictCategories) for (const w of c.words) if (!sourceOf.has(w.id)) sourceOf.set(w.id, `Dictionnaire · ${c.title}`)
+for (const v of verbs) for (const f of FORMS) if (!sourceOf.has(v.forms[f].id)) sourceOf.set(v.forms[f].id, 'Verbe')
+for (const w of dictionaryOnly) itemById.set(w.id, w)
+
+/** Everything the translator can search. */
+export const searchItems: Item[] = [...allItems, ...dialogues.flatMap(d => d.lines), ...dictionaryOnly]
