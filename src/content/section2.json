@@ -1,0 +1,197 @@
+{
+  "id": "s2",
+  "title": "La vie de tous les jours",
+  "subtitle": "Le temps, les questions, les verbes du quotidien, les émotions, la maison et le marché.",
+  "units": [
+    {
+      "id": "u7", "title": "Le temps", "place": "Kovalam", "emoji": "⏰", "boss": "Ma journée",
+      "intro": "Aujourd'hui, demain, le matin, le soir et les jours de la semaine.",
+      "tips": [
+        "Les mots de temps se mettent en général au début : Naale njaan varum = demain je viendrai.",
+        "« Ippol » (maintenant) se prononce « ip-pol », avec un l bien net."
+      ],
+      "lessons": [
+        { "id": "u7l1", "title": "Aujourd'hui, demain", "items": [
+          ["Innu", "Aujourd'hui", "ഇന്ന്"],
+          ["Naale", "Demain", "നാളെ"],
+          ["Innale", "Hier", "ഇന്നലെ"],
+          ["Ippol", "Maintenant", "ഇപ്പോൾ"],
+          ["Pinne", "Après / Ensuite", "പിന്നെ"],
+          ["Eppozhum", "Toujours", "എപ്പോഴും"]
+        ]},
+        { "id": "u7l2", "title": "Matin, midi et soir", "items": [
+          ["Raavile", "Le matin", "രാവിലെ"],
+          ["Uchaykku", "À midi", "ഉച്ചയ്ക്ക്"],
+          ["Vaikunneram", "Le soir", "വൈകുന്നേരം"],
+          ["Raathri", "La nuit", "രാത്രി"],
+          ["Suprabhaatham", "Bonjour (le matin)", "സുപ്രഭാതം"],
+          ["Samayam enthaayi?", "Quelle heure est-il ?", "സമയം എന്തായി?"]
+        ]},
+        { "id": "u7l3", "title": "Les jours", "items": [
+          ["Njaayar", "Dimanche", "ഞായർ"],
+          ["Thinkal", "Lundi", "തിങ്കൾ"],
+          ["Chovva", "Mardi", "ചൊവ്വ"],
+          ["Budhan", "Mercredi", "ബുധൻ"],
+          ["Vyaazham", "Jeudi", "വ്യാഴം"],
+          ["Velli", "Vendredi", "വെള്ളി"],
+          ["Shani", "Samedi", "ശനി"]
+        ]},
+        { "id": "u7l4", "title": "Ma routine", "verbs": ["ezhunnelkkuka", "kulikkuka", "uranguka"], "forms": ["pres", "past"], "items": [
+          ["Njaan raavile ezhunnettu", "Je me suis levé(e) le matin", "ഞാൻ രാവിലെ എഴുന്നേറ്റു"]
+        ]}
+      ]
+    },
+    {
+      "id": "u8", "title": "Les questions", "place": "Kollam", "emoji": "❓", "boss": "Le grand interrogatoire",
+      "intro": "Qui, quoi, où, quand, comment, pourquoi : pour tout demander.",
+      "tips": [
+        "Pour poser une question oui/non, on ajoute souvent « -o » à la fin : varum (viendra) → varumo? (tu viendras ?).",
+        "« Undu » veut dire « il y a / j'ai ». Undo? = il y en a ? / tu as ?"
+      ],
+      "lessons": [
+        { "id": "u8l1", "title": "Les mots questions", "items": [
+          ["Enthaanu?", "Qu'est-ce que c'est ?", "എന്താണ്?"],
+          ["Aaraa?", "Qui (est-ce) ?", "ആരാ?"],
+          ["Eppol?", "Quand ?", "എപ്പോൾ?"],
+          ["Engane?", "Comment ?", "എങ്ങനെ?"],
+          ["Enthinu?", "Pourquoi ?", "എന്തിന്?"],
+          ["Ethu?", "Lequel / Laquelle ?", "ഏത്?"]
+        ]},
+        { "id": "u8l2", "title": "Poser des questions", "items": [
+          ["Ithu enthaanu?", "C'est quoi, ça ?", "ഇത് എന്താണ്?"],
+          ["Athu aaraa?", "C'est qui ?", "അത് ആരാ?"],
+          ["Nee eppol varum?", "Tu viens quand ?", "നീ എപ്പോൾ വരും?"],
+          ["Engane undu?", "Comment c'est ?", "എങ്ങനെ ഉണ്ട്?"],
+          ["Enthu patti?", "Qu'est-ce qui s'est passé ?", "എന്തു പറ്റി?"],
+          ["Nee enthu cheyyunnu?", "Tu fais quoi ?", "നീ എന്തു ചെയ്യുന്നു?"]
+        ]},
+        { "id": "u8l3", "title": "Le petit « -o »", "items": [
+          ["Varumo?", "Tu viendras ?", "വരുമോ?"],
+          ["Ishtamaayo?", "Ça t'a plu ?", "ഇഷ്ടമായോ?"],
+          ["Ariyaamo?", "Tu sais ?", "അറിയാമോ?"],
+          ["Undo?", "Il y en a ? / Tu as ?", "ഉണ്ടോ?"],
+          ["Kelkkaamo?", "Tu m'entends ?", "കേൾക്കാമോ?"],
+          ["Sheriyaano?", "C'est vrai ?", "ശരിയാണോ?"]
+        ]}
+      ]
+    },
+    {
+      "id": "u9", "title": "Verbes du quotidien", "place": "Kottayam", "emoji": "📝", "boss": "Une journée bien remplie",
+      "intro": "Faire, voir, dire, écouter, apprendre, travailler… et dire « je veux », « je sais ».",
+      "tips": [
+        "Pour dire « je veux », « je sais », « j'aime », on commence par « Enikku » (à moi) : Enikku venam = je veux.",
+        "Pour mettre au négatif « je sais / je peux » : ariyaam → ariyilla, pattum → pattilla."
+      ],
+      "lessons": [
+        { "id": "u9l1", "title": "Faire, voir, dire", "verbs": ["cheyyuka", "kaanuka", "parayuka", "kelkkuka"], "forms": ["pres"] },
+        { "id": "u9l2", "title": "Apprendre et travailler", "verbs": ["padikkuka", "vaayikkuka", "ezhuthuka", "joli-cheyyuka"], "forms": ["pres"], "items": [
+          ["Njaan Malayalam padikkunnu", "J'apprends le malayalam", "ഞാൻ മലയാളം പഠിക്കുന്നു"]
+        ]},
+        { "id": "u9l3", "title": "C'était hier", "verbs": ["cheyyuka", "kaanuka", "parayuka", "kelkkuka", "padikkuka"], "forms": ["past"], "items": [
+          ["Njaan ninne kandu", "Je t'ai vu(e)", "ഞാൻ നിന്നെ കണ്ടു"]
+        ]},
+        { "id": "u9l4", "title": "Ce sera demain", "verbs": ["cheyyuka", "kaanuka", "parayuka", "padikkuka"], "forms": ["fut"], "items": [
+          ["Njaan naale parayum", "Je te dirai demain", "ഞാൻ നാളെ പറയും"]
+        ]},
+        { "id": "u9l5", "title": "Je veux, je sais", "items": [
+          ["Enikku venam", "Je veux / J'ai besoin", "എനിക്ക് വേണം"],
+          ["Enikku chaaya ishtamaanu", "J'aime le thé", "എനിക്ക് ചായ ഇഷ്ടമാണ്"],
+          ["Enikku ariyaam", "Je sais", "എനിക്ക് അറിയാം"],
+          ["Enikku ariyilla", "Je ne sais pas", "എനിക്ക് അറിയില്ല"],
+          ["Enikku pattum", "Je peux", "എനിക്ക് പറ്റും"],
+          ["Enikku pattilla", "Je ne peux pas", "എനിക്ക് പറ്റില്ല"]
+        ]}
+      ]
+    },
+    {
+      "id": "u10", "title": "Les émotions", "place": "Thrissur", "emoji": "😊", "boss": "Comment tu te sens ?",
+      "intro": "Joie, tristesse, fatigue, peur : dire ce qu'on ressent.",
+      "tips": [
+        "Pour les émotions, on dit encore « Enikku… » : Enikku santhoshamaanu = à moi, c'est la joie = je suis content(e).",
+        "« -aanu » veut dire « c'est ». Santhosham + aanu → santhoshamaanu."
+      ],
+      "lessons": [
+        { "id": "u10l1", "title": "Les sentiments", "items": [
+          ["Santhosham", "Joie", "സന്തോഷം"],
+          ["Sankadam", "Tristesse", "സങ്കടം"],
+          ["Deshyam", "Colère", "ദേഷ്യം"],
+          ["Pedi", "Peur", "പേടി"],
+          ["Ksheenam", "Fatigue", "ക്ഷീണം"],
+          ["Bore", "Ennui", "ബോറ്", "Un mot anglais devenu malayalam : « bore aanu » = c'est ennuyeux."]
+        ]},
+        { "id": "u10l2", "title": "Je me sens…", "items": [
+          ["Enikku santhoshamaanu", "Je suis content(e)", "എനിക്ക് സന്തോഷമാണ്"],
+          ["Enikku sankadamaanu", "Je suis triste", "എനിക്ക് സങ്കടമാണ്"],
+          ["Enikku ksheenamaanu", "Je suis fatigué(e)", "എനിക്ക് ക്ഷീണമാണ്"],
+          ["Enikku pediyaanu", "J'ai peur", "എനിക്ക് പേടിയാണ്"],
+          ["Nee deshyathilaano?", "Tu es fâché(e) ?", "നീ ദേഷ്യത്തിലാണോ?"],
+          ["Saaramilla", "Ce n'est pas grave", "സാരമില്ല"]
+        ]},
+        { "id": "u10l3", "title": "Rire et pleurer", "verbs": ["chirikkuka", "karayuka"], "forms": ["pres", "past"], "items": [
+          ["Vishamikkanda", "Ne t'inquiète pas", "വിഷമിക്കണ്ട"],
+          ["Ellaam sheriyaakum", "Tout va s'arranger", "എല്ലാം ശരിയാകും"]
+        ]}
+      ]
+    },
+    {
+      "id": "u11", "title": "La maison", "place": "Palakkad", "emoji": "🏠", "boss": "Visite de la maison",
+      "intro": "Les pièces, les objets et les petites demandes de tous les jours.",
+      "tips": [
+        "Le manglish de tous les jours mélange beaucoup d'anglais : fan, light, phone, switch… Personne ne dit le mot malayalam !",
+        "Pour demander poliment, on finit en « -oo » : Irikkoo (assieds-toi), Thurakkoo (ouvre)."
+      ],
+      "lessons": [
+        { "id": "u11l1", "title": "Les pièces", "items": [
+          ["Muri", "Chambre / Pièce", "മുറി"],
+          ["Adukkala", "Cuisine", "അടുക്കള"],
+          ["Kulimuri", "Salle de bain", "കുളിമുറി"],
+          ["Vaathil", "Porte", "വാതിൽ"],
+          ["Janal", "Fenêtre", "ജനൽ"],
+          ["Kattil", "Lit", "കട്ടിൽ"]
+        ]},
+        { "id": "u11l2", "title": "Les objets", "items": [
+          ["Mesha", "Table", "മേശ"],
+          ["Kasera", "Chaise", "കസേര"],
+          ["Vilakku", "Lampe", "വിളക്ക്"],
+          ["Thaakkol", "Clé", "താക്കോൽ"],
+          ["Kuda", "Parapluie", "കുട"],
+          ["Kannaadi", "Miroir / Lunettes", "കണ്ണാടി"]
+        ]},
+        { "id": "u11l3", "title": "Ouvrir, fermer, habiter", "verbs": ["thurakkuka", "adaykkuka", "thaamasikkuka"], "forms": ["pres", "past"], "items": [
+          ["Vaathil thurakkoo", "Ouvre la porte", "വാതിൽ തുറക്കൂ"],
+          ["Light idoo", "Allume la lumière", "ലൈറ്റ് ഇടൂ"],
+          ["Fan off cheyyoo", "Éteins le ventilateur", "ഫാൻ ഓഫ് ചെയ്യൂ"]
+        ]}
+      ]
+    },
+    {
+      "id": "u12", "title": "Au marché", "place": "Kozhikode", "emoji": "🛍️", "boss": "Négocier un sari",
+      "intro": "Demander le prix, négocier et acheter (des saris, par exemple !).",
+      "tips": [
+        "Au marché, négocier est normal et même attendu. Commence par « Vila kooduthalaanu ! » (c'est trop cher !).",
+        "« Venam » = je veux / il faut. « Venda » = je ne veux pas / pas besoin."
+      ],
+      "lessons": [
+        { "id": "u12l1", "title": "Le prix", "items": [
+          ["Kada", "Magasin / Boutique", "കട"],
+          ["Vila", "Prix", "വില"],
+          ["Ithinu ethrayaanu?", "Ça coûte combien ?", "ഇതിന് എത്രയാണ്?"],
+          ["Kooduthal", "Plus / Trop", "കൂടുതൽ"],
+          ["Kuravu", "Moins", "കുറവ്"],
+          ["Vila kooduthalaanu", "C'est trop cher", "വില കൂടുതലാണ്"]
+        ]},
+        { "id": "u12l2", "title": "Négocier", "items": [
+          ["Kurachu kurakkaamo?", "Vous pouvez baisser un peu ?", "കുറച്ച് കുറയ്ക്കാമോ?"],
+          ["Ithu venam", "Je veux ça", "ഇത് വേണം"],
+          ["Athu venda", "Je ne veux pas ça", "അത് വേണ്ട"],
+          ["Vere undo?", "Vous en avez d'autres ?", "വേറെ ഉണ്ടോ?"],
+          ["Saari", "Sari", "സാരി"],
+          ["Nalla niram", "Belle couleur", "നല്ല നിറം"]
+        ]},
+        { "id": "u12l3", "title": "Acheter, donner, prendre", "verbs": ["vaanguka", "kodukkuka", "edukkuka", "nokkuka"], "forms": ["pres", "past"], "items": [
+          ["Njaan ithu edukkum", "Je prends ça", "ഞാൻ ഇത് എടുക്കും"]
+        ]}
+      ]
+    }
+  ]
+}

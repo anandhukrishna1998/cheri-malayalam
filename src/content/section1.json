@@ -1,0 +1,213 @@
+{
+  "id": "s1",
+  "title": "Les bases",
+  "subtitle": "Saluer, se présenter, la famille, les nombres et tes premiers verbes.",
+  "units": [
+    {
+      "id": "u1", "title": "Bonjour !", "place": "Kochi", "emoji": "🙏", "boss": "Premier « Namaskaaram »",
+      "intro": "Les premiers mots pour dire bonjour, merci et oui ou non.",
+      "tips": [
+        "Le manglish, c'est du malayalam écrit avec notre alphabet. Il se lit un peu comme de l'anglais : « u » se dit « ou », « e » se dit « é ».",
+        "Les syllabes en MAJUSCULES dans les indices sont celles où on appuie un peu plus."
+      ],
+      "lessons": [
+        { "id": "u1l1", "title": "Dire bonjour", "items": [
+          { "id": "namaskaaram", "manglish": "Namaskaaram", "fr": "Bonjour", "hint": "na-mass-KAA-ram", "ml": "നമസ്കാരം", "note": "On le dit souvent les mains jointes, surtout aux aînés." },
+          { "id": "sukhamaano", "manglish": "Sukhamaano?", "fr": "Ça va ?", "hint": "sou-kha-MAA-no", "ml": "സുഖമാണോ?" },
+          { "id": "sukham", "manglish": "Sukham", "fr": "Ça va bien", "hint": "SOU-kham", "ml": "സുഖം" },
+          { "id": "nanni", "manglish": "Nanni", "fr": "Merci", "hint": "NANN-ni (sans son nasal)", "ml": "നന്ദി", "accept": ["nandi"] },
+          { "id": "shari", "manglish": "Shari", "fr": "D'accord", "hint": "CHA-ri", "ml": "ശരി", "accept": ["sari", "sheri"] }
+        ]},
+        { "id": "u1l2", "title": "Oui, non, à plus", "items": [
+          { "id": "athe", "manglish": "Athe", "fr": "Oui", "hint": "A-té", "ml": "അതെ" },
+          { "id": "illa", "manglish": "Illa", "fr": "Non", "hint": "IL-la", "ml": "ഇല്ല" },
+          { "id": "sukhamaanu", "manglish": "Sukhamaanu", "fr": "Je vais bien", "hint": "sou-kha-MAA-nou", "ml": "സുഖമാണ്" },
+          { "id": "ninakko", "manglish": "Ninakko?", "fr": "Et toi ?", "hint": "ni-NAK-ko", "ml": "നിനക്കോ?" },
+          { "id": "pinne-kaanaam", "manglish": "Pinne kaanaam", "fr": "À plus tard", "hint": "PIN-né KAA-naam", "ml": "പിന്നെ കാണാം" },
+          { "id": "shubha-raathri", "manglish": "Shubha raathri", "fr": "Bonne nuit", "hint": "CHOU-bha RAA-thri", "ml": "ശുഭരാത്രി" }
+        ]},
+        { "id": "u1l3", "title": "Je n'ai pas compris", "items": [
+          { "id": "kshamikkanam", "manglish": "Kshamikkanam", "fr": "Pardon / Désolé(e)", "hint": "ksha-MIK-ka-nam", "ml": "ക്ഷമിക്കണം" },
+          { "id": "enthaa", "manglish": "Enthaa?", "fr": "Quoi ?", "hint": "ÉN-thaa", "ml": "എന്താ?" },
+          { "id": "manassilaayilla", "manglish": "Manassilaayilla", "fr": "Je n'ai pas compris", "hint": "ma-nas-si-LAA-yil-la", "ml": "മനസ്സിലായില്ല" },
+          { "id": "manassilaayi", "manglish": "Manassilaayi", "fr": "J'ai compris", "hint": "ma-nas-si-LAA-yi", "ml": "മനസ്സിലായി" },
+          { "id": "onnoode-parayaamo", "manglish": "Onnoode parayaamo?", "fr": "Tu peux répéter ?", "hint": "on-NOU-dé pa-ra-YAA-mo", "ml": "ഒന്നൂടെ പറയാമോ?" },
+          { "id": "pathukke", "manglish": "Pathukke", "fr": "Doucement / Lentement", "hint": "pa-THOUK-ké", "ml": "പതുക്കെ" }
+        ]}
+      ]
+    },
+    {
+      "id": "u2", "title": "Moi & toi", "place": "Alleppey", "emoji": "💬", "boss": "Se présenter",
+      "intro": "Je, tu, il, elle : se présenter et parler de soi.",
+      "tips": [
+        "« Nee » (tu) s'utilise entre proches. Avec les aînés ou des inconnus, on dit « ningal » (vous).",
+        "« Ente » = mon / ma, « ninte » = ton / ta. Pas de masculin ou de féminin, c'est le même mot !"
+      ],
+      "lessons": [
+        { "id": "u2l1", "title": "Je, tu, vous", "items": [
+          { "id": "njaan", "manglish": "Njaan", "fr": "Je / Moi", "hint": "GNAAN (gn comme montagne)", "ml": "ഞാൻ", "accept": ["nyan", "njan", "nan"] },
+          { "id": "nee", "manglish": "Nee", "fr": "Tu / Toi", "hint": "NII (un i long)", "ml": "നീ", "note": "Entre proches et en couple. Aux aînés, on dit « ningal »." },
+          { "id": "ningal", "manglish": "Ningal", "fr": "Vous", "hint": "NIN-gal (ng comme parking)", "ml": "നിങ്ങൾ" },
+          { "id": "avan", "manglish": "Avan", "fr": "Il / Lui", "hint": "A-vann", "ml": "അവൻ" },
+          { "id": "aval", "manglish": "Aval", "fr": "Elle", "hint": "A-val", "ml": "അവൾ" }
+        ]},
+        { "id": "u2l2", "title": "Se présenter", "items": [
+          { "id": "ente", "manglish": "Ente", "fr": "Mon / Ma", "hint": "ÉN-té", "ml": "എന്റെ", "accept": ["ende", "nte"] },
+          { "id": "ninte", "manglish": "Ninte", "fr": "Ton / Ta", "hint": "NIN-té", "ml": "നിന്റെ", "accept": ["ninde"] },
+          { "id": "peru", "manglish": "Peru", "fr": "Nom / Prénom", "hint": "PÉ-rou", "ml": "പേര്" },
+          { "id": "ninte-peru-enthaa", "manglish": "Ninte peru enthaa?", "fr": "Comment tu t'appelles ?", "hint": "NIN-té PÉ-rou ÉN-thaa", "ml": "നിന്റെ പേര് എന്താ?", "accept": ["ninde peru entha"] },
+          { "id": "ente-peru-marie", "manglish": "Ente peru Marie", "fr": "Je m'appelle Marie", "hint": "ÉN-té PÉ-rou Marie", "ml": "എന്റെ പേര് മേരി", "accept": ["ende peru marie"] },
+          { "id": "njaan-france-il-ninnaanu", "manglish": "Njaan France-il ninnaanu", "fr": "Je viens de France", "hint": "GNAAN France-il nin-NAA-nou", "ml": "ഞാൻ ഫ്രാൻസിൽ നിന്നാണ്", "accept": ["njan francil ninnanu", "njaan francil ninnaanu"] }
+        ]},
+        { "id": "u2l3", "title": "Ici et là-bas", "items": [
+          { "id": "ithu", "manglish": "Ithu", "fr": "Ceci / Ça (ici)", "hint": "I-thou", "ml": "ഇത്" },
+          { "id": "athu", "manglish": "Athu", "fr": "Cela (là-bas)", "hint": "A-thou", "ml": "അത്" },
+          { "id": "ivide", "manglish": "Ivide", "fr": "Ici", "hint": "I-vi-dé", "ml": "ഇവിടെ" },
+          { "id": "avide", "manglish": "Avide", "fr": "Là-bas", "hint": "A-vi-dé", "ml": "അവിടെ" },
+          { "id": "evideyaanu", "manglish": "Evideyaanu?", "fr": "Où est-ce ?", "hint": "é-vi-dé-YAA-nou", "ml": "എവിടെയാണ്?" },
+          { "id": "njaan-ninte-koode-undu", "manglish": "Njaan ninte koode undu", "fr": "Je suis avec toi", "hint": "GNAAN NIN-té KOU-dé OUN-dou", "ml": "ഞാൻ നിന്റെ കൂടെ ഉണ്ട്", "accept": ["njan ninde koode und", "njan ninte koode und"] }
+        ]}
+      ]
+    },
+    {
+      "id": "u3", "title": "La famille", "place": "Munnar", "emoji": "👨‍👩‍👧", "boss": "Dîner chez Amma",
+      "intro": "Pour rencontrer la famille, et lui faire très plaisir.",
+      "tips": [
+        "Quand on appelle quelqu'un, le mot change un peu : « Amma » devient « Amme ! », « Chettan » devient « Chetta ! ».",
+        "Au Kerala, on appelle souvent les gens plus âgés « chettan » (grand frère) ou « chechi » (grande sœur), même sans être de la famille."
+      ],
+      "lessons": [
+        { "id": "u3l1", "title": "Les parents", "items": [
+          { "id": "amma", "manglish": "Amma", "fr": "Maman", "hint": "AM-ma", "ml": "അമ്മ" },
+          { "id": "achan", "manglish": "Achan", "fr": "Papa", "hint": "A-tchann", "ml": "അച്ഛൻ", "accept": ["acchan", "achhan"] },
+          { "id": "kudumbam", "manglish": "Kudumbam", "fr": "Famille", "hint": "kou-DOUM-bam", "ml": "കുടുംബം" },
+          { "id": "veedu", "manglish": "Veedu", "fr": "Maison", "hint": "VII-dou", "ml": "വീട്", "accept": ["veed"] },
+          { "id": "ithu-ente-amma-aanu", "manglish": "Ithu ente amma aanu", "fr": "C'est ma mère", "hint": "I-thou ÉN-té AM-ma AA-nou", "ml": "ഇത് എന്റെ അമ്മ ആണ്", "accept": ["ithu ende amma aanu", "ith ente amma aan"] }
+        ]},
+        { "id": "u3l2", "title": "Frères et sœurs", "items": [
+          { "id": "chettan", "manglish": "Chettan", "fr": "Grand frère", "hint": "TCHÉT-tann", "ml": "ചേട്ടൻ", "note": "On dit aussi « chettan » à un homme un peu plus âgé, par respect." },
+          { "id": "chechi", "manglish": "Chechi", "fr": "Grande sœur", "hint": "TCHÉ-tchi", "ml": "ചേച്ചി" },
+          { "id": "aniyan", "manglish": "Aniyan", "fr": "Petit frère", "hint": "a-NI-yann", "ml": "അനിയൻ" },
+          { "id": "aniyathi", "manglish": "Aniyathi", "fr": "Petite sœur", "hint": "a-ni-YA-thi", "ml": "അനിയത്തി", "accept": ["aniyatthi"] },
+          { "id": "ammoomma", "manglish": "Ammoomma", "fr": "Grand-mère", "hint": "am-MOUM-ma", "ml": "അമ്മൂമ്മ" },
+          { "id": "appooppan", "manglish": "Appooppan", "fr": "Grand-père", "hint": "ap-POUP-pann", "ml": "അപ്പൂപ്പൻ" }
+        ]},
+        { "id": "u3l3", "title": "Chez Amma", "items": [
+          { "id": "ammaykku-sukhamaano", "manglish": "Ammaykku sukhamaano?", "fr": "Maman, tu vas bien ?", "hint": "am-MAY-kkou sou-kha-MAA-no", "ml": "അമ്മയ്ക്ക് സുഖമാണോ?", "note": "Parler de quelqu'un à la 3e personne, c'est poli et affectueux." },
+          { "id": "bhakshanam-kazhicho", "manglish": "Bhakshanam kazhicho?", "fr": "Tu as mangé ?", "hint": "BHAK-sha-nam ka-ZHI-tcho", "ml": "ഭക്ഷണം കഴിച്ചോ?", "note": "LA question kéralaise : on la pose pour dire « je tiens à toi ». « zh » : langue repliée, entre r et l.", "accept": ["bhakshanam kazhichoo", "bakshanam kazhicho"] },
+          { "id": "kazhichu", "manglish": "Kazhichu", "fr": "J'ai mangé", "hint": "ka-ZHI-tchou", "ml": "കഴിച്ചു" },
+          { "id": "nalla-ruchi", "manglish": "Nalla ruchi!", "fr": "C'est délicieux !", "hint": "NAL-la ROU-tchi", "ml": "നല്ല രുചി!" },
+          { "id": "mathi", "manglish": "Mathi", "fr": "Ça suffit (merci)", "hint": "MA-thi", "ml": "മതി", "note": "Indispensable : sinon Amma va remplir ton assiette encore et encore !" },
+          { "id": "chaaya", "manglish": "Chaaya", "fr": "Thé", "hint": "TCHAA-ya", "ml": "ചായ", "accept": ["chaya"] }
+        ]}
+      ]
+    },
+    {
+      "id": "u4", "title": "Les nombres", "place": "Thekkady", "emoji": "🔢", "boss": "Compter les roupies",
+      "intro": "Compter de 1 à 10, puis vingt, cent, mille… et demander un prix.",
+      "tips": [
+        "Pour dire « un » devant un mot, on utilise « oru » : oru chaaya = un thé.",
+        "Les grands nombres sont très réguliers : pathu (10), irupathu (20), muppathu (30)…"
+      ],
+      "lessons": [
+        { "id": "u4l1", "title": "De 1 à 5", "items": [
+          ["Onnu", "Un (1)", "ഒന്ന്"],
+          ["Randu", "Deux (2)", "രണ്ട്"],
+          ["Moonnu", "Trois (3)", "മൂന്ന്"],
+          ["Naalu", "Quatre (4)", "നാല്"],
+          ["Anchu", "Cinq (5)", "അഞ്ച്"]
+        ]},
+        { "id": "u4l2", "title": "De 6 à 10", "items": [
+          ["Aaru", "Six (6)", "ആറ്"],
+          ["Ezhu", "Sept (7)", "ഏഴ്"],
+          ["Ettu", "Huit (8)", "എട്ട്"],
+          ["Ompathu", "Neuf (9)", "ഒമ്പത്", "On l'écrit aussi « onpathu »."],
+          ["Pathu", "Dix (10)", "പത്ത്"]
+        ]},
+        { "id": "u4l3", "title": "Combien ?", "items": [
+          ["Ethra?", "Combien ?", "എത്ര?"],
+          ["Irupathu", "Vingt (20)", "ഇരുപത്"],
+          ["Ambathu", "Cinquante (50)", "അമ്പത്"],
+          ["Nooru", "Cent (100)", "നൂറ്"],
+          ["Aayiram", "Mille (1000)", "ആയിരം"],
+          ["Roopa", "Roupie(s)", "രൂപ"],
+          ["Ethra roopa?", "Combien de roupies ?", "എത്ര രൂപ?"],
+          ["Pathu roopa", "Dix roupies", "പത്ത് രൂപ"]
+        ]}
+      ]
+    },
+    {
+      "id": "u5", "title": "À table", "place": "Kumarakom", "emoji": "🍛", "boss": "Commander au restaurant",
+      "intro": "Riz, poisson, épices et thé : tout pour manger comme au Kerala.",
+      "tips": [
+        "« Enikku » veut dire « à moi ». En malayalam, on dit « à moi, la faim vient » : Enikku vishakkunnu = j'ai faim.",
+        "Au Kerala, on mange souvent avec la main droite, sur une feuille de bananier pour les fêtes."
+      ],
+      "lessons": [
+        { "id": "u5l1", "title": "La nourriture", "items": [
+          ["Choru", "Riz (cuit)", "ചോറ്"],
+          ["Meen", "Poisson", "മീൻ"],
+          ["Kozhi", "Poulet", "കോഴി"],
+          ["Mutta", "Œuf", "മുട്ട"],
+          ["Pachakkari", "Légumes", "പച്ചക്കറി"],
+          ["Pazham", "Banane / Fruit", "പഴം", "« zh » : langue repliée vers l'arrière."]
+        ]},
+        { "id": "u5l2", "title": "Les boissons", "items": [
+          ["Vellam", "Eau", "വെള്ളം"],
+          ["Kaapi", "Café", "കാപ്പി"],
+          ["Paal", "Lait", "പാൽ"],
+          ["Panchasaara", "Sucre", "പഞ്ചസാര"],
+          ["Thanutha vellam", "Eau fraîche", "തണുത്ത വെള്ളം"],
+          ["Choodulla chaaya", "Thé chaud", "ചൂടുള്ള ചായ"]
+        ]},
+        { "id": "u5l3", "title": "Les goûts", "items": [
+          ["Erivu", "Piquant", "എരിവ്"],
+          ["Madhuram", "Sucré / Douceur", "മധുരം"],
+          ["Uppu", "Sel", "ഉപ്പ്"],
+          ["Ithu erivaanu", "C'est épicé", "ഇത് എരിവാണ്"],
+          ["Kurachu erivu mathi", "Juste un peu épicé", "കുറച്ച് എരിവ് മതി"],
+          ["Enikku vishakkunnu", "J'ai faim", "എനിക്ക് വിശക്കുന്നു"],
+          ["Enikku daahikkunnu", "J'ai soif", "എനിക്ക് ദാഹിക്കുന്നു"]
+        ]},
+        { "id": "u5l4", "title": "Plats du Kerala", "items": [
+          ["Dosa", "Dosa (crêpe de riz)", "ദോശ"],
+          ["Appam", "Appam (crêpe moelleuse)", "അപ്പം"],
+          ["Puttu", "Puttu (riz cuit à la vapeur)", "പുട്ട്"],
+          ["Sambar", "Sambar (sauce aux lentilles)", "സാമ്പാർ"],
+          ["Payasam", "Payasam (dessert au lait)", "പായസം"],
+          ["Sadya", "Sadya (festin sur feuille de bananier)", "സദ്യ", "Le grand repas des fêtes, surtout pour Onam : plus de 20 plats !"]
+        ]}
+      ]
+    },
+    {
+      "id": "u6", "title": "Premiers verbes", "place": "Varkala", "emoji": "🏃", "boss": "Hier, aujourd'hui, demain",
+      "intro": "Manger, boire, aller, venir, dormir… au présent, au passé et au futur.",
+      "tips": [
+        "Excellente nouvelle : le verbe ne change JAMAIS selon la personne ! Njaan kazhikkunnu = je mange, Nee kazhikkunnu = tu manges, Aval kazhikkunnu = elle mange.",
+        "Présent : souvent en -unnu (kazhikkunnu). Futur : en -um (kazhikkum). Le passé change plus : kazhichu, poyi, vannu… on l'apprend par cœur.",
+        "Le verbe va toujours à la fin : Njaan chaaya kudikkunnu = « Je thé bois »."
+      ],
+      "lessons": [
+        { "id": "u6l1", "title": "Manger, boire, aller", "verbs": ["kazhikkuka", "kudikkuka", "pokuka"], "forms": ["pres"], "items": [
+          ["Njaan kazhikkunnu", "Je mange", "ഞാൻ കഴിക്കുന്നു"],
+          ["Aval chaaya kudikkunnu", "Elle boit du thé", "അവൾ ചായ കുടിക്കുന്നു"]
+        ]},
+        { "id": "u6l2", "title": "Venir, s'asseoir, dormir", "verbs": ["varuka", "irikkuka", "uranguka"], "forms": ["pres"], "items": [
+          ["Vaa", "Viens !", "വാ"],
+          ["Irikkoo", "Assieds-toi", "ഇരിക്കൂ"],
+          ["Nee evide pokunnu?", "Tu vas où ?", "നീ എവിടെ പോകുന്നു?"]
+        ]},
+        { "id": "u6l3", "title": "Le passé", "verbs": ["kazhikkuka", "kudikkuka", "pokuka", "varuka"], "forms": ["past"], "items": [
+          ["Aval poyi", "Elle est partie", "അവൾ പോയി"],
+          ["Njaan vannu", "Je suis arrivé(e)", "ഞാൻ വന്നു"]
+        ]},
+        { "id": "u6l4", "title": "Le futur", "verbs": ["kazhikkuka", "pokuka", "varuka", "uranguka"], "forms": ["fut"], "items": [
+          ["Njaan naale varum", "Je viendrai demain", "ഞാൻ നാളെ വരും"]
+        ]},
+        { "id": "u6l5", "title": "Dire non", "verbs": ["kazhikkuka", "kudikkuka", "pokuka", "varuka"], "forms": ["neg"], "items": [
+          ["Enikku venda", "Je n'en veux pas", "എനിക്ക് വേണ്ട"]
+        ]}
+      ]
+    }
+  ]
+}

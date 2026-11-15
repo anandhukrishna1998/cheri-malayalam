@@ -1,0 +1,186 @@
+{
+  "id": "s3",
+  "title": "Parler comme au Kerala",
+  "subtitle": "L'amour, la santé, les voyages, plus de verbes, la météo et les expressions du coin.",
+  "units": [
+    {
+      "id": "u13", "title": "Mots d'amour", "place": "Kannur", "emoji": "💕", "boss": "Une lettre d'amour",
+      "intro": "Les petits mots doux à dire (et à entendre) en malayalam.",
+      "tips": [
+        "« Ishtam » = aimer bien (aussi pour les choses : enikku chaaya ishtamaanu). « Sneham » = l'amour profond.",
+        "Les petits noms finissent souvent en « -e » quand on appelle : mutthe, chakkare, ponne."
+      ],
+      "lessons": [
+        { "id": "u13l1", "title": "Petits noms", "items": [
+          ["Ishtam", "Affection / Aimer bien", "ഇഷ്ടം"],
+          ["Sneham", "Amour", "സ്നേഹം"],
+          ["Ente mutthe", "Mon trésor (ma perle)", "എന്റെ മുത്തേ"],
+          ["Chakkare", "Mon sucre (mon cœur)", "ചക്കരേ"],
+          ["Ponne", "Ma chérie (ma précieuse)", "പൊന്നേ"],
+          ["Sundari", "Belle (pour une femme)", "സുന്ദരി"]
+        ]},
+        { "id": "u13l2", "title": "Je t'aime", "items": [
+          ["Enikku ninne ishtamaanu", "Je t'aime", "എനിക്ക് നിന്നെ ഇഷ്ടമാണ്"],
+          ["Njaan ninne snehikkunnu", "Je t'aime (fort)", "ഞാൻ നിന്നെ സ്നേഹിക്കുന്നു"],
+          ["Ninne miss cheyyunnu", "Tu me manques", "നിന്നെ മിസ്സ് ചെയ്യുന്നു"],
+          ["Ninne kaananam", "Je veux te voir", "നിന്നെ കാണണം"],
+          ["Nee ente jeevanaanu", "Tu es ma vie", "നീ എന്റെ ജീവനാണ്"],
+          ["Shubha raathri, ente mutthe", "Bonne nuit, mon trésor", "ശുഭരാത്രി, എന്റെ മുത്തേ"]
+        ]},
+        { "id": "u13l3", "title": "Aimer, penser, attendre", "verbs": ["snehikkuka", "orkkuka", "kaathirikkuka"], "forms": ["pres", "fut"], "items": [
+          ["Njaan ninakku vendi kaathirikkum", "Je t'attendrai", "ഞാൻ നിനക്കു വേണ്ടി കാത്തിരിക്കും"],
+          ["Ninne orkkunnu", "Je pense à toi", "നിന്നെ ഓർക്കുന്നു"]
+        ]}
+      ]
+    },
+    {
+      "id": "u14", "title": "Le corps & la santé", "place": "Wayanad", "emoji": "🩺", "boss": "Chez le docteur",
+      "intro": "Les parties du corps et comment dire que ça ne va pas.",
+      "tips": [
+        "« Vedana » = douleur. On le colle au mot : thala (tête) + vedana = thalavedana, mal de tête.",
+        "« Sukhamilla » (pas bien) est le contraire de « sukham » (bien) que tu connais déjà."
+      ],
+      "lessons": [
+        { "id": "u14l1", "title": "Le visage et le corps", "items": [
+          ["Thala", "Tête", "തല"],
+          ["Kannu", "Œil / Yeux", "കണ്ണ്"],
+          ["Mookku", "Nez", "മൂക്ക്"],
+          ["Vaayi", "Bouche", "വായ്"],
+          ["Kai", "Main / Bras", "കൈ"],
+          ["Kaalu", "Pied / Jambe", "കാല്"]
+        ]},
+        { "id": "u14l2", "title": "Ça ne va pas", "items": [
+          ["Vayaru", "Ventre", "വയറ്"],
+          ["Vedana", "Douleur", "വേദന"],
+          ["Thalavedana", "Mal de tête", "തലവേദന"],
+          ["Sukhamilla", "Je ne me sens pas bien", "സുഖമില്ല"],
+          ["Doctor", "Docteur", "ഡോക്ടർ"],
+          ["Marunnu", "Médicament", "മരുന്ന്"]
+        ]},
+        { "id": "u14l3", "title": "Prendre soin", "items": [
+          ["Enikku pani undu", "J'ai de la fièvre", "എനിക്ക് പനി ഉണ്ട്"],
+          ["Vayaru vedanikkunnu", "J'ai mal au ventre", "വയറു വേദനിക്കുന്നു"],
+          ["Aashupathri", "Hôpital", "ആശുപത്രി"],
+          ["Vishramikkoo", "Repose-toi", "വിശ്രമിക്കൂ"],
+          ["Vegam sukhamaakatte", "Guéris vite", "വേഗം സുഖമാകട്ടെ"]
+        ]}
+      ]
+    },
+    {
+      "id": "u15", "title": "Voyager au Kerala", "place": "Bekal", "emoji": "🛺", "boss": "La course en auto-rickshaw",
+      "intro": "Bus, train, auto-rickshaw : se déplacer et trouver son chemin.",
+      "tips": [
+        "En auto-rickshaw, demande toujours le prix avant ou le compteur : « Meter idoo ! »",
+        "Appelle le chauffeur « Chetta » (grand frère) : c'est poli et ça fait toujours sourire."
+      ],
+      "lessons": [
+        { "id": "u15l1", "title": "Les transports", "items": [
+          ["Bus", "Bus", "ബസ്"],
+          ["Auto", "Auto-rickshaw", "ഓട്ടോ"],
+          ["Theevandi", "Train", "തീവണ്ടി"],
+          ["Vimaanam", "Avion", "വിമാനം"],
+          ["Vazhi", "Chemin / Route", "വഴി"],
+          ["Station", "Gare", "സ്റ്റേഷൻ"]
+        ]},
+        { "id": "u15l2", "title": "Trouver son chemin", "items": [
+          ["Idathu", "À gauche", "ഇടത്ത്"],
+          ["Valathu", "À droite", "വലത്ത്"],
+          ["Nere", "Tout droit", "നേരെ"],
+          ["Ivide nirthoo", "Arrêtez ici", "ഇവിടെ നിർത്തൂ"],
+          ["Doore", "Loin", "ദൂരെ"],
+          ["Aduthu", "Près", "അടുത്ത്"]
+        ]},
+        { "id": "u15l3", "title": "Marcher, courir, appeler", "verbs": ["nadakkuka", "oduka", "vilikkuka"], "forms": ["pres", "past"], "items": [
+          ["Station evideyaanu?", "Où est la gare ?", "സ്റ്റേഷൻ എവിടെയാണ്?"],
+          ["Meter idoo", "Mettez le compteur", "മീറ്റർ ഇടൂ"]
+        ]}
+      ]
+    },
+    {
+      "id": "u16", "title": "Plus de verbes", "place": "Guruvayur", "emoji": "💪", "boss": "Maîtresse des verbes",
+      "intro": "Commencer, aider, oublier, jouer, préparer… à tous les temps.",
+      "tips": [
+        "Pour dire « ne… pas » au présent : présent + illa. Kaanunnu → kaanunnilla (ne voit pas).",
+        "Rappel : même forme pour je, tu, il, elle, nous, vous, ils. Tu peux te concentrer sur le temps !"
+      ],
+      "lessons": [
+        { "id": "u16l1", "title": "Au présent", "verbs": ["thudanguka", "sahaayikkuka", "marakkuka", "kalikkuka", "undaakkuka"], "forms": ["pres"] },
+        { "id": "u16l2", "title": "Au passé", "verbs": ["thudanguka", "sahaayikkuka", "marakkuka", "kalikkuka", "undaakkuka"], "forms": ["past"] },
+        { "id": "u16l3", "title": "Au futur", "verbs": ["thudanguka", "sahaayikkuka", "undaakkuka", "vilikkuka"], "forms": ["fut"], "items": [
+          ["Njaan ninne sahaayikkaam", "Je vais t'aider", "ഞാൻ നിന്നെ സഹായിക്കാം"]
+        ]},
+        { "id": "u16l4", "title": "Au négatif", "verbs": ["kaanuka", "parayuka", "marakkuka", "cheyyuka"], "forms": ["neg"], "items": [
+          ["Njaan marakkilla", "Je n'oublierai pas", "ഞാൻ മറക്കില്ല"]
+        ]},
+        { "id": "u16l5", "title": "Grande révision", "verbs": ["vaayikkuka", "ezhuthuka", "joli-cheyyuka", "vaanguka"], "forms": ["past", "fut"] }
+      ]
+    },
+    {
+      "id": "u17", "title": "La météo & la nature", "place": "Athirappilly", "emoji": "🌧️", "boss": "Un jour de mousson",
+      "intro": "La pluie, le soleil, la mer, les cocotiers et les backwaters.",
+      "tips": [
+        "La mousson arrive au Kerala vers juin : « Mazha peyyunnu » (il pleut) est une phrase très utile !",
+        "« Kerala » vient peut-être de « kera » : le cocotier. C'est le pays des cocotiers."
+      ],
+      "lessons": [
+        { "id": "u17l1", "title": "Le temps qu'il fait", "items": [
+          ["Mazha", "Pluie", "മഴ"],
+          ["Veyil", "Soleil (rayons)", "വെയിൽ"],
+          ["Choodu", "Chaleur", "ചൂട്"],
+          ["Thanuppu", "Froid", "തണുപ്പ്"],
+          ["Kaattu", "Vent", "കാറ്റ്"],
+          ["Aakaasham", "Ciel", "ആകാശം"]
+        ]},
+        { "id": "u17l2", "title": "La nature", "items": [
+          ["Kadal", "Mer", "കടൽ"],
+          ["Puzha", "Rivière", "പുഴ"],
+          ["Maram", "Arbre", "മരം"],
+          ["Poovu", "Fleur", "പൂവ്"],
+          ["Thengu", "Cocotier", "തെങ്ങ്"],
+          ["Kaayal", "Lagune (backwaters)", "കായൽ"]
+        ]},
+        { "id": "u17l3", "title": "Il pleut !", "items": [
+          ["Mazha peyyunnu", "Il pleut", "മഴ പെയ്യുന്നു"],
+          ["Nalla choodaanu", "Il fait très chaud", "നല്ല ചൂടാണ്"],
+          ["Nalla thanuppaanu", "Il fait bien froid", "നല്ല തണുപ്പാണ്"],
+          ["Kuda edukku", "Prends un parapluie", "കുട എടുക്ക്"],
+          ["Kadal kaanaan pokaam", "Allons voir la mer", "കടൽ കാണാൻ പോകാം"]
+        ]}
+      ]
+    },
+    {
+      "id": "u18", "title": "Expressions kéralaises", "place": "Thiruvananthapuram", "emoji": "🌴", "boss": "Comme une vraie Malayali",
+      "intro": "Les petits mots que tout le monde dit au Kerala. Effet garanti !",
+      "tips": [
+        "« Ayyo! » sert à tout : surprise, douleur, pitié… C'est LE mot le plus kéralais.",
+        "« Mole » (ma fille) et « mone » (mon fils) sont utilisés avec affection pour les plus jeunes, même hors de la famille."
+      ],
+      "lessons": [
+        { "id": "u18l1", "title": "Les classiques", "items": [
+          ["Ayyo!", "Oh non ! / Aïe !", "അയ്യോ!"],
+          ["Kollaam", "Pas mal ! / C'est bien", "കൊള്ളാം"],
+          ["Adipoli!", "Génial !", "അടിപൊളി!"],
+          ["Chumma", "Pour rien / Comme ça", "ചുമ്മാ"],
+          ["Pinnallaathe!", "Bien sûr !", "പിന്നല്ലാതെ!"],
+          ["Sheri sheri", "Ok, ok", "ശരി ശരി"]
+        ]},
+        { "id": "u18l2", "title": "Entre proches", "items": [
+          ["Enthaa mole?", "Qu'y a-t-il, ma chérie ?", "എന്താ മോളേ?", "Amma t'appellera sûrement « mole » : c'est très affectueux."],
+          ["Mone", "Mon garçon (affectueux)", "മോനേ"],
+          ["Poyi varaam", "À tout à l'heure (je pars et je reviens)", "പോയി വരാം", "Au Kerala, on ne dit pas « je pars » tout court : ça porte malheur ! On dit « je vais et je reviens »."],
+          ["Vegam vaa", "Viens vite", "വേഗം വാ"],
+          ["Onnumilla", "Rien / Pas grand-chose", "ഒന്നുമില്ല"],
+          ["Enthaayaalum", "De toute façon", "എന്തായാലും"]
+        ]},
+        { "id": "u18l3", "title": "Réagir", "items": [
+          ["Paavam", "Le / La pauvre !", "പാവം"],
+          ["Kashtam", "Dommage !", "കഷ്ടം"],
+          ["Mathi mathi", "Ça suffit, ça suffit !", "മതി മതി"],
+          ["Nannaayi", "Tant mieux / Bien joué", "നന്നായി"],
+          ["Ellaavarkkum namaskaaram", "Bonjour à tous", "എല്ലാവർക്കും നമസ്കാരം"],
+          ["Sookshichu pokoo", "Fais attention à toi (en partant)", "സൂക്ഷിച്ചു പോകൂ"]
+        ]}
+      ]
+    }
+  ]
+}

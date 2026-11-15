@@ -1,0 +1,132 @@
+{
+  "speakers": {
+    "Toi": { "voice": "f", "emoji": "👩" },
+    "Chéri": { "voice": "m", "emoji": "🧑🏽" },
+    "Amma": { "voice": "f", "emoji": "👵🏽" },
+    "Serveur": { "voice": "m", "emoji": "🧑🏽‍🍳" },
+    "Chauffeur": { "voice": "m", "emoji": "🛺" },
+    "Vendeur": { "voice": "m", "emoji": "🧔🏽" }
+  },
+  "dialogues": [
+    {
+      "id": "rencontre", "title": "Première rencontre", "emoji": "👋", "after": "u2",
+      "scene": "Tu rencontres quelqu'un pour la première fois.",
+      "lines": [
+        ["Chéri", "Namaskaaram! Sukhamaano?", "Bonjour ! Ça va ?", "നമസ്കാരം! സുഖമാണോ?"],
+        ["Toi", "Sukham. Ninakko?", "Ça va. Et toi ?", "സുഖം. നിനക്കോ?"],
+        ["Chéri", "Enikkum sukham. Ninte peru enthaa?", "Ça va aussi. Comment tu t'appelles ?", "എനിക്കും സുഖം. നിന്റെ പേര് എന്താ?"],
+        ["Toi", "Ente peru Marie. Nee evidennaa?", "Je m'appelle Marie. Tu viens d'où ?", "എന്റെ പേര് മേരി. നീ എവിടുന്നാ?"],
+        ["Chéri", "Njaan Kochi-yil ninnaanu. Ninakko?", "Je viens de Kochi. Et toi ?", "ഞാൻ കൊച്ചിയിൽ നിന്നാണ്. നിനക്കോ?"],
+        ["Toi", "Njaan France-il ninnaanu.", "Je viens de France.", "ഞാൻ ഫ്രാൻസിൽ നിന്നാണ്."]
+      ]
+    },
+    {
+      "id": "amma-repas", "title": "Tu as mangé ?", "emoji": "🍛", "after": "u3",
+      "scene": "Amma t'accueille à la maison. Elle veut surtout que tu manges !",
+      "lines": [
+        ["Amma", "Mole, bhakshanam kazhicho?", "Ma chérie, tu as mangé ?", "മോളേ, ഭക്ഷണം കഴിച്ചോ?"],
+        ["Toi", "Illa Amme, ippol kazhikkaam.", "Non Amma, je vais manger maintenant.", "ഇല്ല അമ്മേ, ഇപ്പോൾ കഴിക്കാം."],
+        ["Amma", "Vaa, irikkoo. Choru undu, meen curry undu.", "Viens, assieds-toi. Il y a du riz et du curry de poisson.", "വാ, ഇരിക്കൂ. ചോറ് ഉണ്ട്, മീൻ കറി ഉണ്ട്."],
+        ["Toi", "Nalla ruchi!", "C'est délicieux !", "നല്ല രുചി!"],
+        ["Amma", "Kurachu koode edukku.", "Reprends-en un peu.", "കുറച്ചു കൂടെ എടുക്ക്."],
+        ["Toi", "Mathi Amme, nanni!", "Ça suffit Amma, merci !", "മതി അമ്മേ, നന്ദി!"]
+      ]
+    },
+    {
+      "id": "restaurant", "title": "Au restaurant", "emoji": "🍽️", "after": "u5",
+      "scene": "Tu commandes un petit-déjeuner dans un restaurant de Kochi.",
+      "lines": [
+        ["Serveur", "Enthu venam?", "Qu'est-ce que vous voulez ?", "എന്തു വേണം?"],
+        ["Toi", "Randu dosa, oru chaaya.", "Deux dosas et un thé.", "രണ്ട് ദോശ, ഒരു ചായ."],
+        ["Serveur", "Chaayakku panchasaara veno?", "Du sucre dans le thé ?", "ചായയ്ക്ക് പഞ്ചസാര വേണോ?"],
+        ["Toi", "Kurachu mathi.", "Juste un peu.", "കുറച്ച് മതി."],
+        ["Toi", "Bill tharaamo?", "L'addition, s'il vous plaît ?", "ബില്ല് തരാമോ?"],
+        ["Serveur", "Nooru roopa.", "Cent roupies.", "നൂറ് രൂപ."]
+      ]
+    },
+    {
+      "id": "telephone", "title": "Au téléphone", "emoji": "📞", "after": "u7",
+      "scene": "Ton chéri t'appelle pendant que tu révises.",
+      "lines": [
+        ["Chéri", "Hello, nee evideyaa?", "Allô, tu es où ?", "ഹലോ, നീ എവിടെയാ?"],
+        ["Toi", "Njaan veettil undu.", "Je suis à la maison.", "ഞാൻ വീട്ടിൽ ഉണ്ട്."],
+        ["Chéri", "Enthu cheyyunnu?", "Tu fais quoi ?", "എന്തു ചെയ്യുന്നു?"],
+        ["Toi", "Malayalam padikkunnu!", "J'apprends le malayalam !", "മലയാളം പഠിക്കുന്നു!"],
+        ["Chéri", "Adipoli! Njaan vaikunneram varum.", "Génial ! Je viendrai ce soir.", "അടിപൊളി! ഞാൻ വൈകുന്നേരം വരും."],
+        ["Toi", "Sheri, pinne kaanaam!", "D'accord, à plus tard !", "ശരി, പിന്നെ കാണാം!"]
+      ]
+    },
+    {
+      "id": "projets", "title": "Les projets de demain", "emoji": "🏖️", "after": "u9",
+      "scene": "Vous décidez quoi faire demain.",
+      "lines": [
+        ["Chéri", "Naale nammal enthu cheyyum?", "On fait quoi demain ?", "നാളെ നമ്മൾ എന്തു ചെയ്യും?"],
+        ["Toi", "Kadal kaanaan pokaam?", "On va voir la mer ?", "കടൽ കാണാൻ പോകാം?"],
+        ["Chéri", "Nalla idea! Raavile pokaam.", "Bonne idée ! On part le matin.", "നല്ല ഐഡിയ! രാവിലെ പോകാം."],
+        ["Toi", "Njaan bhakshanam undaakkaam.", "Je prépare à manger.", "ഞാൻ ഭക്ഷണം ഉണ്ടാക്കാം."],
+        ["Chéri", "Adipoli! Enikku ninne ishtamaanu.", "Génial ! Je t'aime.", "അടിപൊളി! എനിക്ക് നിന്നെ ഇഷ്ടമാണ്."]
+      ]
+    },
+    {
+      "id": "marche", "title": "Au marché", "emoji": "🥻", "after": "u12",
+      "scene": "Tu as trouvé un joli sari. Il faut négocier !",
+      "lines": [
+        ["Toi", "Ee saarikku ethrayaanu?", "Combien coûte ce sari ?", "ഈ സാരിക്ക് എത്രയാണ്?"],
+        ["Vendeur", "Aayiram roopa.", "Mille roupies.", "ആയിരം രൂപ."],
+        ["Toi", "Ayyo, vila kooduthalaanu!", "Oh là là, c'est trop cher !", "അയ്യോ, വില കൂടുതലാണ്!"],
+        ["Vendeur", "Ezhunooru roopaykku tharaam.", "Je vous le fais à sept cents roupies.", "എഴുനൂറ് രൂപയ്ക്ക് തരാം."],
+        ["Toi", "Nalla niram. Njaan ithu edukkum.", "Belle couleur. Je le prends.", "നല്ല നിറം. ഞാൻ ഇത് എടുക്കും."],
+        ["Vendeur", "Nanni, veendum varanam!", "Merci, revenez !", "നന്ദി, വീണ്ടും വരണം!"]
+      ]
+    },
+    {
+      "id": "mot-doux", "title": "Un mot doux", "emoji": "💌", "after": "u13",
+      "scene": "Un petit message du soir.",
+      "lines": [
+        ["Chéri", "Ninne miss cheyyunnu.", "Tu me manques.", "നിന്നെ മിസ്സ് ചെയ്യുന്നു."],
+        ["Toi", "Enikkum ninne miss cheyyunnu.", "Tu me manques aussi.", "എനിക്കും നിന്നെ മിസ്സ് ചെയ്യുന്നു."],
+        ["Chéri", "Eppol kaanaam?", "On se voit quand ?", "എപ്പോൾ കാണാം?"],
+        ["Toi", "Naale vaikunneram?", "Demain soir ?", "നാളെ വൈകുന്നേരം?"],
+        ["Chéri", "Sheri, njaan kaathirikkum.", "D'accord, je t'attendrai.", "ശരി, ഞാൻ കാത്തിരിക്കും."],
+        ["Toi", "Shubha raathri, ente mutthe!", "Bonne nuit, mon trésor !", "ശുഭരാത്രി, എന്റെ മുത്തേ!"]
+      ]
+    },
+    {
+      "id": "malade", "title": "Pas en forme", "emoji": "🤒", "after": "u14",
+      "scene": "Tu ne te sens pas très bien aujourd'hui.",
+      "lines": [
+        ["Chéri", "Enthu patti? Sukhamille?", "Qu'est-ce qui se passe ? Tu ne te sens pas bien ?", "എന്തു പറ്റി? സുഖമില്ലേ?"],
+        ["Toi", "Thalavedanayaanu.", "J'ai mal à la tête.", "തലവേദനയാണ്."],
+        ["Chéri", "Pani undo?", "Tu as de la fièvre ?", "പനി ഉണ്ടോ?"],
+        ["Toi", "Illa, ksheenam maathram.", "Non, juste de la fatigue.", "ഇല്ല, ക്ഷീണം മാത്രം."],
+        ["Chéri", "Marunnu kazhichu vishramikkoo.", "Prends un médicament et repose-toi.", "മരുന്ന് കഴിച്ചു വിശ്രമിക്കൂ."],
+        ["Toi", "Sheri. Nanni, ente chakkare.", "D'accord. Merci, mon cœur.", "ശരി. നന്ദി, എന്റെ ചക്കരേ."]
+      ]
+    },
+    {
+      "id": "auto", "title": "En auto-rickshaw", "emoji": "🛺", "after": "u15",
+      "scene": "Tu prends un auto-rickshaw pour aller à la gare.",
+      "lines": [
+        ["Toi", "Chetta, stationil pokumo?", "Monsieur, vous allez à la gare ?", "ചേട്ടാ, സ്റ്റേഷനിൽ പോകുമോ?"],
+        ["Chauffeur", "Pokaam, kayaroo.", "On y va, montez.", "പോകാം, കയറൂ."],
+        ["Toi", "Meter idoo, please.", "Mettez le compteur, s'il vous plaît.", "മീറ്റർ ഇടൂ, പ്ലീസ്."],
+        ["Chauffeur", "Sheri.", "D'accord.", "ശരി."],
+        ["Toi", "Ivide valathu, pinne nere.", "Ici à droite, puis tout droit.", "ഇവിടെ വലത്ത്, പിന്നെ നേരെ."],
+        ["Toi", "Ivide nirthoo. Ethrayaayi?", "Arrêtez ici. Ça fait combien ?", "ഇവിടെ നിർത്തൂ. എത്രയായി?"],
+        ["Chauffeur", "Ambathu roopa.", "Cinquante roupies.", "അമ്പത് രൂപ."]
+      ]
+    },
+    {
+      "id": "pluie", "title": "Il pleut !", "emoji": "☔", "after": "u17",
+      "scene": "Tu sors, mais la mousson est là.",
+      "lines": [
+        ["Amma", "Mazha peyyunnu, kuda edukku!", "Il pleut, prends un parapluie !", "മഴ പെയ്യുന്നു, കുട എടുക്ക്!"],
+        ["Toi", "Kuda evide?", "Où est le parapluie ?", "കുട എവിടെ?"],
+        ["Amma", "Vaathilinte aduthu undu.", "Il est près de la porte.", "വാതിലിന്റെ അടുത്ത് ഉണ്ട്."],
+        ["Toi", "Kitti! Nanni Amme.", "Trouvé ! Merci Amma.", "കിട്ടി! നന്ദി അമ്മേ."],
+        ["Amma", "Sookshichu pokoo, ketto.", "Fais attention à toi, d'accord ?", "സൂക്ഷിച്ചു പോകൂ, കേട്ടോ."],
+        ["Toi", "Poyi varaam!", "À tout à l'heure !", "പോയി വരാം!"]
+      ]
+    }
+  ]
+}
