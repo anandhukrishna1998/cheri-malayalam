@@ -24,7 +24,7 @@
           { "id": "sukhamaanu", "manglish": "Sukhamaanu", "fr": "Je vais bien", "hint": "sou-kha-MAA-nou", "ml": "സുഖമാണ്" },
           { "id": "ninakko", "manglish": "Ninakko?", "fr": "Et toi ?", "hint": "ni-NAK-ko", "ml": "നിനക്കോ?" },
           { "id": "pinne-kaanaam", "manglish": "Pinne kaanaam", "fr": "À plus tard", "hint": "PIN-né KAA-naam", "ml": "പിന്നെ കാണാം" },
-          { "id": "shubha-raathri", "manglish": "Shubha raathri", "fr": "Bonne nuit", "hint": "CHOU-bha RAA-thri", "ml": "ശുഭരാത്രി" }
+          { "id": "shubha-raathri", "manglish": "Shubha raathri", "fr": "Bonne nuit", "hint": "CHOU-bha RAA-thri", "ml": "ശുഭരാത്രി", "note": "Formel. À l'oral, on dit presque toujours « Good night »." }
         ]},
         { "id": "u1l3", "title": "Je n'ai pas compris", "items": [
           { "id": "kshamikkanam", "manglish": "Kshamikkanam", "fr": "Pardon / Désolé(e)", "hint": "ksha-MIK-ka-nam", "ml": "ക്ഷമിക്കണം" },
@@ -93,7 +93,7 @@
           { "id": "appooppan", "manglish": "Appooppan", "fr": "Grand-père", "hint": "ap-POUP-pann", "ml": "അപ്പൂപ്പൻ" }
         ]},
         { "id": "u3l3", "title": "Chez Amma", "items": [
-          { "id": "ammaykku-sukhamaano", "manglish": "Ammaykku sukhamaano?", "fr": "Maman, tu vas bien ?", "hint": "am-MAY-kkou sou-kha-MAA-no", "ml": "അമ്മയ്ക്ക് സുഖമാണോ?", "note": "Parler de quelqu'un à la 3e personne, c'est poli et affectueux." },
+          { "id": "ammaykku-sukhamaano", "manglish": "Ammaykku sukhamaano?", "fr": "Maman, tu vas bien ?", "hint": "am-MAY-kkou sou-kha-MAA-no", "ml": "അമ്മയ്ക്ക് സുഖമാണോ?", "note": "S'adresser à quelqu'un à la 3e personne (« Amma va bien ? »), c'est poli et affectueux." },
           { "id": "bhakshanam-kazhicho", "manglish": "Bhakshanam kazhicho?", "fr": "Tu as mangé ?", "hint": "BHAK-sha-nam ka-ZHI-tcho", "ml": "ഭക്ഷണം കഴിച്ചോ?", "note": "LA question kéralaise : on la pose pour dire « je tiens à toi ». « zh » : langue repliée, entre r et l.", "accept": ["bhakshanam kazhichoo", "bakshanam kazhicho"] },
           { "id": "kazhichu", "manglish": "Kazhichu", "fr": "J'ai mangé", "hint": "ka-ZHI-tchou", "ml": "കഴിച്ചു" },
           { "id": "nalla-ruchi", "manglish": "Nalla ruchi!", "fr": "C'est délicieux !", "hint": "NAL-la ROU-tchi", "ml": "നല്ല രുചി!" },
@@ -107,7 +107,7 @@
       "intro": "Compter de 1 à 10, puis vingt, cent, mille… et demander un prix.",
       "tips": [
         "Pour dire « un » devant un mot, on utilise « oru » : oru chaaya = un thé.",
-        "Les grands nombres sont très réguliers : pathu (10), irupathu (20), muppathu (30)…"
+        "Les dizaines sont assez régulières : pathu (10), irupathu (20), muppathu (30)… avec quelques exceptions comme ambathu (50) ou thonnooru (90)."
       ],
       "lessons": [
         { "id": "u4l1", "title": "De 1 à 5", "items": [
@@ -172,8 +172,8 @@
         { "id": "u5l4", "title": "Plats du Kerala", "items": [
           ["Dosa", "Dosa (crêpe de riz)", "ദോശ"],
           ["Appam", "Appam (crêpe moelleuse)", "അപ്പം"],
-          ["Puttu", "Puttu (riz cuit à la vapeur)", "പുട്ട്"],
-          ["Sambar", "Sambar (sauce aux lentilles)", "സാമ്പാർ"],
+          ["Puttu", "Puttu (farine de riz et coco cuites à la vapeur)", "പുട്ട്"],
+          ["Sambar", "Sambar (ragoût de lentilles et légumes)", "സാമ്പാർ"],
           ["Payasam", "Payasam (dessert au lait)", "പായസം"],
           ["Sadya", "Sadya (festin sur feuille de bananier)", "സദ്യ", "Le grand repas des fêtes, surtout pour Onam : plus de 20 plats !"]
         ]}
@@ -194,8 +194,8 @@
         ]},
         { "id": "u6l2", "title": "Venir, s'asseoir, dormir", "verbs": ["varuka", "irikkuka", "uranguka"], "forms": ["pres"], "items": [
           ["Vaa", "Viens !", "വാ"],
-          ["Irikkoo", "Assieds-toi", "ഇരിക്കൂ"],
-          ["Nee evide pokunnu?", "Tu vas où ?", "നീ എവിടെ പോകുന്നു?"]
+          ["Irikkoo", "Assieds-toi / Asseyez-vous (poli)", "ഇരിക്കൂ"],
+          ["Nee evide pokunnu?", "Tu vas où ?", "നീ എവിടെ പോകുന്നു?", "À l'oral, on entend souvent « Nee evide pokuvaa? » ou « evide poova? »."]
         ]},
         { "id": "u6l3", "title": "Le passé", "verbs": ["kazhikkuka", "kudikkuka", "pokuka", "varuka"], "forms": ["past"], "items": [
           ["Aval poyi", "Elle est partie", "അവൾ പോയി"],

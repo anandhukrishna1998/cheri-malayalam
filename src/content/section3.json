@@ -16,16 +16,16 @@
           ["Sneham", "Amour", "സ്നേഹം"],
           ["Ente mutthe", "Mon trésor (ma perle)", "എന്റെ മുത്തേ"],
           ["Chakkare", "Mon sucre (mon cœur)", "ചക്കരേ"],
-          ["Ponne", "Ma chérie (ma précieuse)", "പൊന്നേ"],
+          ["Ponne", "Mon chéri / Ma chérie (mon or)", "പൊന്നേ", "Ponnu = l'or. Se dit à un homme comme à une femme."],
           ["Sundari", "Belle (pour une femme)", "സുന്ദരി"]
         ]},
         { "id": "u13l2", "title": "Je t'aime", "items": [
           ["Enikku ninne ishtamaanu", "Je t'aime", "എനിക്ക് നിന്നെ ഇഷ്ടമാണ്"],
-          ["Njaan ninne snehikkunnu", "Je t'aime (fort)", "ഞാൻ നിന്നെ സ്നേഹിക്കുന്നു"],
+          ["Njaan ninne snehikkunnu", "Je t'aime (fort)", "ഞാൻ നിന്നെ സ്നേഹിക്കുന്നു", "Assez solennel, comme au cinéma. Parfait pour les grandes occasions !"],
           ["Ninne miss cheyyunnu", "Tu me manques", "നിന്നെ മിസ്സ് ചെയ്യുന്നു"],
           ["Ninne kaananam", "Je veux te voir", "നിന്നെ കാണണം"],
           ["Nee ente jeevanaanu", "Tu es ma vie", "നീ എന്റെ ജീവനാണ്"],
-          ["Shubha raathri, ente mutthe", "Bonne nuit, mon trésor", "ശുഭരാത്രി, എന്റെ മുത്തേ"]
+          ["Shubha raathri, ente mutthe", "Bonne nuit, mon trésor", "ശുഭരാത്രി, എന്റെ മുത്തേ", "Dans la vraie vie, beaucoup de couples disent « Good night, ente mutthe »."]
         ]},
         { "id": "u13l3", "title": "Aimer, penser, attendre", "verbs": ["snehikkuka", "orkkuka", "kaathirikkuka"], "forms": ["pres", "fut"], "items": [
           ["Njaan ninakku vendi kaathirikkum", "Je t'attendrai", "ഞാൻ നിനക്കു വേണ്ടി കാത്തിരിക്കും"],
@@ -107,7 +107,7 @@
         { "id": "u16l1", "title": "Au présent", "verbs": ["thudanguka", "sahaayikkuka", "marakkuka", "kalikkuka", "undaakkuka"], "forms": ["pres"] },
         { "id": "u16l2", "title": "Au passé", "verbs": ["thudanguka", "sahaayikkuka", "marakkuka", "kalikkuka", "undaakkuka"], "forms": ["past"] },
         { "id": "u16l3", "title": "Au futur", "verbs": ["thudanguka", "sahaayikkuka", "undaakkuka", "vilikkuka"], "forms": ["fut"], "items": [
-          ["Njaan ninne sahaayikkaam", "Je vais t'aider", "ഞാൻ നിന്നെ സഹായിക്കാം"]
+          ["Njaan ninne sahaayikkaam", "Je peux t'aider", "ഞാൻ നിന്നെ സഹായിക്കാം"]
         ]},
         { "id": "u16l4", "title": "Au négatif", "verbs": ["kaanuka", "parayuka", "marakkuka", "cheyyuka"], "forms": ["neg"], "items": [
           ["Njaan marakkilla", "Je n'oublierai pas", "ഞാൻ മറക്കില്ല"]

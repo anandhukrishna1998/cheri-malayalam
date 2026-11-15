@@ -8,7 +8,7 @@
       "intro": "Aujourd'hui, demain, le matin, le soir et les jours de la semaine.",
       "tips": [
         "Les mots de temps se mettent en général au début : Naale njaan varum = demain je viendrai.",
-        "« Ippol » (maintenant) se prononce « ip-pol », avec un l bien net."
+        "« Ippol » (maintenant) se prononce « ip-pol », le l final avec la langue recourbée vers l'arrière. À l'oral, on dit souvent juste « ippo »."
       ],
       "lessons": [
         { "id": "u7l1", "title": "Aujourd'hui, demain", "items": [
@@ -24,8 +24,8 @@
           ["Uchaykku", "À midi", "ഉച്ചയ്ക്ക്"],
           ["Vaikunneram", "Le soir", "വൈകുന്നേരം"],
           ["Raathri", "La nuit", "രാത്രി"],
-          ["Suprabhaatham", "Bonjour (le matin)", "സുപ്രഭാതം"],
-          ["Samayam enthaayi?", "Quelle heure est-il ?", "സമയം എന്തായി?"]
+          ["Suprabhaatham", "Bonjour (le matin)", "സുപ്രഭാതം", "Mot soutenu. Au quotidien, on dit « Good morning »."],
+          ["Samayam enthaayi?", "Quelle heure est-il ?", "സമയം എന്തായി?", "On dit aussi « Samayam ethrayaayi? » ou « Ethra maniyaayi? »."]
         ]},
         { "id": "u7l3", "title": "Les jours", "items": [
           ["Njaayar", "Dimanche", "ഞായർ"],
@@ -37,7 +37,7 @@
           ["Shani", "Samedi", "ശനി"]
         ]},
         { "id": "u7l4", "title": "Ma routine", "verbs": ["ezhunnelkkuka", "kulikkuka", "uranguka"], "forms": ["pres", "past"], "items": [
-          ["Njaan raavile ezhunnettu", "Je me suis levé(e) le matin", "ഞാൻ രാവിലെ എഴുന്നേറ്റു"]
+          ["Njaan raavile ezhunnettu", "Je me suis levé(e) ce matin", "ഞാൻ രാവിലെ എഴുന്നേറ്റു"]
         ]}
       ]
     },
@@ -46,7 +46,7 @@
       "intro": "Qui, quoi, où, quand, comment, pourquoi : pour tout demander.",
       "tips": [
         "Pour poser une question oui/non, on ajoute souvent « -o » à la fin : varum (viendra) → varumo? (tu viendras ?).",
-        "« Undu » veut dire « il y a / j'ai ». Undo? = il y en a ? / tu as ?"
+        "« Undu » veut dire « il y a ». Enikku … undu = j'ai. Undo? = il y en a ? / tu as ?"
       ],
       "lessons": [
         { "id": "u8l1", "title": "Les mots questions", "items": [
@@ -55,7 +55,8 @@
           ["Eppol?", "Quand ?", "എപ്പോൾ?"],
           ["Engane?", "Comment ?", "എങ്ങനെ?"],
           ["Enthinu?", "Pourquoi ?", "എന്തിന്?"],
-          ["Ethu?", "Lequel / Laquelle ?", "ഏത്?"]
+          ["Ethu?", "Lequel / Laquelle ?", "ഏത്?"],
+          ["Evide?", "Où ?", "എവിടെ?"]
         ]},
         { "id": "u8l2", "title": "Poser des questions", "items": [
           ["Ithu enthaanu?", "C'est quoi, ça ?", "ഇത് എന്താണ്?"],
@@ -63,7 +64,7 @@
           ["Nee eppol varum?", "Tu viens quand ?", "നീ എപ്പോൾ വരും?"],
           ["Engane undu?", "Comment c'est ?", "എങ്ങനെ ഉണ്ട്?"],
           ["Enthu patti?", "Qu'est-ce qui s'est passé ?", "എന്തു പറ്റി?"],
-          ["Nee enthu cheyyunnu?", "Tu fais quoi ?", "നീ എന്തു ചെയ്യുന്നു?"]
+          ["Nee enthu cheyyunnu?", "Tu fais quoi ?", "നീ എന്തു ചെയ്യുന്നു?", "À l'oral : « Nee enthaa cheyyunne? »."]
         ]},
         { "id": "u8l3", "title": "Le petit « -o »", "items": [
           ["Varumo?", "Tu viendras ?", "വരുമോ?"],
@@ -91,7 +92,7 @@
           ["Njaan ninne kandu", "Je t'ai vu(e)", "ഞാൻ നിന്നെ കണ്ടു"]
         ]},
         { "id": "u9l4", "title": "Ce sera demain", "verbs": ["cheyyuka", "kaanuka", "parayuka", "padikkuka"], "forms": ["fut"], "items": [
-          ["Njaan naale parayum", "Je te dirai demain", "ഞാൻ നാളെ പറയും"]
+          ["Njaan naale parayum", "Je le dirai demain", "ഞാൻ നാളെ പറയും"]
         ]},
         { "id": "u9l5", "title": "Je veux, je sais", "items": [
           ["Enikku venam", "Je veux / J'ai besoin", "എനിക്ക് വേണം"],
@@ -137,7 +138,7 @@
       "id": "u11", "title": "La maison", "place": "Palakkad", "emoji": "🏠", "boss": "Visite de la maison",
       "intro": "Les pièces, les objets et les petites demandes de tous les jours.",
       "tips": [
-        "Le manglish de tous les jours mélange beaucoup d'anglais : fan, light, phone, switch… Personne ne dit le mot malayalam !",
+        "Le manglish de tous les jours mélange beaucoup d'anglais : fan, light, phone, switch… On utilise presque toujours le mot anglais !",
         "Pour demander poliment, on finit en « -oo » : Irikkoo (assieds-toi), Thurakkoo (ouvre)."
       ],
       "lessons": [
@@ -189,7 +190,7 @@
           ["Nalla niram", "Belle couleur", "നല്ല നിറം"]
         ]},
         { "id": "u12l3", "title": "Acheter, donner, prendre", "verbs": ["vaanguka", "kodukkuka", "edukkuka", "nokkuka"], "forms": ["pres", "past"], "items": [
-          ["Njaan ithu edukkum", "Je prends ça", "ഞാൻ ഇത് എടുക്കും"]
+          ["Njaan ithu edukkum", "Je vais prendre ça", "ഞാൻ ഇത് എടുക്കും"]
         ]}
       ]
     }

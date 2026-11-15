@@ -18,7 +18,7 @@
   { "id": "parayuka", "fr": "dire", "ml": "പറയുക",
     "pres": ["Parayunnu", "dit", "പറയുന്നു"], "past": ["Paranju", "a dit", "പറഞ്ഞു"], "fut": ["Parayum", "dira", "പറയും"], "neg": ["Parayunnilla", "ne dit pas", "പറയുന്നില്ല"] },
   { "id": "kelkkuka", "fr": "écouter / entendre", "ml": "കേൾക്കുക",
-    "pres": ["Kelkkunnu", "écoute", "കേൾക്കുന്നു"], "past": ["Kettu", "a entendu", "കേട്ടു"], "fut": ["Kelkkum", "écoutera", "കേൾക്കും"], "neg": ["Kelkkunnilla", "n'écoute pas", "കേൾക്കുന്നില്ല"] },
+    "pres": ["Kelkkunnu", "écoute", "കേൾക്കുന്നു"], "past": ["Kettu", "a écouté", "കേട്ടു"], "fut": ["Kelkkum", "écoutera", "കേൾക്കും"], "neg": ["Kelkkunnilla", "n'écoute pas", "കേൾക്കുന്നില്ല"] },
   { "id": "padikkuka", "fr": "apprendre / étudier", "ml": "പഠിക്കുക",
     "pres": ["Padikkunnu", "apprend", "പഠിക്കുന്നു"], "past": ["Padichu", "a appris", "പഠിച്ചു"], "fut": ["Padikkum", "apprendra", "പഠിക്കും"], "neg": ["Padikkunnilla", "n'apprend pas", "പഠിക്കുന്നില്ല"] },
   { "id": "vaayikkuka", "fr": "lire", "ml": "വായിക്കുക",

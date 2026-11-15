@@ -14,9 +14,9 @@
       "lines": [
         ["Chéri", "Namaskaaram! Sukhamaano?", "Bonjour ! Ça va ?", "നമസ്കാരം! സുഖമാണോ?"],
         ["Toi", "Sukham. Ninakko?", "Ça va. Et toi ?", "സുഖം. നിനക്കോ?"],
-        ["Chéri", "Enikkum sukham. Ninte peru enthaa?", "Ça va aussi. Comment tu t'appelles ?", "എനിക്കും സുഖം. നിന്റെ പേര് എന്താ?"],
-        ["Toi", "Ente peru Marie. Nee evidennaa?", "Je m'appelle Marie. Tu viens d'où ?", "എന്റെ പേര് മേരി. നീ എവിടുന്നാ?"],
-        ["Chéri", "Njaan Kochi-yil ninnaanu. Ninakko?", "Je viens de Kochi. Et toi ?", "ഞാൻ കൊച്ചിയിൽ നിന്നാണ്. നിനക്കോ?"],
+        ["Chéri", "Enikkum sukham. Ninte peru enthaa?", "Moi aussi, ça va. Comment tu t'appelles ?", "എനിക്കും സുഖം. നിന്റെ പേര് എന്താ?"],
+        ["Toi", "Ente peru Marie. Nee evidunnaa?", "Je m'appelle Marie. Tu viens d'où ?", "എന്റെ പേര് മേരി. നീ എവിടുന്നാ?"],
+        ["Chéri", "Njaan Kochi-yil ninnaanu. Neeyo?", "Je viens de Kochi. Et toi ?", "ഞാൻ കൊച്ചിയിൽ നിന്നാണ്. നീയോ?"],
         ["Toi", "Njaan France-il ninnaanu.", "Je viens de France.", "ഞാൻ ഫ്രാൻസിൽ നിന്നാണ്."]
       ]
     },
@@ -40,7 +40,8 @@
         ["Toi", "Randu dosa, oru chaaya.", "Deux dosas et un thé.", "രണ്ട് ദോശ, ഒരു ചായ."],
         ["Serveur", "Chaayakku panchasaara veno?", "Du sucre dans le thé ?", "ചായയ്ക്ക് പഞ്ചസാര വേണോ?"],
         ["Toi", "Kurachu mathi.", "Juste un peu.", "കുറച്ച് മതി."],
-        ["Toi", "Bill tharaamo?", "L'addition, s'il vous plaît ?", "ബില്ല് തരാമോ?"],
+        ["Serveur", "Ithaa, dosayum chaayayum.", "Voilà, les dosas et le thé.", "ഇതാ, ദോശയും ചായയും."],
+        ["Toi", "Nalla ruchi! Bill tharaamo?", "C'est délicieux ! L'addition, s'il vous plaît ?", "നല്ല രുചി! ബില്ല് തരാമോ?"],
         ["Serveur", "Nooru roopa.", "Cent roupies.", "നൂറ് രൂപ."]
       ]
     },
@@ -63,7 +64,7 @@
         ["Chéri", "Naale nammal enthu cheyyum?", "On fait quoi demain ?", "നാളെ നമ്മൾ എന്തു ചെയ്യും?"],
         ["Toi", "Kadal kaanaan pokaam?", "On va voir la mer ?", "കടൽ കാണാൻ പോകാം?"],
         ["Chéri", "Nalla idea! Raavile pokaam.", "Bonne idée ! On part le matin.", "നല്ല ഐഡിയ! രാവിലെ പോകാം."],
-        ["Toi", "Njaan bhakshanam undaakkaam.", "Je prépare à manger.", "ഞാൻ ഭക്ഷണം ഉണ്ടാക്കാം."],
+        ["Toi", "Njaan bhakshanam undaakkaam.", "Je vais préparer à manger.", "ഞാൻ ഭക്ഷണം ഉണ്ടാക്കാം."],
         ["Chéri", "Adipoli! Enikku ninne ishtamaanu.", "Génial ! Je t'aime.", "അടിപൊളി! എനിക്ക് നിന്നെ ഇഷ്ടമാണ്."]
       ]
     },
@@ -75,7 +76,7 @@
         ["Vendeur", "Aayiram roopa.", "Mille roupies.", "ആയിരം രൂപ."],
         ["Toi", "Ayyo, vila kooduthalaanu!", "Oh là là, c'est trop cher !", "അയ്യോ, വില കൂടുതലാണ്!"],
         ["Vendeur", "Ezhunooru roopaykku tharaam.", "Je vous le fais à sept cents roupies.", "എഴുനൂറ് രൂപയ്ക്ക് തരാം."],
-        ["Toi", "Nalla niram. Njaan ithu edukkum.", "Belle couleur. Je le prends.", "നല്ല നിറം. ഞാൻ ഇത് എടുക്കും."],
+        ["Toi", "Nalla niram. Njaan ithu edukkaam.", "Belle couleur. Je le prends.", "നല്ല നിറം. ഞാൻ ഇത് എടുക്കാം."],
         ["Vendeur", "Nanni, veendum varanam!", "Merci, revenez !", "നന്ദി, വീണ്ടും വരണം!"]
       ]
     },
@@ -84,7 +85,7 @@
       "scene": "Un petit message du soir.",
       "lines": [
         ["Chéri", "Ninne miss cheyyunnu.", "Tu me manques.", "നിന്നെ മിസ്സ് ചെയ്യുന്നു."],
-        ["Toi", "Enikkum ninne miss cheyyunnu.", "Tu me manques aussi.", "എനിക്കും നിന്നെ മിസ്സ് ചെയ്യുന്നു."],
+        ["Toi", "Njaanum ninne miss cheyyunnu.", "Tu me manques aussi.", "ഞാനും നിന്നെ മിസ്സ് ചെയ്യുന്നു."],
         ["Chéri", "Eppol kaanaam?", "On se voit quand ?", "എപ്പോൾ കാണാം?"],
         ["Toi", "Naale vaikunneram?", "Demain soir ?", "നാളെ വൈകുന്നേരം?"],
         ["Chéri", "Sheri, njaan kaathirikkum.", "D'accord, je t'attendrai.", "ശരി, ഞാൻ കാത്തിരിക്കും."],

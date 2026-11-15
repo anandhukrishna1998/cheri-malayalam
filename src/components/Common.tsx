@@ -42,6 +42,7 @@ const TABS: [Tab, string, string][] = [
 export function TabBar({ tab, onTab, badge }: { tab: Tab; onTab: (t: Tab) => void; badge?: Partial<Record<Tab, number>> }) {
   return (
     <nav className="tabbar" aria-label="Navigation">
+      <div className="brand" aria-hidden="true"><img src="/favicon.svg" alt="" width="36" height="36" /><span>Chéri<br />Malayalam</span></div>
       {TABS.map(([id, icon, label]) => (
         <button key={id} className={tab === id ? 'on' : ''} onClick={() => onTab(id)} aria-current={tab === id ? 'page' : undefined}>
           <span className="ti">{icon}{badge?.[id] ? <i className="dot">{badge[id]}</i> : null}</span>

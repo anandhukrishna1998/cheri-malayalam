@@ -15,7 +15,7 @@ export function Profile({ onGuide }: { onGuide: () => void }) {
     const d = daysAgo(6 - k)
     return { d, xp: p.xpByDay[d] ?? 0, label: DAY[new Date(d + 'T12:00:00').getDay()] }
   })
-  const max = Math.max(p.dailyGoal, ...week.map(w => w.xp))
+  const max = Math.max(p.dailyGoal * 1.25, ...week.map(w => w.xp))
   const lessonsDone = p.completed.filter(id => !id.startsWith('dlg:')).length
 
   const download = () => {
