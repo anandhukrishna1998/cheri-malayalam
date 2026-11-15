@@ -27,6 +27,20 @@ Or connect the GitHub repo in the Cloudflare dashboard (Workers & Pages → Crea
 
 On an iPhone, open the link in Safari, tap Share, then "Sur l'écran d'accueil". On Android, Chrome offers "Installer l'application".
 
+## AI translation (optional)
+
+The Traduire tab works offline for everything already in the app. For other sentences it can ask Claude through a small server function (`functions/api/translate.ts`), which Cloudflare Pages deploys automatically. Until it's set up, the app simply says AI translation isn't enabled.
+
+1. Create an API key at [console.anthropic.com](https://console.anthropic.com) → API Keys, and set a monthly spend limit there.
+2. In the Cloudflare dashboard, open your Pages project → **Settings → Variables and Secrets** and add:
+   - `ANTHROPIC_API_KEY` (type **Secret**): the key.
+   - `TRANSLATE_CODE` (type **Secret**, recommended): any word you choose. The app asks for it once, so strangers who find the site can't use your key.
+3. Deploy again (push to GitHub, or `npm run deploy`).
+
+Answers are cached on the phone, so the same sentence is never paid for twice. The key stays on the server and never reaches the phone.
+
+**Test locally:** create a file `.dev.vars` (already git-ignored) containing `ANTHROPIC_API_KEY=sk-ant-...`, then run `npm run build` and `npx wrangler pages dev dist`.
+
 ## Edit the content
 
 | File | What it holds |

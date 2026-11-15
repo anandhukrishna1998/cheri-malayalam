@@ -342,6 +342,19 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; letter-spacing:
 .tr-word.unknown { border-style: dashed; box-shadow: none; }
 .tr-word.unknown b { color: var(--muted); }
 .lex-title { margin-top: 26px !important; }
+.tr-ai { padding: 16px; border-color: var(--lagoon); display: flex; flex-direction: column; gap: 10px; }
+.tr-ai .kicker { color: var(--lagoon); }
+.tr-ai p { margin: 0; }
+.tr-ai .tr-card-text b { font-size: clamp(22px, 6.4vw, 28px); line-height: 1.15; }
+.tr-ai-literal { font-size: 15px; color: var(--muted); }
+.tr-ai-literal b { color: var(--ink); }
+.tr-ai .note { margin: 0; }
+.tr-ai-wait { font-weight: 800; color: var(--lagoon); animation: pulse 1.2s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: .4; } }
+.tr-ai-code { display: flex; gap: 8px; }
+.tr-ai-code .type-input { font-size: 17px; padding: 10px 14px; }
+.btn.tr-ai-ask { background: var(--lagoon); box-shadow: 0 4px 0 var(--lagoon-dark); color: #fff; }
+.tr-ai-link { align-self: flex-start; background: none; border: 0; padding: 4px 0; color: var(--lagoon); font-weight: 800; font-size: 15px; text-decoration: underline; text-underline-offset: 3px; }
 
 /* ---------- Result ---------- */
 .result { min-height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 14px; padding: 32px 0; position: relative; overflow: hidden; }
