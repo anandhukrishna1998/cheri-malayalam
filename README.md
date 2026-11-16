@@ -29,17 +29,23 @@ On an iPhone, open the link in Safari, tap Share, then "Sur l'écran d'accueil".
 
 ## AI translation (optional)
 
-The Traduire tab works offline for everything already in the app. For other sentences it can ask Claude through a small server function (`functions/api/translate.ts`), which Cloudflare Pages deploys automatically. Until it's set up, the app simply says AI translation isn't enabled.
+The Traduire tab works offline for everything already in the app. For other sentences it asks an AI through a small server function (`functions/api/translate.ts`), which Cloudflare Pages deploys automatically. Until a key is set, the app simply says AI translation isn't enabled.
 
-1. Create an API key at [console.anthropic.com](https://console.anthropic.com) → API Keys, and set a monthly spend limit there.
-2. In the Cloudflare dashboard, open your Pages project → **Settings → Variables and Secrets** and add:
-   - `ANTHROPIC_API_KEY` (type **Secret**): the key.
-   - `TRANSLATE_CODE` (type **Secret**, recommended): any word you choose. The app asks for it once, so strangers who find the site can't use your key.
+It uses **Google Gemini's free tier** (`gemini-3.8-flash`) first. **Claude** is an optional paid backup, used only if Gemini fails or its free daily limit is reached.
+
+1. Get a free Gemini key at [aistudio.google.com](https://aistudio.google.com) → Get API key (no card needed).
+2. In the Cloudflare dashboard, open your Pages project → **Settings → Variables and Secrets** and add, each as type **Secret**:
+   - `GEMINI_API_KEY`: the Gemini key.
+   - `TRANSLATE_CODE` (recommended): any word you choose. The app asks for it once, so strangers who find the site can't use up your quota.
+   - `ANTHROPIC_API_KEY` (optional backup): a key from [console.anthropic.com](https://console.anthropic.com). Set a monthly spend limit there.
 3. Deploy again (push to GitHub, or `npm run deploy`).
 
-Answers are cached on the phone, so the same sentence is never paid for twice. The key stays on the server and never reaches the phone.
+Good to know:
+- On Gemini's free tier, Google may use the sentences sent to improve its products.
+- Free-tier limits are set by Google and change from time to time. When the limit is reached, the app says to try again later (or uses Claude, if that key is set).
+- Answers are cached on the phone, so the same sentence is never sent twice. The keys stay on the server and never reach the phone.
 
-**Test locally:** create a file `.dev.vars` (already git-ignored) containing `ANTHROPIC_API_KEY=sk-ant-...`, then run `npm run build` and `npx wrangler pages dev dist`.
+**Test locally:** create a file `.dev.vars` (already git-ignored) containing `GEMINI_API_KEY=...`, then run `npm run build` and `npx wrangler pages dev dist`.
 
 ## Edit the content
 

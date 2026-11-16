@@ -2,15 +2,28 @@
  * Cloudflare Pages Function: POST /api/translate
  * AI translation French ↔ Manglish for sentences the offline translator doesn't know.
  *
+ * Providers, tried in this order (set at least one key):
+ *   1. Google Gemini (free tier) — GEMINI_API_KEY
+ *   2. Anthropic Claude (paid, optional backup when Gemini fails or hits its daily limit) — ANTHROPIC_API_KEY
+ *
  * Settings (Cloudflare dashboard → the Pages project → Settings → Variables and Secrets):
- *   ANTHROPIC_API_KEY  (secret, required)  Anthropic API key.
+ *   GEMINI_API_KEY     (secret)            Key from Google AI Studio (aistudio.google.com).
+ *   ANTHROPIC_API_KEY  (secret, optional)  Anthropic API key, used only as a backup.
  *   TRANSLATE_CODE     (secret, optional)  If set, the app must send this code
- *                                          (asked once in the app) — stops strangers using your key.
+ *                                          (asked once in the app) — stops strangers using your keys.
  */
 import Anthropic from '@anthropic-ai/sdk'
 
-interface Env { ANTHROPIC_API_KEY?: string; TRANSLATE_CODE?: string }
+interface Env { GEMINI_API_KEY?: string; ANTHROPIC_API_KEY?: string; TRANSLATE_CODE?: string }
 interface Context { request: Request; env: Env }
+
+type ErrCode = 'bad-key' | 'busy' | 'refusal' | 'too-long' | 'empty' | 'api'
+class ProviderError extends Error {
+  code: ErrCode
+  constructor(code: ErrCode) { super(code); this.code = code }
+}
+
+const GEMINI_MODEL = 'gemini-3.8-flash'
 
 const MAX_CHARS = 300
 
@@ -54,8 +67,88 @@ const SCHEMA = {
 const json = (data: unknown, status = 200) =>
   new Response(JSON.stringify(data), { status, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' } })
 
+const STATUS: Record<ErrCode, number> = { 'bad-key': 502, busy: 429, refusal: 422, 'too-long': 422, empty: 502, api: 502 }
+
+/** The model's answer, checked so the app always gets the fields it expects. */
+function parseAnswer(raw: string) {
+  // Tolerate ```json fences or text around the object.
+  const s = raw.slice(raw.indexOf('{'), raw.lastIndexOf('}') + 1)
+  let d: Record<string, unknown>
+  try { d = JSON.parse(s) } catch { throw new ProviderError('empty') }
+  const str = (v: unknown) => (typeof v === 'string' ? v : '')
+  if (!str(d.manglish)) throw new ProviderError('empty')
+  const words = Array.isArray(d.words)
+    ? d.words.filter((w): w is { manglish: string; fr: string } => !!w && typeof w === 'object' && typeof (w as { manglish?: unknown }).manglish === 'string' && typeof (w as { fr?: unknown }).fr === 'string')
+    : []
+  return { manglish: str(d.manglish), malayalam: str(d.malayalam), french: str(d.french), literal: str(d.literal), words, note: str(d.note) }
+}
+
+const userMessage = (text: string, dir: 'fr' | 'ml') =>
+  `Direction : ${dir === 'fr' ? 'français → manglish' : 'manglish → français'}\n<texte>${text}</texte>`
+
+/* ---------------- Gemini (free tier) ---------------- */
+async function callGemini(key: string, text: string, dir: 'fr' | 'ml') {
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`
+  const base = {
+    systemInstruction: { parts: [{ text: SYSTEM + '\nRéponds uniquement avec un objet JSON contenant les clés manglish, malayalam, french, literal, words (liste de {manglish, fr}) et note.' }] },
+    contents: [{ role: 'user', parts: [{ text: userMessage(text, dir) }] }],
+  }
+  const send = (body: unknown) => fetch(url, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json', 'x-goog-api-key': key },
+    body: JSON.stringify(body),
+  })
+  // Structured JSON output; if this API version rejects the field, retry with the prompt alone.
+  let res = await send({ ...base, generationConfig: { responseFormat: { text: { mimeType: 'APPLICATION_JSON', schema: SCHEMA } } } })
+  if (res.status === 400) {
+    const err = await res.text()
+    if (/API key|API_KEY/i.test(err)) throw new ProviderError('bad-key')
+    res = await send(base)
+  }
+  if (res.status === 401 || res.status === 403) throw new ProviderError('bad-key')
+  if (res.status === 429) throw new ProviderError('busy')
+  if (!res.ok) throw new ProviderError('api')
+  const data = await res.json() as {
+    promptFeedback?: { blockReason?: string }
+    candidates?: { finishReason?: string; content?: { parts?: { text?: string; thought?: boolean }[] } }[]
+  }
+  if (data.promptFeedback?.blockReason) throw new ProviderError('refusal')
+  const cand = data.candidates?.[0]
+  if (cand?.finishReason === 'SAFETY' || cand?.finishReason === 'PROHIBITED_CONTENT') throw new ProviderError('refusal')
+  if (cand?.finishReason === 'MAX_TOKENS') throw new ProviderError('too-long')
+  const out = (cand?.content?.parts ?? []).filter(p => !p.thought && p.text).map(p => p.text).join('')
+  return parseAnswer(out)
+}
+
+/* ---------------- Claude (optional backup) ---------------- */
+async function callClaude(key: string, text: string, dir: 'fr' | 'ml') {
+  const client = new Anthropic({ apiKey: key, maxRetries: 1 })
+  try {
+    const response = await client.beta.messages.create({
+      model: 'claude-opus-5-5',
+      max_tokens: 4000,
+      // If the request is ever declined by a safety classifier, retry on a fallback model automatically.
+      betas: ['server-side-fallback-2026-07-01'],
+      fallbacks: 'default',
+      output_config: { effort: 'low', format: { type: 'json_schema', schema: SCHEMA } },
+      system: SYSTEM,
+      messages: [{ role: 'user', content: userMessage(text, dir) }],
+    })
+    if (response.stop_reason === 'refusal') throw new ProviderError('refusal')
+    if (response.stop_reason === 'max_tokens') throw new ProviderError('too-long')
+    const out = response.content.find(b => b.type === 'text')
+    if (!out || out.type !== 'text') throw new ProviderError('empty')
+    return parseAnswer(out.text)
+  } catch (e) {
+    if (e instanceof ProviderError) throw e
+    if (e instanceof Anthropic.AuthenticationError) throw new ProviderError('bad-key')
+    if (e instanceof Anthropic.RateLimitError) throw new ProviderError('busy')
+    throw new ProviderError('api')
+  }
+}
+
 export async function onRequestPost({ request, env }: Context): Promise<Response> {
-  if (!env.ANTHROPIC_API_KEY) return json({ error: 'not-configured' }, 503)
+  if (!env.GEMINI_API_KEY && !env.ANTHROPIC_API_KEY) return json({ error: 'not-configured' }, 503)
   if (env.TRANSLATE_CODE && request.headers.get('x-translate-code') !== env.TRANSLATE_CODE) return json({ error: 'bad-code' }, 401)
   // Only the app itself may call this endpoint from a browser.
   const origin = request.headers.get('origin')
@@ -67,30 +160,20 @@ export async function onRequestPost({ request, env }: Context): Promise<Response
   const dir = body.dir === 'ml' ? 'ml' : 'fr'
   if (!text || text.length > MAX_CHARS) return json({ error: 'bad-request' }, 400)
 
-  const client = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY, maxRetries: 1 })
-  try {
-    const response = await client.beta.messages.create({
-      model: 'claude-opus-5-5',
-      max_tokens: 4000,
-      // If the request is ever declined by a safety classifier, retry on a fallback model automatically.
-      betas: ['server-side-fallback-2026-07-01'],
-      fallbacks: 'default',
-      output_config: { effort: 'low', format: { type: 'json_schema', schema: SCHEMA } },
-      system: SYSTEM,
-      messages: [{
-        role: 'user',
-        content: `Direction : ${dir === 'fr' ? 'français → manglish' : 'manglish → français'}\n<texte>${text}</texte>`,
-      }],
-    })
-    if (response.stop_reason === 'refusal') return json({ error: 'refusal' }, 422)
-    if (response.stop_reason === 'max_tokens') return json({ error: 'too-long' }, 422)
-    const out = response.content.find(b => b.type === 'text')
-    if (!out || out.type !== 'text') return json({ error: 'empty' }, 502)
-    return json(JSON.parse(out.text))
-  } catch (e) {
-    if (e instanceof Anthropic.AuthenticationError) return json({ error: 'bad-key' }, 502)
-    if (e instanceof Anthropic.RateLimitError) return json({ error: 'busy' }, 429)
-    if (e instanceof Anthropic.APIError) return json({ error: 'api', status: e.status }, 502)
-    return json({ error: 'server' }, 500)
+  const providers: [string, (k: string, t: string, d: 'fr' | 'ml') => Promise<unknown>, string | undefined][] = [
+    ['gemini', callGemini, env.GEMINI_API_KEY],
+    ['claude', callClaude, env.ANTHROPIC_API_KEY],
+  ]
+  let last: ErrCode = 'api'
+  for (const [name, call, key] of providers) {
+    if (!key) continue
+    try {
+      const answer = await call(key, text, dir)
+      return json({ ...(answer as object), provider: name })
+    } catch (e) {
+      last = e instanceof ProviderError ? e.code : 'api'
+      // Try the next provider (e.g. Gemini's free daily limit reached → Claude).
+    }
   }
+  return json({ error: last }, STATUS[last])
 }
