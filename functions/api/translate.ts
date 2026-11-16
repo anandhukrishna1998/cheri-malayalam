@@ -20,7 +20,8 @@ interface Context { request: Request; env: Env }
 type ErrCode = 'bad-key' | 'busy' | 'refusal' | 'too-long' | 'empty' | 'api'
 class ProviderError extends Error {
   code: ErrCode
-  constructor(code: ErrCode) { super(code); this.code = code }
+  detail: string
+  constructor(code: ErrCode, detail = '') { super(code); this.code = code; this.detail = detail }
 }
 
 const GEMINI_MODEL = 'gemini-3.8-flash'
@@ -87,37 +88,57 @@ const userMessage = (text: string, dir: 'fr' | 'ml') =>
   `Direction : ${dir === 'fr' ? 'français → manglish' : 'manglish → français'}\n<texte>${text}</texte>`
 
 /* ---------------- Gemini (free tier) ---------------- */
+// Newest model first; the alias is a safety net if Google renames or retires a model.
+const GEMINI_MODELS = [GEMINI_MODEL, 'gemini-flash-latest']
+
 async function callGemini(key: string, text: string, dir: 'fr' | 'ml') {
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`
   const base = {
     systemInstruction: { parts: [{ text: SYSTEM + '\nRéponds uniquement avec un objet JSON contenant les clés manglish, malayalam, french, literal, words (liste de {manglish, fr}) et note.' }] },
     contents: [{ role: 'user', parts: [{ text: userMessage(text, dir) }] }],
   }
-  const send = (body: unknown) => fetch(url, {
+  const withSchema = { ...base, generationConfig: { responseFormat: { text: { mimeType: 'APPLICATION_JSON', schema: SCHEMA } } } }
+  const send = (model: string, body: unknown) => fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
     method: 'POST',
     headers: { 'content-type': 'application/json', 'x-goog-api-key': key },
     body: JSON.stringify(body),
   })
-  // Structured JSON output; if this API version rejects the field, retry with the prompt alone.
-  let res = await send({ ...base, generationConfig: { responseFormat: { text: { mimeType: 'APPLICATION_JSON', schema: SCHEMA } } } })
-  if (res.status === 400) {
-    const err = await res.text()
-    if (/API key|API_KEY/i.test(err)) throw new ProviderError('bad-key')
-    res = await send(base)
+  const why = async (r: Response) => `gemini ${r.status}: ${(await r.text()).replace(/\s+/g, ' ').slice(0, 160)}`
+
+  let res: Response | null = null
+  let detail = ''
+  for (const model of GEMINI_MODELS) {
+    try {
+      // Structured JSON output; if the field is rejected, retry with the prompt alone.
+      res = await send(model, withSchema)
+      if (res.status === 400) {
+        detail = await why(res)
+        if (/API.?key/i.test(detail)) throw new ProviderError('bad-key', detail)
+        res = await send(model, base)
+      }
+    } catch (e) {
+      if (e instanceof ProviderError) throw e
+      throw new ProviderError('api', `gemini network: ${String(e).slice(0, 120)}`)
+    }
+    if (res.status !== 404) break // 404 = unknown model: try the next name
+    detail = await why(res)
   }
-  if (res.status === 401 || res.status === 403) throw new ProviderError('bad-key')
-  if (res.status === 429) throw new ProviderError('busy')
-  if (!res.ok) throw new ProviderError('api')
+  if (!res) throw new ProviderError('api', detail)
+  if (res.status === 401 || res.status === 403) throw new ProviderError('bad-key', await why(res))
+  if (res.status === 429) throw new ProviderError('busy', await why(res))
+  if (!res.ok) throw new ProviderError('api', await why(res))
   const data = await res.json() as {
     promptFeedback?: { blockReason?: string }
     candidates?: { finishReason?: string; content?: { parts?: { text?: string; thought?: boolean }[] } }[]
   }
-  if (data.promptFeedback?.blockReason) throw new ProviderError('refusal')
+  if (data.promptFeedback?.blockReason) throw new ProviderError('refusal', `gemini blocked: ${data.promptFeedback.blockReason}`)
   const cand = data.candidates?.[0]
-  if (cand?.finishReason === 'SAFETY' || cand?.finishReason === 'PROHIBITED_CONTENT') throw new ProviderError('refusal')
-  if (cand?.finishReason === 'MAX_TOKENS') throw new ProviderError('too-long')
+  if (cand?.finishReason === 'SAFETY' || cand?.finishReason === 'PROHIBITED_CONTENT') throw new ProviderError('refusal', `gemini ${cand.finishReason}`)
+  if (cand?.finishReason === 'MAX_TOKENS') throw new ProviderError('too-long', 'gemini MAX_TOKENS')
   const out = (cand?.content?.parts ?? []).filter(p => !p.thought && p.text).map(p => p.text).join('')
-  return parseAnswer(out)
+  try { return parseAnswer(out) } catch (e) {
+    if (e instanceof ProviderError) throw new ProviderError(e.code, `gemini answer not JSON: ${out.slice(0, 120)}`)
+    throw e
+  }
 }
 
 /* ---------------- Claude (optional backup) ---------------- */
@@ -141,9 +162,10 @@ async function callClaude(key: string, text: string, dir: 'fr' | 'ml') {
     return parseAnswer(out.text)
   } catch (e) {
     if (e instanceof ProviderError) throw e
-    if (e instanceof Anthropic.AuthenticationError) throw new ProviderError('bad-key')
-    if (e instanceof Anthropic.RateLimitError) throw new ProviderError('busy')
-    throw new ProviderError('api')
+    if (e instanceof Anthropic.AuthenticationError) throw new ProviderError('bad-key', 'claude: invalid key')
+    if (e instanceof Anthropic.RateLimitError) throw new ProviderError('busy', 'claude: rate limit')
+    if (e instanceof Anthropic.APIError) throw new ProviderError('api', `claude ${e.status}: ${e.message.slice(0, 120)}`)
+    throw new ProviderError('api', `claude: ${String(e).slice(0, 120)}`)
   }
 }
 
@@ -165,6 +187,7 @@ export async function onRequestPost({ request, env }: Context): Promise<Response
     ['claude', callClaude, env.ANTHROPIC_API_KEY],
   ]
   let last: ErrCode = 'api'
+  const details: string[] = []
   for (const [name, call, key] of providers) {
     if (!key) continue
     try {
@@ -172,8 +195,10 @@ export async function onRequestPost({ request, env }: Context): Promise<Response
       return json({ ...(answer as object), provider: name })
     } catch (e) {
       last = e instanceof ProviderError ? e.code : 'api'
+      details.push(e instanceof ProviderError ? e.detail || e.code : `${name}: ${String(e).slice(0, 120)}`)
       // Try the next provider (e.g. Gemini's free daily limit reached → Claude).
     }
   }
-  return json({ error: last }, STATUS[last])
+  // The detail (provider + HTTP status + short message, never the key) helps fix setup problems.
+  return json({ error: last, detail: details.join(' | ') }, STATUS[last])
 }
