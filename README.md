@@ -2,7 +2,7 @@
 
 A web app that teaches Malayalam to a French speaker, written entirely in Manglish. It installs on a phone like an app, works offline, and needs no account or server.
 
-**What's in it:** 3 sections, 18 units, 80 lessons, 36 verbs (present, past, future, negative), 10 dialogues and 478 phrases, all with audio.
+**What's in it:** 4 sections, 24 units, 104 lessons, 36 verbs (present, past, future, negative), 13 dialogues, a 206-word dictionary and 727 phrases, all with audio.
 
 **Screens:**
 - **Apprendre:** the lesson path through Kerala, with tips for each unit and an end-of-unit challenge.
@@ -51,7 +51,7 @@ Good to know:
 
 | File | What it holds |
 |---|---|
-| `src/content/section1.json`, `section2.json`, `section3.json` | Units, lessons, tips |
+| `src/content/section1.json` … `section4.json` | Units, lessons, tips |
 | `src/content/verbs.json` | The 36 verbs and their 4 forms |
 | `src/content/dialogues.json` | Dialogues and characters (`voice`: `f` or `m`) |
 | `src/content/rewards.json` | Real-life rewards per level |

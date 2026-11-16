@@ -106,6 +106,7 @@ export const badges: Badge[] = [
   { id: 's1', emoji: '🌴', title: 'Bases solides', desc: `Finir la section « ${sections[0].title} »`, test: p => sectionDone(p, 0) },
   { id: 's2', emoji: '🛶', title: 'Vie quotidienne', desc: `Finir la section « ${sections[1].title} »`, test: p => sectionDone(p, 1) },
   { id: 's3', emoji: '🐘', title: 'Vraie Malayali', desc: `Finir la section « ${sections[2].title} »`, test: p => sectionDone(p, 2) },
+  { id: 's4', emoji: '💍', title: 'Prête pour le Kerala', desc: `Finir la section « ${sections[3].title} »`, test: p => sectionDone(p, 3) },
 ]
 
 /* ---------- Finishing a session ---------- */

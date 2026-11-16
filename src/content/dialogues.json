@@ -128,6 +128,44 @@
         ["Amma", "Sookshichu pokoo, ketto.", "Fais attention à toi, d'accord ?", "സൂക്ഷിച്ചു പോകൂ, കേട്ടോ."],
         ["Toi", "Poyi varaam!", "À tout à l'heure !", "പോയി വരാം!"]
       ]
+    },
+    {
+      "id": "appel", "title": "Un appel du soir", "emoji": "📞", "after": "u19",
+      "scene": "Chéri t'appelle depuis son bureau, le soir.",
+      "lines": [
+        ["Chéri", "Hello, ethiyo?", "Allô, tu es arrivée ?", "ഹലോ, എത്തിയോ?"],
+        ["Toi", "Ethi. Njaan ippol veettilaanu.", "Oui. Je suis à la maison maintenant.", "എത്തി. ഞാൻ ഇപ്പോൾ വീട്ടിലാണ്."],
+        ["Chéri", "Bhakshanam kazhicho?", "Tu as mangé ?", "ഭക്ഷണം കഴിച്ചോ?"],
+        ["Toi", "Illa, ippol kazhikkum. Nee evideyaa?", "Non, je vais manger. Tu es où ?", "ഇല്ല, ഇപ്പോൾ കഴിക്കും. നീ എവിടെയാ?"],
+        ["Chéri", "Njaan office-il aanu. Pinne vilikkaam.", "Je suis au bureau. Je te rappelle.", "ഞാൻ ഓഫീസിലാണ്. പിന്നെ വിളിക്കാം."],
+        ["Toi", "Sheri. Ninne miss cheyyunnu!", "D'accord. Tu me manques !", "ശരി. നിന്നെ മിസ്സ് ചെയ്യുന്നു!"]
+      ]
+    },
+    {
+      "id": "famille", "title": "Chez ses parents", "emoji": "🏡", "after": "u21",
+      "scene": "Ton premier déjeuner chez les parents de Chéri.",
+      "lines": [
+        ["Amma", "Vaa mole, irikkoo.", "Viens ma fille, assieds-toi.", "വാ മോളേ, ഇരിക്കൂ."],
+        ["Toi", "Nanni Amme. Ammaykku sukhamaano?", "Merci Amma. Vous allez bien ?", "നന്ദി അമ്മേ. അമ്മയ്ക്ക് സുഖമാണോ?"],
+        ["Amma", "Sukhamaanu. Malayalam padikkunnundo?", "Bien. Tu apprends le malayalam ?", "സുഖമാണ്. മലയാളം പഠിക്കുന്നുണ്ടോ?"],
+        ["Toi", "Undu, kurachu kurachu.", "Oui, petit à petit.", "ഉണ്ട്, കുറച്ച് കുറച്ച്."],
+        ["Amma", "Adipoli! Vaa, bhakshanam kazhikkaam.", "Génial ! Viens, on va manger.", "അടിപൊളി! വാ, ഭക്ഷണം കഴിക്കാം."],
+        ["Toi", "Bhakshanam nalla ruchiyundu! Ithu aaru undaakki?", "C'est délicieux ! Qui l'a préparé ?", "ഭക്ഷണം നല്ല രുചിയുണ്ട്! ഇത് ആര് ഉണ്ടാക്കി?"],
+        ["Amma", "Njaan thanne. Kurachu koodi edukku.", "Moi-même. Reprends-en un peu.", "ഞാൻ തന്നെ. കുറച്ച് കൂടി എടുക്ക്."]
+      ]
+    },
+    {
+      "id": "perdue", "title": "Perdue à Kochi", "emoji": "🗺️", "after": "u23",
+      "scene": "Tu cherches la gare routière et tu demandes à un commerçant.",
+      "lines": [
+        ["Toi", "Chetta, onnu sahaayikkaamo? Enikku vazhi thetti.", "Monsieur, vous pouvez m'aider ? Je me suis perdue.", "ചേട്ടാ, ഒന്ന് സഹായിക്കാമോ? എനിക്ക് വഴി തെറ്റി."],
+        ["Vendeur", "Sheri, evideyaa pokendathu?", "Bien sûr, vous devez aller où ?", "ശരി, എവിടെയാ പോകേണ്ടത്?"],
+        ["Toi", "Bus stand evideyaa?", "Où est la gare routière ?", "ബസ് സ്റ്റാൻഡ് എവിടെയാ?"],
+        ["Vendeur", "Nere poyi, idathottu thirinjaal mathi.", "Allez tout droit, puis tournez à gauche.", "നേരെ പോയി, ഇടത്തോട്ട് തിരിഞ്ഞാൽ മതി."],
+        ["Toi", "Dooramundo?", "C'est loin ?", "ദൂരമുണ്ടോ?"],
+        ["Vendeur", "Illa, anchu minute nadannaal mathi.", "Non, cinq minutes à pied.", "ഇല്ല, അഞ്ച് മിനിറ്റ് നടന്നാൽ മതി."],
+        ["Toi", "Valare nanni, Chetta!", "Merci beaucoup, monsieur !", "വളരെ നന്ദി, ചേട്ടാ!"]
+      ]
     }
   ]
 }

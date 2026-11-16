@@ -1,0 +1,215 @@
+{
+  "id": "s4",
+  "title": "La vie à deux au Kerala",
+  "subtitle": "Le téléphone, les projets, la belle-famille, les sorties, les imprévus et les mots du cœur.",
+  "units": [
+    {
+      "id": "u19", "title": "Au téléphone", "place": "Ponmudi", "emoji": "📱", "boss": "Un appel à Chéri",
+      "intro": "Appeler, envoyer des messages et dire où on est.",
+      "tips": [
+        "« Ethi » = arrivé(e). « Ethiyo? » (tu es arrivé(e) ?) est sans doute le message le plus envoyé au Kerala !",
+        "Beaucoup de mots du téléphone viennent de l'anglais : range (le réseau), charge, message, location, busy."
+      ],
+      "lessons": [
+        { "id": "u19l1", "title": "Appeler", "items": [
+          ["Njaan pinne vilikkaam", "Je t'appelle plus tard", "ഞാൻ പിന്നെ വിളിക്കാം"],
+          ["Ippol samsaarikkan pattilla", "Je ne peux pas parler maintenant", "ഇപ്പോൾ സംസാരിക്കാൻ പറ്റില്ല"],
+          ["Kelkkunnundo?", "Tu m'entends ?", "കേൾക്കുന്നുണ്ടോ?"],
+          ["Onnum kelkkunnilla", "Je n'entends rien", "ഒന്നും കേൾക്കുന്നില്ല"],
+          ["Range illa", "Il n'y a pas de réseau", "റേഞ്ച് ഇല്ല", "Les Keralais disent « range » pour le réseau du téléphone."],
+          ["Charge theernnu", "Je n'ai plus de batterie", "ചാർജ് തീർന്നു"],
+          ["Sheri, vekkatte", "Bon, je raccroche", "ശരി, വെക്കട്ടെ", "Façon habituelle de finir un appel."]
+        ]},
+        { "id": "u19l2", "title": "Messages", "items": [
+          ["Ethiyo?", "Tu es arrivé(e) ?", "എത്തിയോ?"],
+          ["Njaan ethi", "Je suis arrivée", "ഞാൻ എത്തി"],
+          ["Message kando?", "Tu as vu mon message ?", "മെസ്സേജ് കണ്ടോ?"],
+          ["Reply cheyyoo", "Réponds-moi", "റിപ്ലൈ ചെയ്യൂ"],
+          ["Busy aano?", "Tu es occupé ?", "ബിസി ആണോ?"],
+          ["Free aakumbol vilikku", "Appelle-moi quand tu es libre", "ഫ്രീ ആകുമ്പോൾ വിളിക്ക്"],
+          ["Photo ayakkoo", "Envoie une photo", "ഫോട്ടോ അയക്കൂ"]
+        ]},
+        { "id": "u19l3", "title": "Tu es où ?", "items": [
+          ["Nee evideyaa?", "Tu es où ?", "നീ എവിടെയാ?"],
+          ["Njaan vazhiyilaanu", "Je suis en route", "ഞാൻ വഴിയിലാണ്"],
+          ["Anchu minute", "Cinq minutes", "അഞ്ച് മിനിറ്റ്"],
+          ["Njaan veettilekku varunnu", "Je rentre à la maison", "ഞാൻ വീട്ടിലേക്ക് വരുന്നു"],
+          ["Ethra neram edukkum?", "Ça va prendre combien de temps ?", "എത്ര നേരം എടുക്കും?"],
+          ["Location ayakkaam", "Je t'envoie la localisation", "ലൊക്കേഷൻ അയക്കാം"]
+        ]}
+      ]
+    },
+    {
+      "id": "u20", "title": "Faire des projets", "place": "Vagamon", "emoji": "📅", "boss": "Organiser un week-end",
+      "intro": "Proposer une sortie, fixer une heure, accepter ou refuser gentiment.",
+      "tips": [
+        "Pour proposer quelque chose : verbe + « -aam ». Pokaam (on y va), kaanaam (on regarde), kazhikkaam (on mange). C'est doux et amical.",
+        "« Namukku » = pour nous (toi et moi). « Namukku pokaam » = allons-y ensemble."
+      ],
+      "lessons": [
+        { "id": "u20l1", "title": "Proposer", "items": [
+          ["Namukku pokaam", "Allons-y (ensemble)", "നമുക്ക് പോകാം"],
+          ["Namukku purathu pokaam?", "On sort ?", "നമുക്ക് പുറത്ത് പോകാം?"],
+          ["Innu raathri enthu cheyyunnu?", "Tu fais quoi ce soir ?", "ഇന്ന് രാത്രി എന്തു ചെയ്യുന്നു?"],
+          ["Naale free aano?", "Tu es libre demain ?", "നാളെ ഫ്രീ ആണോ?"],
+          ["Oru movie kaanaam", "Regardons un film", "ഒരു മൂവി കാണാം"],
+          ["Nalla idea!", "Bonne idée !", "നല്ല ഐഡിയ!"]
+        ]},
+        { "id": "u20l2", "title": "Quand ?", "items": [
+          ["Ethra manikku?", "À quelle heure ?", "എത്ര മണിക്ക്?"],
+          ["Anchu manikku", "À cinq heures", "അഞ്ച് മണിക്ക്"],
+          ["Ee aazhcha", "Cette semaine", "ഈ ആഴ്ച"],
+          ["Adutha maasam", "Le mois prochain", "അടുത്ത മാസം"],
+          ["Kurachu kazhinju", "Un peu plus tard", "കുറച്ച് കഴിഞ്ഞ്"],
+          ["Vegam varanam", "Il faut venir vite", "വേഗം വരണം"]
+        ]},
+        { "id": "u20l3", "title": "Oui, non, peut-être", "items": [
+          ["Theerchayaayum!", "Bien sûr !", "തീർച്ചയായും!"],
+          ["Chilappol", "Peut-être", "ചിലപ്പോൾ"],
+          ["Pattilla, sorry", "Je ne peux pas, désolée", "പറ്റില്ല, സോറി"],
+          ["Vere oru divasam?", "Un autre jour ?", "വേറെ ഒരു ദിവസം?"],
+          ["Njaan aalochikkatte", "Laisse-moi réfléchir", "ഞാൻ ആലോചിക്കട്ടെ"],
+          ["Enikku sammathamaanu", "Je suis d'accord", "എനിക്ക് സമ്മതമാണ്"],
+          ["Ninte ishtam", "Comme tu veux", "നിന്റെ ഇഷ്ടം"]
+        ]}
+      ]
+    },
+    {
+      "id": "u21", "title": "Chez la famille", "place": "Pathanamthitta", "emoji": "🏡", "boss": "Le premier repas chez ses parents",
+      "intro": "Saluer les aînés, complimenter le repas et être une invitée parfaite.",
+      "tips": [
+        "Avec les aînés, jamais « nee » (tu). Le plus respectueux : remplacer « vous » par Amma ou Achan (« Ammaykku sukhamaano? »). « Ningal » est correct mais plus neutre. Ajoute « -oo » aux demandes pour être polie : irikkoo, kazhikkoo.",
+        "Complimenter la nourriture, c'est le meilleur moyen de gagner le cœur d'une maman keralaise. Et accepte une deuxième portion !"
+      ],
+      "lessons": [
+        { "id": "u21l1", "title": "Saluer les aînés", "items": [
+          ["Ningalkku sukhamaano?", "Vous allez bien ?", "നിങ്ങൾക്ക് സുഖമാണോ?"],
+          ["Kandathil santhosham", "Ravie de vous rencontrer", "കണ്ടതിൽ സന്തോഷം"],
+          ["Ente peru Marie, France-il ninnaanu", "Je m'appelle Marie, je viens de France", "എന്റെ പേര് മേരി, ഫ്രാൻസിൽ നിന്നാണ്"],
+          ["Njaan kurachu Malayalam padikkunnu", "J'apprends un peu le malayalam", "ഞാൻ കുറച്ച് മലയാളം പഠിക്കുന്നു"],
+          ["Ningalude veedu valare nallathaanu", "Votre maison est très belle", "നിങ്ങളുടെ വീട് വളരെ നല്ലതാണ്"],
+          ["Ningale kaanaan kaathirikkukayaayirunnu", "J'avais hâte de vous voir", "നിങ്ങളെ കാണാൻ കാത്തിരിക്കുകയായിരുന്നു"]
+        ]},
+        { "id": "u21l2", "title": "À table", "items": [
+          ["Bhakshanam nalla ruchiyundu!", "Le repas est délicieux !", "ഭക്ഷണം നല്ല രുചിയുണ്ട്!"],
+          ["Ithu aaru undaakki?", "Qui a préparé ça ?", "ഇത് ആര് ഉണ്ടാക്കി?"],
+          ["Kurachu koodi tharaamo?", "Je peux en avoir encore un peu ?", "കുറച്ച് കൂടി തരാമോ?"],
+          ["Vayaru niranju", "Je n'ai plus faim", "വയറ് നിറഞ്ഞു", "Mot à mot : « le ventre est plein »."],
+          ["Erivu kooduthalaanu", "C'est trop piquant", "എരിവ് കൂടുതലാണ്"],
+          ["Ithinte peru enthaa?", "Comment ça s'appelle ?", "ഇതിന്റെ പേര് എന്താ?"],
+          ["Recipe paranju tharaamo?", "Vous pouvez me donner la recette ?", "റെസിപ്പി പറഞ്ഞു തരാമോ?"]
+        ]},
+        { "id": "u21l3", "title": "Être polie", "items": [
+          ["Njaan sahaayikkaam", "Je vais aider", "ഞാൻ സഹായിക്കാം"],
+          ["Paathram kazhukatte?", "Je fais la vaisselle ?", "പാത്രം കഴുകട്ടെ?"],
+          ["Ningalude veettil vannathil santhosham", "Je suis heureuse d'être chez vous", "നിങ്ങളുടെ വീട്ടിൽ വന്നതിൽ സന്തോഷം"],
+          ["Ningal valare nallavaraanu", "Vous êtes très gentils", "നിങ്ങൾ വളരെ നല്ലവരാണ്"],
+          ["Veendum varaam", "Je reviendrai", "വീണ്ടും വരാം"],
+          ["Amme, njaan irangatte?", "Amma, je vais y aller", "അമ്മേ, ഞാൻ ഇറങ്ങട്ടെ?", "Façon polie de prendre congé (mot à mot : « je peux sortir ? »). Puis « Poyi varaam »."]
+        ]}
+      ]
+    },
+    {
+      "id": "u22", "title": "Sortir", "place": "Malappuram", "emoji": "🎬", "boss": "Une soirée en ville",
+      "intro": "Cinéma, plage, restaurant et shopping.",
+      "tips": [
+        "« Padam » = le film (mot à mot : l'image). Les Keralais adorent le cinéma malayalam : demande à Chéri ses films préférés !",
+        "En Inde, on paie presque tout avec UPI (GPay, PhonePe…) en scannant un QR code, même chez le petit marchand de thé."
+      ],
+      "lessons": [
+        { "id": "u22l1", "title": "Cinéma & plage", "items": [
+          ["Padam kaanaan pokaam", "Allons voir un film", "പടം കാണാൻ പോകാം"],
+          ["Ticket book cheythu", "J'ai réservé les billets", "ടിക്കറ്റ് ബുക്ക് ചെയ്തു"],
+          ["Padam kollaamaayirunnu", "Le film était bien", "പടം കൊള്ളാമായിരുന്നു", "« Kollaam » = pas mal, c'est bien. Très utilisé !"],
+          ["Beach-il pokaam", "Allons à la plage", "ബീച്ചിൽ പോകാം"],
+          ["Sunset kaanaam", "Regardons le coucher de soleil", "സൺസെറ്റ് കാണാം"],
+          ["Nalla kaattu", "Il y a une bonne brise", "നല്ല കാറ്റ്"]
+        ]},
+        { "id": "u22l2", "title": "Au restaurant", "items": [
+          ["Menu tharaamo?", "Le menu, s'il vous plaît ?", "മെനു തരാമോ?"],
+          ["Erivu kurachu mathi", "Pas trop piquant, s'il vous plaît", "എരിവ് കുറച്ച് മതി"],
+          ["Oru spoon tharaamo?", "Je peux avoir une cuillère ?", "ഒരു സ്പൂൺ തരാമോ?", "Au Kerala on mange souvent avec la main droite, mais demander une cuillère est tout à fait normal."],
+          ["Kai kazhukanam", "Je dois me laver les mains", "കൈ കഴുകണം"],
+          ["Parcel tharaamo?", "C'est possible à emporter ?", "പാഴ്സൽ തരാമോ?"],
+          ["Njaan pay cheyyaam", "Je paie", "ഞാൻ പേ ചെയ്യാം"]
+        ]},
+        { "id": "u22l3", "title": "Shopping", "items": [
+          ["Ithu enikku cheruthaanu", "C'est trop petit pour moi", "ഇത് എനിക്ക് ചെറുതാണ്"],
+          ["Vere niram undo?", "Vous l'avez dans une autre couleur ?", "വേറെ നിറം ഉണ്ടോ?"],
+          ["Ithu ittu nokkatte?", "Je peux l'essayer ?", "ഇത് ഇട്ട് നോക്കട്ടെ?"],
+          ["Ithu enikku cherunnundo?", "Ça me va bien ?", "ഇത് എനിക്ക് ചേരുന്നുണ്ടോ?"],
+          ["Card edukkumo?", "Vous prenez la carte ?", "കാർഡ് എടുക്കുമോ?"],
+          ["GPay undo?", "Je peux payer par GPay ?", "ജിപേ ഉണ്ടോ?"]
+        ]}
+      ]
+    },
+    {
+      "id": "u23", "title": "Imprévus", "place": "Idukki", "emoji": "🆘", "boss": "Une journée qui tourne mal",
+      "intro": "Se perdre, être en retard, perdre ses affaires, demander de l'aide.",
+      "tips": [
+        "« Poyi » veut dire « parti(e) ». « Ente phone poyi » = mon téléphone est parti… donc perdu !",
+        "En cas d'urgence en Inde, le numéro est le 112. « Rakshikkane! » = à l'aide !"
+      ],
+      "lessons": [
+        { "id": "u23l1", "title": "Perdue", "items": [
+          ["Enikku vazhi thetti", "Je me suis perdue", "എനിക്ക് വഴി തെറ്റി"],
+          ["Ithu ethu sthalamaanu?", "C'est quel endroit, ici ?", "ഇത് ഏത് സ്ഥലമാണ്?"],
+          ["Bus stand evideyaa?", "Où est la gare routière ?", "ബസ് സ്റ്റാൻഡ് എവിടെയാ?"],
+          ["Onnu sahaayikkaamo?", "Vous pouvez m'aider ?", "ഒന്ന് സഹായിക്കാമോ?"],
+          ["Ivide ninnu dooramundo?", "C'est loin d'ici ?", "ഇവിടെ നിന്ന് ദൂരമുണ്ടോ?"],
+          ["Map-il kaanikkaamo?", "Vous pouvez me montrer sur la carte ?", "മാപ്പിൽ കാണിക്കാമോ?"]
+        ]},
+        { "id": "u23l2", "title": "Retards & soucis", "items": [
+          ["Sorry, njaan late aayi", "Désolée, je suis en retard", "സോറി, ഞാൻ ലേറ്റ് ആയി"],
+          ["Bus kittiyilla", "J'ai raté le bus", "ബസ് കിട്ടിയില്ല"],
+          ["Ente phone poyi", "J'ai perdu mon téléphone", "എന്റെ ഫോൺ പോയി"],
+          ["Ente bag kaanaanilla", "Je ne trouve pas mon sac", "എന്റെ ബാഗ് കാണാനില്ല"],
+          ["Phone work cheyyunnilla", "Le téléphone ne marche pas", "ഫോൺ വർക്ക് ചെയ്യുന്നില്ല"],
+          ["Saaramilla", "Ce n'est pas grave", "സാരമില്ല"]
+        ]},
+        { "id": "u23l3", "title": "Urgences", "items": [
+          ["Rakshikkane!", "À l'aide !", "രക്ഷിക്കണേ!"],
+          ["Doctor-e kaananam", "Je dois voir un médecin", "ഡോക്ടറെ കാണണം"],
+          ["Medical shop evideyaa?", "Où est la pharmacie ?", "മെഡിക്കൽ ഷോപ്പ് എവിടെയാ?", "Au Kerala, on dit « medical shop » pour la pharmacie."],
+          ["Enikku allergy undu", "J'ai une allergie", "എനിക്ക് അലർജി ഉണ്ട്"],
+          ["Thala karangunnu", "J'ai la tête qui tourne", "തല കറങ്ങുന്നു"],
+          ["Police-ine vilikkoo", "Appelez la police", "പോലീസിനെ വിളിക്കൂ"]
+        ]}
+      ]
+    },
+    {
+      "id": "u24", "title": "Paroles du cœur", "place": "Kasaragod", "emoji": "💞", "boss": "Se réconcilier",
+      "intro": "Prendre des nouvelles, se fâcher, se réconcilier et faire des compliments.",
+      "tips": [
+        "« Saaramilla » (ce n'est pas grave) et « Ellaam sheriyaakum » (tout va s'arranger) sont les deux phrases magiques pour calmer les choses.",
+        "« Pinangalle » = ne boude pas. « Pinakkam » = la bouderie, un mot très utilisé entre amoureux !"
+      ],
+      "lessons": [
+        { "id": "u24l1", "title": "Ça va, vraiment ?", "items": [
+          ["Enthu patti?", "Qu'est-ce qui s'est passé ?", "എന്ത് പറ്റി?"],
+          ["Nee happy aano?", "Tu es heureux ?", "നീ ഹാപ്പി ആണോ?"],
+          ["Ninakku sankadamundo?", "Tu es triste ?", "നിനക്ക് സങ്കടമുണ്ടോ?"],
+          ["Enikku ninne orthu pediyaayi", "J'ai eu peur pour toi", "എനിക്ക് നിന്നെ ഓർത്ത് പേടിയായി"],
+          ["Ellaam sheriyaakum", "Tout va s'arranger", "എല്ലാം ശരിയാകും"],
+          ["Njaan undu koode", "Je suis là, avec toi", "ഞാൻ ഉണ്ട് കൂടെ"]
+        ]},
+        { "id": "u24l2", "title": "Dispute & réconciliation", "items": [
+          ["Pinangalle", "Ne boude pas", "പിണങ്ങല്ലേ"],
+          ["Enikku deshyamaanu", "Je suis fâchée", "എനിക്ക് ദേഷ്യമാണ്"],
+          ["Sorry, ente thettaanu", "Pardon, c'est ma faute", "സോറി, എന്റെ തെറ്റാണ്"],
+          ["Nee parayunnathu sheriyaanu", "Tu as raison", "നീ പറയുന്നത് ശരിയാണ്"],
+          ["Namukku samsaarikkaam", "Parlons-en", "നമുക്ക് സംസാരിക്കാം"],
+          ["Ini angane cheyyilla", "Je ne le referai plus", "ഇനി അങ്ങനെ ചെയ്യില്ല"]
+        ]},
+        { "id": "u24l3", "title": "Compliments", "items": [
+          ["Nee innu sundaranaanu", "Tu es beau aujourd'hui", "നീ ഇന്ന് സുന്ദരനാണ്"],
+          ["Ninte chiri enikku ishtamaanu", "J'aime ton sourire", "നിന്റെ ചിരി എനിക്ക് ഇഷ്ടമാണ്"],
+          ["Nee ente best friend aanu", "Tu es mon meilleur ami", "നീ എന്റെ ബെസ്റ്റ് ഫ്രണ്ട് ആണ്"],
+          ["Ninne kittiyathu ente bhaagyam", "J'ai de la chance de t'avoir", "നിന്നെ കിട്ടിയത് എന്റെ ഭാഗ്യം"],
+          ["Nee illaathe enikku pattilla", "Je ne peux pas vivre sans toi", "നീ ഇല്ലാതെ എനിക്ക് പറ്റില്ല"],
+          ["Ennum ninte koode", "Toujours avec toi", "എന്നും നിന്റെ കൂടെ"]
+        ]}
+      ]
+    }
+  ]
+}

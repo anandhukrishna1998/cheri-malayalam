@@ -1,6 +1,7 @@
 import s1 from '../content/section1.json'
 import s2 from '../content/section2.json'
 import s3 from '../content/section3.json'
+import s4 from '../content/section4.json'
 import verbsData from '../content/verbs.json'
 import dialoguesData from '../content/dialogues.json'
 import rewardsData from '../content/rewards.json'
@@ -64,7 +65,7 @@ export const verbs: Verb[] = (verbsData as RawVerb[]).map(v => ({
 export const verbById = new Map(verbs.map(v => [v.id, v]))
 
 /* ---------- Sections, units, lessons ---------- */
-export const sections: Section[] = ([s1, s2, s3] as RawSection[]).map((rs, si) => {
+export const sections: Section[] = ([s1, s2, s3, s4] as RawSection[]).map((rs, si) => {
   const section: Section = { id: rs.id, title: rs.title, subtitle: rs.subtitle, units: [], index: si }
   section.units = rs.units.map(ru => {
     const unit = { ...ru, boss: ru.boss ?? 'Défi', tips: ru.tips ?? [], section, index: 0 } as unknown as Unit
