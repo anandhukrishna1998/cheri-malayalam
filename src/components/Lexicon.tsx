@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { AI_ERROR_TEXT, aiTranslate, cachedAi, lastAiDetail, setAiCode, type AiError, type AiTranslation } from '../lib/ai'
-import { FORMS, FORM_LABEL, dictCategories, sourceOf, units, verbs, type Form, type Item, type Verb } from '../lib/content'
+import { FORMS, FORM_LABEL, dictCategories, phraseCategories, sourceOf, units, verbs, type Form, type Item, type Verb } from '../lib/content'
 import { play, playAndWait } from '../lib/audio'
 import { translate, type Chip, type Dir } from '../lib/translate'
 import { setProgress, useProgress } from '../lib/store'
@@ -49,6 +49,7 @@ export function Lexicon() {
       const seen = new Set<string>()
       return { id: u.id, title: `${u.emoji} ${u.title}`, items: u.lessons.flatMap(l => l.items).filter(i => !i.verb && !seen.has(i.id) && seen.add(i.id)) }
     }),
+    ...phraseCategories.map(c => ({ id: `phr-${c.id}`, title: `${c.emoji} ${c.title} · phrases utiles`, items: c.phrases })),
     ...dictCategories.map(c => ({ id: `dict-${c.id}`, title: `${c.emoji} ${c.title} · dictionnaire`, items: c.words })),
   ], [])
   const keep = (i: Item) => filter === 'all' || (filter === 'learned' && !!p.boxes[i.id]) || (filter === 'fav' && p.favorites.includes(i.id))
@@ -147,7 +148,7 @@ export function Lexicon() {
           return (
             <section key={g.id} className="lex-group">
               <h2 className="lex-head">{g.title}</h2>
-              {shown.map(i => <LexRow key={i.id} item={i} fav={p.favorites.includes(i.id)} onFav={() => toggleFav(i.id)} showScript={p.showScript} learned={!!p.boxes[i.id] || g.id.startsWith('dict-')} />)}
+              {shown.map(i => <LexRow key={i.id} item={i} fav={p.favorites.includes(i.id)} onFav={() => toggleFav(i.id)} showScript={p.showScript} learned={!!p.boxes[i.id] || !g.id.startsWith('u')} />)}
             </section>
           )
         })}

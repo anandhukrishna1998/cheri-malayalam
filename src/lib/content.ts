@@ -6,6 +6,7 @@ import verbsData from '../content/verbs.json'
 import dialoguesData from '../content/dialogues.json'
 import rewardsData from '../content/rewards.json'
 import dictionaryData from '../content/dictionary.json'
+import phrasebookData from '../content/phrasebook.json'
 import { autoHint, slug } from './hint'
 
 /* ---------- Types ---------- */
@@ -125,7 +126,17 @@ export const totalLessons = path.length
 
 /* ---------- Dictionary (single words, for translation & lexicon) ---------- */
 export interface DictCategory { id: string; title: string; emoji: string; words: Item[] }
-const dictRaw = dictionaryData as { categories: { id: string; title: string; emoji: string; words: [string, string, string][] }[] }
+type Pair = [string, string]
+const dictRaw = dictionaryData as unknown as {
+  categories: { id: string; title: string; emoji: string; words: [string, string, string][] }[]
+  places: Record<string, { loc: Pair; to: Pair }>
+  feelings: Record<string, Pair>
+}
+const key = (manglish: string) => manglish.toLowerCase().replace(/[^a-z]/g, '')
+/** « à la maison » → veettil, « vers la maison » → veettilekku. Keyed by the noun's loose Manglish. */
+export const placeForms = new Map(Object.entries(dictRaw.places).map(([k, v]) => [key(k), v]))
+/** « j'ai faim » → Enikku vishakkunnu. Keyed by the feeling noun's loose Manglish. */
+export const feelingForms = new Map(Object.entries(dictRaw.feelings).map(([k, v]) => [key(k), v]))
 const lessonByLoose = new Map(allItems.map(i => [i.manglish.toLowerCase().replace(/[^a-z]/g, ''), i]))
 /** Extra French meanings the dictionary gives to words already taught in lessons. */
 export const dictFr = new Map<string, string>()
@@ -149,5 +160,32 @@ for (const c of dictCategories) for (const w of c.words) if (!sourceOf.has(w.id)
 for (const v of verbs) for (const f of FORMS) if (!sourceOf.has(v.forms[f].id)) sourceOf.set(v.forms[f].id, 'Verbe')
 for (const w of dictionaryOnly) itemById.set(w.id, w)
 
+/* ---------- Phrasebook (ready-made everyday sentences) ---------- */
+export interface PhraseCategory { id: string; title: string; emoji: string; phrases: Item[] }
+type RawPhrase = [string, string, string, string?]
+const phraseRaw = phrasebookData as unknown as { categories: { id: string; title: string; emoji: string; phrases: RawPhrase[] }[] }
+const knownByKey = new Map([...allItems, ...dictionaryOnly].map(i => [key(i.manglish), i]))
+/** A sentence already known under another French wording keeps one item; the new wording becomes a search alias. */
+const addAlias = (i: Item, fr: string) => {
+  if (frSame(i.fr, fr)) return
+  const prev = dictFr.get(i.id)
+  if (!prev?.split(' / ').some(p => frSame(p, fr))) dictFr.set(i.id, prev ? `${prev} / ${fr}` : fr)
+}
+const frSame = (a: string, b: string) => a.toLowerCase().replace(/[^a-zà-ÿ]/g, '') === b.toLowerCase().replace(/[^a-zà-ÿ]/g, '')
+export const phraseCategories: PhraseCategory[] = phraseRaw.categories.map(c => ({
+  id: c.id, title: c.title, emoji: c.emoji,
+  phrases: c.phrases.map(([manglish, fr, ml, note]) => {
+    const known = knownByKey.get(key(manglish))
+    if (known) { addAlias(known, fr); return known }
+    const item: Item = { id: `p-${slug(manglish)}`, manglish, fr, ml, hint: autoHint(manglish), ...(note ? { note } : {}) }
+    knownByKey.set(key(manglish), item)
+    return item
+  }),
+}))
+/** Phrasebook sentences that are not already lessons or dictionary words (they need their own audio). */
+export const phrasebookOnly: Item[] = [...new Map(phraseCategories.flatMap(c => c.phrases).filter(p => p.id.startsWith('p-')).map(p => [p.id, p])).values()]
+for (const c of phraseCategories) for (const p of c.phrases) if (!sourceOf.has(p.id)) sourceOf.set(p.id, `Phrases utiles · ${c.title}`)
+for (const p of phrasebookOnly) itemById.set(p.id, p)
+
 /** Everything the translator can search. */
-export const searchItems: Item[] = [...allItems, ...dialogues.flatMap(d => d.lines), ...dictionaryOnly]
+export const searchItems: Item[] = [...allItems, ...phrasebookOnly, ...dialogues.flatMap(d => d.lines), ...dictionaryOnly]

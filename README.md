@@ -2,7 +2,7 @@
 
 A web app that teaches Malayalam to a French speaker, written entirely in Manglish. It installs on a phone like an app, works offline, and needs no account or server.
 
-**What's in it:** 4 sections, 24 units, 104 lessons, 36 verbs (present, past, future, negative), 13 dialogues, a 206-word dictionary and 727 phrases, all with audio.
+**What's in it:** 4 sections, 24 units, 104 lessons, 67 verbs (present, past, future, negative), 13 dialogues, a ~400-word dictionary, a ~300-sentence phrasebook, all with audio.
 
 **Screens:**
 - **Apprendre:** the lesson path through Kerala, with tips for each unit and an end-of-unit challenge.
@@ -55,7 +55,8 @@ Good to know:
 | `src/content/verbs.json` | The 36 verbs and their 4 forms |
 | `src/content/dialogues.json` | Dialogues and characters (`voice`: `f` or `m`) |
 | `src/content/rewards.json` | Real-life rewards per level |
-| `src/content/dictionary.json` | Single words for the translator, by category: `[manglish, français, മലയാളം]` |
+| `src/content/dictionary.json` | Single words for the translator, by category: `[manglish, français, മലയാളം]`; `places` (forms for « à » / « vers » a place) and `feelings` (« j'ai faim » → Enikku vishakkunnu) |
+| `src/content/phrasebook.json` | Ready-made everyday sentences by topic, `[manglish, français, മലയാളം, note?]`. A sentence that already exists elsewhere just adds its French wording as another way to find it. |
 
 A phrase can be written in short form:
 

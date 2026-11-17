@@ -29,7 +29,7 @@ for (const d of c.dialogues) {
   for (const l of d.lines) if (!c.speakers[l.speaker]) problems.push(`Dialogue « ${d.id} » : personnage « ${l.speaker} » inconnu`)
 }
 // Audio
-const all = [...c.allItems, ...c.dialogues.flatMap(d => d.lines), ...c.dictionaryOnly]
+const all = [...c.allItems, ...c.dialogues.flatMap(d => d.lines), ...c.dictionaryOnly, ...c.phrasebookOnly]
 // Dictionary: same word listed twice with different meanings
 const dictSeen = new Map()
 for (const w of c.dictionaryOnly) {
@@ -41,7 +41,7 @@ for (const w of c.dictionaryOnly) {
 const missing = all.filter(i => !existsSync(`public/audio/${i.id}.mp3`)).map(i => i.id)
 
 const lessons = c.path.length
-console.log(`${c.sections.length} sections · ${c.units.length} unités · ${lessons} leçons · ${c.verbs.length} verbes · ${c.dialogues.length} dialogues · ${c.dictCategories.reduce((n, x) => n + x.words.length, 0)} mots au dictionnaire · ${all.length} phrases avec audio`)
+console.log(`${c.sections.length} sections · ${c.units.length} unités · ${lessons} leçons · ${c.verbs.length} verbes · ${c.dialogues.length} dialogues · ${c.dictCategories.reduce((n, x) => n + x.words.length, 0)} mots au dictionnaire · ${c.phrasebookOnly.length} phrases utiles · ${all.length} phrases avec audio`)
 for (const w of warnings) console.log('⚠️ ', w)
 if (missing.length) console.log(`🔇 ${missing.length} phrases sans audio (lance « npm run audio ») : ${missing.slice(0, 8).join(', ')}${missing.length > 8 ? '…' : ''}`)
 for (const p of problems) console.log('❌', p)

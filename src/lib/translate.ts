@@ -1,6 +1,6 @@
 /**
  * Offline translator: French ↔ Manglish, using only the app's own content
- * (lesson phrases, dialogue lines, verbs, dictionary). No AI, no network.
+ * (lesson phrases, phrasebook, dialogue lines, verbs, dictionary). No AI, no network.
  *
  * 1. Phrase search: exact and close matches among all known phrases.
  * 2. Verb recognition: French verbs in any common form (viens, a mangé, boira…)
@@ -8,8 +8,10 @@
  * 3. Word by word: each word looked up in the dictionary; for French input a
  *    Malayalam sentence is assembled (subject first, verb last, right tense).
  */
-import { FORMS, FORM_LABEL, dictFr, searchItems, verbs, type Form, type Item, type Verb } from './content'
+import { FORMS, FORM_LABEL, dictFr, feelingForms, placeForms, searchItems, verbs, type Form, type Item, type Verb } from './content'
 import { loose } from './answer'
+
+const mlKey = (manglish: string) => manglish.toLowerCase().replace(/[^a-z]/g, '')
 
 export type Dir = 'fr' | 'ml'
 export interface Chip { src: string; item?: Item; text?: string; gloss?: string; note?: string }
@@ -40,7 +42,7 @@ const SCORE_STOP = new Set([...ARTICLES, ...AUX, ...'a et en y ce c ca cette ces
 // Irregular forms (accents stripped). Regular -er verbs are handled by their stem.
 const IRREG: Record<string, string> = {
   kudikkuka: 'boire bois boit buvons buvez boivent bu buvait boirai boiras boira boirons boirez boiront',
-  pokuka: 'aller vais vas va allons allez vont alle allee alles allees allait irai iras ira irons irez iront',
+  pokuka: 'aller vais vas va allons allez vont alle allee alles allees allait irai iras ira irons irez iront partir pars part partons partez partent parti partie partira partirai',
   varuka: 'venir viens vient venons venez viennent venu venue venus venait viendrai viendras viendra viendrons viendrez viendront',
   irikkuka: 'asseoir assieds assied assois assoit asseyons asseyez assis assise assiera assierai',
   uranguka: 'dormir dors dort dormons dormez dorment dormi dormait dormirai dormiras dormira',
@@ -58,8 +60,18 @@ const IRREG: Record<string, string> = {
   oduka: 'courir cours court courons courez courent couru courrai courra',
   chirikkuka: 'rire ris rit rions riez rient ri rirai rira',
   thurakkuka: 'ouvrir ouvre ouvres ouvrons ouvrez ouvrent ouvert ouvrirai ouvrira',
+  iranguka: 'descendre descends descend descendons descendez descendent descendu descendue descendra sortir sors sort sortons sortez sortent sorti sortie sortira',
+  ayakkuka: 'envoie envoies envoient envoyons envoyez enverrai enverras enverra',
+  manassilaakuka: 'comprendre comprends comprend comprenons comprenez comprennent compris comprendrai comprendra',
+  vilkkuka: 'vendre vends vend vendons vendez vendent vendu vendrai vendra',
+  ishtappeduka: 'plaire plait plu plaira',
+  odikkuka: 'conduire conduis conduit conduisons conduisez conduisent conduirai conduira',
+  vaykkuka: 'mettre mets met mettons mettez mettent mis mise mettrai mettra',
+  jeevikkuka: 'vivre vis vit vivons vivez vivent vecu vivrai vivra',
+  'thirichu-varuka': 'revenir reviens revient revenons revenez reviennent revenu revenue reviendrai reviendra',
+  ariyuka: 'savoir sais sait savons savez savent su saurai saura connaitre connais connait connaissons connu connaitra',
 }
-const PARTICIPLES = new Set('bu alle allee alles allees venu venue venus assis assise dormi fait vu vue dit entendu appris lu ecrit pris prise attendu souvenu couru ri ouvert'.split(' '))
+const PARTICIPLES = new Set('parti partie su connu descendu descendue sorti sortie compris vendu conduit vecu revenu revenue mis mise plu bu alle allee alles allees venu venue venus assis assise dormi fait vu vue dit entendu appris lu ecrit pris prise attendu souvenu couru ri ouvert'.split(' '))
 const ER_ENDINGS = new Set('e es ent ons ez er eons eait eant ais ait aient ant era erai eras erons erez eront'.split(' '))
 const FUTURE = /(rai|ras|ra|rons|rez|ront)$/
 
@@ -71,12 +83,12 @@ const frVerbs: FrVerb[] = verbs.map(v => {
   return { verb: v, infs, stems, forms: new Set((IRREG[v.id] ?? '').split(' ').filter(Boolean)) }
 })
 
-function matchFrVerb(t: string): FrVerb | null {
-  for (const fv of frVerbs) {
-    if (fv.infs.includes(t) || fv.forms.has(t)) return fv
-    for (const st of fv.stems) if (st.length >= 3 && t.startsWith(st) && ER_ENDINGS.has(t.slice(st.length))) return fv
-  }
-  return null
+function matchFrVerb(t: string, reflexive = false): FrVerb | null {
+  const hits = frVerbs.filter(fv => fv.infs.includes(t) || fv.forms.has(t) ||
+    fv.stems.some(st => st.length >= 3 && t.startsWith(st) && ER_ENDINGS.has(t.slice(st.length))))
+  if (hits.length < 2) return hits[0] ?? null
+  const isRefl = (fv: FrVerb) => /^(se |s')/.test(fv.verb.fr)
+  return hits.find(fv => isRefl(fv) === reflexive) ?? hits[0]
 }
 
 /* ---------------- Malayalam negatives built from past / future ---------------- */
@@ -112,6 +124,8 @@ for (const i of searchItems) {
   }
 }
 add(frIndex, 'j', frIndex.get('je')?.[0] as Item)
+// « on » = nous (inclusive)
+for (const i of frIndex.get('nous') ?? []) if (i.manglish === 'Nammal') add(frIndex, 'on', i)
 
 // Manglish word → items
 const mlIndex = new Map<string, Item[]>()
@@ -163,6 +177,54 @@ function rankPhrases(score: (i: Item) => number) {
   }
 }
 
+/* ---------------- Malayalam building blocks ---------------- */
+type MlForm = { manglish: string; ml: string }
+const SUBJECT_WORDS = new Set(['je', 'j', 'moi', 'tu', 'toi', 'il', 'elle', 'on', 'nous', 'vous', 'ils', 'elles'])
+const ENIKKU = { manglish: 'Enikku', ml: 'എനിക്ക്' }
+const NINAKKU = { manglish: 'Ninakku', ml: 'നിനക്ക്' }
+const NAMUKKU = { manglish: 'Namukku', ml: 'നമുക്ക്' }
+const AVARKKU = { manglish: 'Avarkku', ml: 'അവർക്ക്' }
+/** Dative subject (« à moi… ») used with venam (vouloir), pattum (pouvoir) and feelings. */
+const DATIVE: Record<string, MlForm> = {
+  je: ENIKKU, j: ENIKKU, moi: ENIKKU, tu: NINAKKU, toi: NINAKKU,
+  il: { manglish: 'Avanu', ml: 'അവന്' }, elle: { manglish: 'Avalkku', ml: 'അവൾക്ക്' },
+  nous: NAMUKKU, on: NAMUKKU, vous: { manglish: 'Ningalkku', ml: 'നിങ്ങൾക്ക്' }, ils: AVARKKU, elles: AVARKKU,
+}
+const WANT = new Set('veux veut voulons voulez veulent voudrais voudrait voudrions voudriez voudraient aimerais aimerait'.split(' '))
+const CAN = new Set('peux peut pouvons pouvez peuvent pourrais pourrait pourrions pourriez pourraient'.split(' '))
+const PREPS = new Set(['à', 'au', 'aux', 'dans', 'chez', 'en', 'vers'])
+const SKIP = new Set(['ce', 'que', 'qu', 'est-ce', 'y'])
+/** Verbs of movement take « vers » (veettilekku) instead of « à / dans » (veettil). */
+const MOTION = new Set(['pokuka', 'varuka', 'thirichu-varuka', 'konduvaruka', 'ayakkuka'])
+/** Verbs whose subject is in the dative: « je comprends » → Enikku manassilaakunnu, « je sais » → Enikku ariyaam. */
+const DATIVE_VERBS = new Set(['manassilaakuka', 'ariyuka', 'ishtappeduka'])
+/** « avec toi » → ninte koode */
+const WITH: Record<string, MlForm> = {
+  moi: { manglish: 'ente koode', ml: 'എന്റെ കൂടെ' }, toi: { manglish: 'ninte koode', ml: 'നിന്റെ കൂടെ' },
+  lui: { manglish: 'avante koode', ml: 'അവന്റെ കൂടെ' }, elle: { manglish: 'avalude koode', ml: 'അവളുടെ കൂടെ' },
+  nous: { manglish: 'nammude koode', ml: 'നമ്മുടെ കൂടെ' }, vous: { manglish: 'ningalude koode', ml: 'നിങ്ങളുടെ കൂടെ' },
+  eux: { manglish: 'avarude koode', ml: 'അവരുടെ കൂടെ' }, elles: { manglish: 'avarude koode', ml: 'അവരുടെ കൂടെ' },
+}
+/** Question words: with them, the verb keeps its normal form (Nee eppol varum?). */
+const QWORDS = new Set(['evide', 'evideyaanu', 'eppol', 'enthaa', 'enthu', 'enthaanu', 'aaraa', 'aaru', 'engane', 'enthinu', 'ethra', 'ethu'])
+const BE = ['suis', 'es', 'est', 'sommes', 'êtes', 'sont']
+/** Names that keep their capital letter inside a sentence. */
+const PROPER = /^(France|Frans|India|Keralam|Keralath|Kochi|Paris|Marie)/
+
+/** kazhikkuka → kazhikk / കഴിക്ക */
+const stemOf = (v: Verb): MlForm => ({ manglish: v.id.replace(/-/g, ' ').replace(/uka$/, ''), ml: v.ml.replace(/ുക$/, '') })
+const plus = (s: MlForm, m: string, ml: string): MlForm => ({ manglish: s.manglish + m, ml: s.ml + ml })
+/** Yes/no question: varunnu → varunno, varum → varumo, poyi → poyo, undu → undo, venam → venamo. */
+function asQuestion(f: MlForm): MlForm {
+  const m = f.manglish, s = f.ml
+  // poyi → poyo, but urangi → urangiyo
+  if (/yi$/.test(m) && s.endsWith('യി')) return { manglish: m.slice(0, -1) + 'o', ml: s.slice(0, -1) + 'ോ' }
+  if (/i$/.test(m) && s.endsWith('ി')) return { manglish: m + 'yo', ml: s + 'യോ' }
+  const manglish = /u$/.test(m) ? m.slice(0, -1) + 'o' : /m$/.test(m) ? m + 'o' : m
+  const ml = /[ു്]$/.test(s) ? s.slice(0, -1) + 'ോ' : s.endsWith('ം') ? s.slice(0, -1) + 'മോ' : s
+  return { manglish, ml }
+}
+
 function fromFrench(q: string): Translation {
   const qn = frNorm(q)
   const qContent = qn.split(' ').filter(w => !SCORE_STOP.has(w))
@@ -176,25 +238,66 @@ function fromFrench(q: string): Translation {
   // Word by word
   const raw = frWords(q)
   const norm = raw.map(stripAccents)
-  const words: Chip[] = []
-  const found: { kind: 'verb' | 'word'; chip: Chip; fv?: FrVerb; tense?: Form | 'inf'; subject?: boolean }[] = []
+  const question = /\?\s*$/.test(q) || /^est ce que/.test(qn)
   const neg = norm.some(w => w === 'pas' || w === 'jamais')
-  let auxSeen = false
+  type Found = { kind: 'verb' | 'word'; chip: Chip; fv?: FrVerb; tense?: Form | 'inf'; subject?: string; place?: { loc: [string, string]; to: [string, string] }; prep?: boolean; feel?: [string, string]; lead?: boolean; qword?: boolean }
+  const words: Chip[] = []
+  const found: Found[] = []
+  let modal: 'want' | 'can' | 'lets' | 'must' | null = null
+  let weather = false, hasQWord = false, whereQ = false
+  let auxSeen = false, pendingPrep = false, existential = false
+  const isInfVerb = (t: string | undefined) => !!t && !!matchFrVerb(t)?.infs.includes(t)
+
   for (let k = 0; k < norm.length; k++) {
     const w = norm[k], orig = raw[k]
+    // « je veux / je peux / il faut / allons + verbe », « il y a »
+    if (WANT.has(w)) { modal = 'want'; continue }
+    if (CAN.has(w)) { modal = 'can'; continue }
+    if (w === 'faut' && norm[k - 1] === 'il') { modal = 'must'; continue }
+    if ((w === 'allons' || (w === 'va' && norm[k - 1] === 'on')) && isInfVerb(norm[k + 1])) { modal = 'lets'; continue }
+    // « allons au marché » : allons is the verb itself (aller), as a proposal
+    if (w === 'allons' && k === 0) modal = 'lets'
+    // « il fait froid / chaud » → Thanuppaanu / Choodaanu
+    if (w === 'fait' && norm[k - 1] === 'il') { weather = true; continue }
+    if (w === 'il' && (norm[k + 1] === 'y' || norm[k + 1] === 'faut')) continue
+    if (w === 'y' && norm[k + 1] === 'a') { existential = true; k++; continue }
+    if (w === 'avec' && WITH[norm[k + 1]]) {
+      const f = WITH[norm[k + 1]]
+      const chip: Chip = { src: `${orig} ${raw[k + 1]}`, text: f.manglish, gloss: f.ml }
+      words.push(chip)
+      found.push({ kind: 'word', chip, lead: true })
+      k++
+      continue
+    }
+    if (w === 'on' && modal === 'lets') continue
     if (AUX.has(orig) && !(orig === 'a' && raw[k - 1] === 'à')) { auxSeen = true; continue }
-    if (ARTICLES.has(w) || NEG.has(w) || orig === 'à') continue
-    if (REFLEXIVE.has(w) && k + 1 < norm.length && matchFrVerb(norm[k + 1])) continue
-    // Longest dictionary expression first (pomme de terre, grand frère…)
+    if (PREPS.has(orig)) { pendingPrep = true; continue }
+    if (ARTICLES.has(w) || NEG.has(w) || (SKIP.has(w) && !frIndex.has(`${w} ${norm[k + 1]}`))) continue
+    if (w === 'il' && norm[k + 1] === 'fait') continue
+    const reflexive = REFLEXIVE.has(norm[k - 1] ?? '')
+    if (REFLEXIVE.has(w) && w !== 'nous' && w !== 'vous' && k + 1 < norm.length && matchFrVerb(norm[k + 1], true)) continue
+    // « appelle-moi » : moi / toi right after an order is the object (enne / ninne)
+    if ((w === 'moi' || w === 'toi') && k === 1 && matchFrVerb(norm[0])) {
+      const o = w === 'moi' ? { manglish: 'enne', ml: 'എന്നെ' } : { manglish: 'ninne', ml: 'നിന്നെ' }
+      const chip: Chip = { src: orig, text: o.manglish, gloss: o.ml }
+      words.push(chip)
+      found.push({ kind: 'word', chip, lead: true })
+      continue
+    }
+    // Longest dictionary expression first (pomme de terre, grand frère…); for single words also try
+    // the masculine / singular form (fatiguée → fatigue, maisons → maison).
     let hit: Item[] | undefined, len = 0
     for (let n = 3; n >= 1 && !hit; n--) {
       if (k + n > norm.length) continue
       const span = norm.slice(k, k + n)
-      if (n > 1 && (ARTICLES.has(span[n - 1]) || span.some(x => matchFrVerb(x)))) continue
+      if (n > 1 && (ARTICLES.has(span[n - 1]) || span.some(x => matchFrVerb(x) || WANT.has(x) || CAN.has(x) || AUX.has(x)))) continue
       const key = span.filter(x => !ARTICLES.has(x)).join(' ')
-      if (frIndex.has(key)) { hit = frIndex.get(key); len = n }
+      // masculine / singular fallbacks only for longer words (so « mère » never becomes « mer »)
+      const keys = n === 1 ? [key, ...[key.replace(/e$/, ''), key.replace(/s$/, ''), key.replace(/es$/, ''), key.replace(/x$/, '')].filter(x => x !== key && x.length >= 5)] : [key]
+      const found1 = keys.find(x => x && frIndex.has(x))
+      if (found1) { hit = frIndex.get(found1); len = n }
     }
-    const fv = !NOUN_MARKERS.has(norm[k - 1] ?? '') ? matchFrVerb(w) : null
+    const fv = !NOUN_MARKERS.has(norm[k - 1] ?? '') && !SUBJECT_WORDS.has(w) ? matchFrVerb(w, reflexive) : null
     if (fv && !(hit && len > 1)) {
       const isInf = fv.infs.includes(w)
       const isPart = PARTICIPLES.has(w) || /(é|ée|és|ées)$/.test(orig)
@@ -203,13 +306,20 @@ function fromFrench(q: string): Translation {
       const chip: Chip = { src: orig, item: fv.verb.forms.pres, note: `verbe ${fv.verb.fr}` }
       words.push(chip)
       found.push({ kind: 'verb', chip, fv, tense })
+      pendingPrep = false
       continue
     }
     if (hit) {
       const src = raw.slice(k, k + len).join(' ')
-      const chip: Chip = { src, item: hit[0], note: hit.length > 1 ? `aussi : ${hit.slice(1, 3).map(h => h.manglish).join(', ')}` : undefined }
+      const item = hit[0]
+      const chip: Chip = { src, item, note: hit.length > 1 ? `aussi : ${hit.slice(1, 3).map(h => h.manglish).join(', ')}` : undefined }
+      const place = placeForms.get(mlKey(item.manglish))
+      if (place && pendingPrep) chip.note = `${place.loc[0]} = à / dans · ${place.to[0]} = vers`
       words.push(chip)
-      found.push({ kind: 'word', chip, subject: ['je', 'j', 'moi', 'tu', 'toi', 'il', 'elle', 'nous', 'vous', 'ils', 'elles'].includes(w) })
+      if (QWORDS.has(mlKey(item.manglish))) hasQWord = true
+      if (orig === 'où') whereQ = true
+      found.push({ kind: 'word', chip, subject: SUBJECT_WORDS.has(w) ? w : undefined, place, prep: pendingPrep, feel: feelingForms.get(mlKey(item.manglish)), qword: QWORDS.has(mlKey(item.manglish)) || orig === 'où' })
+      pendingPrep = false
       k += len - 1
       continue
     }
@@ -220,35 +330,109 @@ function fromFrench(q: string): Translation {
   const verbHits: VerbHit[] = []
   const vf = found.filter(f => f.fv)
   // « je vais manger » : aller is only a helper, manger is in the future
-  const futurProche = vf.length >= 2 && vf[0].fv!.verb.id === 'pokuka' && vf[vf.length - 1].tense === 'inf'
+  const futurProche = !modal && vf.length >= 2 && vf[0].fv!.verb.id === 'pokuka' && vf[vf.length - 1].tense === 'inf'
   for (const f of vf) {
     if (futurProche && f === vf[0]) continue
-    let form: Form | null = futurProche ? 'fut' : f.tense === 'inf' ? null : (f.tense as Form)
+    let form: Form | null = modal ? null : futurProche ? 'fut' : f.tense === 'inf' ? null : (f.tense as Form)
     if (neg && form === 'pres') form = 'neg'
     if (!verbHits.some(h => h.verb === f.fv!.verb)) verbHits.push({ verb: f.fv!.verb, form })
   }
 
-  // Assemble a Malayalam sentence: subject, other words, verb last.
+  // Assemble a Malayalam sentence (only when no ready-made phrase matched).
   let built: Translation['built']
-  const vfound = found.filter(f => f.kind === 'verb')
-  if (found.length >= 2 && vfound.length && !exact.length) {
-    // "je vais manger" → futur proche of the second verb
-    let main = vfound[vfound.length - 1]
-    let tense = main.tense === 'inf' ? 'pres' : main.tense as Form
-    if (vfound.length >= 2 && vfound[0].fv!.verb.id === 'pokuka' && main.tense === 'inf') tense = 'fut'
-    if (vfound.length >= 2 && vfound[0].tense === 'past' && main.tense === 'inf') { main = vfound[vfound.length - 1]; tense = 'past' }
-    const v = main.fv!.verb
-    let vform: { manglish: string; ml: string } = v.forms[tense]
-    if (neg) vform = tense === 'pres' ? v.forms.neg : negOf(v.forms[tense], tense as 'past' | 'fut')
-    const verbChip: Chip = { src: main.chip.src, text: vform.manglish.toLowerCase(), gloss: vform.ml, item: neg || tense === 'neg' ? undefined : v.forms[tense] }
-    const others = found.filter(f => f.kind === 'word')
-    const ordered = [...others.filter(f => f.subject), ...others.filter(f => !f.subject)].map(f => f.chip)
-    const parts = [...ordered, verbChip]
-    const text = (c: Chip) => c.text ?? c.item!.manglish
-    const manglish = parts.map((c, n) => n ? text(c).toLowerCase() : text(c)).join(' ')
-    const ml = parts.map(c => c.gloss ?? c.item!.ml).join(' ')
-    const label = `${neg ? 'négatif · ' : ''}${FORM_LABEL[tense]}`
-    built = { parts, manglish: manglish.charAt(0).toUpperCase() + manglish.slice(1), ml, label }
+  if (!exact.length && found.length) {
+    const subj = found.find(f => f.subject)
+    const dat = subj ? DATIVE[subj.subject!] : undefined
+    // « avec toi » goes right after the subject: Njaan ninte koode kadal nokkunnu
+    const nouns = found.filter(f => f.kind === 'word' && !f.subject).sort((a, b) => Number(!!b.lead) - Number(!!a.lead))
+    const vfound = found.filter(f => f.kind === 'verb')
+    const motion = vfound.some(f => MOTION.has(f.fv!.verb.id))
+    const nounChip = (f: Found): Chip => {
+      if (f.place && f.prep) { const [m, ml] = motion ? f.place.to : f.place.loc; return { src: f.chip.src, text: m, gloss: ml, item: f.chip.item } }
+      return f.chip
+    }
+    const formChip = (src: string, f: MlForm, item?: Item): Chip => {
+      const g = question && !hasQWord ? asQuestion(f) : f
+      return { src, text: g.manglish.toLowerCase(), gloss: g.ml, item }
+    }
+    const fromMl = (f: MlForm, src = ''): Chip => ({ src, text: f.manglish, gloss: f.ml })
+    let parts: Chip[] | null = null
+    let label = ''
+
+    const main = vfound.length ? vfound[vfound.length - 1] : undefined
+    // « on regarde un film ? » is a proposal: Namukku padam kaanaamo?
+    if (!modal && subj?.subject === 'on' && question && main) modal = 'lets'
+    // « parle doucement » (verb first, no subject) is an order: Pathukke samsaarikkoo
+    const imperative = !!main && !subj && !modal && !question && main.tense === 'pres' && raw[0] === main.chip.src
+    if (modal && main) {
+      // « je veux manger » → Enikku kazhikkanam ; « je peux venir » → Enikku varaan pattum ; « allons manger » → Namukku kazhikkaam
+      const v = main.fv!.verb, s = stemOf(v)
+      const f = modal === 'want' || modal === 'must' ? (neg ? plus(s, 'anda', 'ണ്ട') : plus(s, 'anam', 'ണം'))
+        : modal === 'can' ? (neg ? plus(s, 'aan pattilla', 'ാൻ പറ്റില്ല') : plus(s, 'aan pattum', 'ാൻ പറ്റും'))
+        : plus(s, 'aam', 'ാം')
+      const who = modal === 'lets' ? NAMUKKU : dat
+      parts = [...(who ? [fromMl(who, subj?.chip.src)] : []), ...nouns.map(nounChip), formChip(main.chip.src, f)]
+      label = { want: 'vouloir', must: 'il faut', can: 'pouvoir', lets: 'proposition (on…)' }[modal] + (neg ? ' · négatif' : '')
+    } else if (modal === 'want' && nouns.length) {
+      // « je veux du thé » → Enikku chaaya venam
+      parts = [...(dat ? [fromMl(dat, subj?.chip.src)] : []), ...nouns.map(nounChip), formChip('', neg ? { manglish: 'venda', ml: 'വേണ്ട' } : { manglish: 'venam', ml: 'വേണം' })]
+      label = 'vouloir'
+    } else if (whereQ && subj && !main) {
+      parts = [subj.chip, ...nouns.filter(f => !f.qword).map(nounChip), fromMl({ manglish: 'evideyaa', ml: 'എവിടെയാ' }, 'où')]
+      label = 'où ?'
+    } else if (!main && subj && BE.some(b => raw.includes(b)) && nouns.some(f => f.place && f.prep)) {
+      const be = neg ? { manglish: 'alla', ml: 'അല്ല' } : { manglish: 'aanu', ml: 'ആണ്' }
+      parts = [subj.chip, ...nouns.map(nounChip), formChip('être', be)]
+      label = 'être (lieu)'
+    } else if (existential && nouns.length && !main) {
+      // « il y a du thé ? » → Chaaya undo?
+      parts = [...nouns.map(nounChip), formChip('il y a', neg ? { manglish: 'illa', ml: 'ഇല്ല' } : { manglish: 'undu', ml: 'ഉണ്ട്' })]
+      label = 'il y a'
+    } else if (weather && !main && nouns.some(f => f.feel)) {
+      // « il fait froid » → Thanuppaanu
+      const fe = nouns.find(f => f.feel)!
+      const n = fe.chip.item!
+      const pred: MlForm = neg ? { manglish: `${n.manglish.toLowerCase()} illa`, ml: `${n.ml} ഇല്ല` }
+        : { manglish: n.manglish.toLowerCase().replace(/u$/, '') + 'aanu', ml: n.ml.replace(/്$/, '') + 'ാണ്' }
+      parts = [...nouns.filter(f => f !== fe).map(nounChip), formChip(fe.chip.src, pred, n)]
+      if (parts.length === 1) parts[0] = { ...parts[0], text: parts[0].text!.charAt(0).toUpperCase() + parts[0].text!.slice(1) }
+      label = 'météo'
+    } else if (imperative && main) {
+      // polite order: verb stem + -oo (samsaarikkoo, pokoo) ; « ne … pas » : -aruthu (samsaarikkaruthu)
+      const v = main.fv!.verb, s = stemOf(v)
+      const f = neg ? plus(s, 'aruthu', 'രുത്') : v.id === 'varuka' ? { manglish: 'vaa', ml: 'വാ' } : plus(s, 'oo', 'ൂ')
+      parts = [...nouns.map(nounChip), formChip(main.chip.src, f)]
+      label = neg ? 'interdiction' : 'impératif (poli)'
+    } else if (!main && nouns.some(f => f.feel)) {
+      // « je suis fatiguée » → Enikku ksheenamaanu ; « tu as faim ? » → Ninakku vishakkunno?
+      const fe = nouns.find(f => f.feel)!
+      const others = nouns.filter(f => f !== fe)
+      const pred: MlForm = neg ? { manglish: `${fe.chip.item!.manglish.toLowerCase()} illa`, ml: `${fe.chip.item!.ml} ഇല്ല` } : { manglish: fe.feel![0], ml: fe.feel![1] }
+      parts = [fromMl(dat ?? ENIKKU, subj?.chip.src), ...others.map(nounChip), formChip(fe.chip.src, pred, fe.chip.item)]
+      label = 'sentiment'
+    } else if (main && found.length >= 2) {
+      // Subject, other words, verb last, in the right tense.
+      let tense = main.tense === 'inf' ? 'pres' : main.tense as Form
+      if (futurProche) tense = 'fut'
+      if (vfound.length >= 2 && vfound[0].tense === 'past' && main.tense === 'inf') tense = 'past'
+      const v = main.fv!.verb
+      let vform: MlForm = v.forms[tense]
+      if (neg) vform = tense === 'pres' ? v.forms.neg : negOf(v.forms[tense], tense as 'past' | 'fut')
+      const ordered = [...nouns.filter(f => f.subject), ...found.filter(f => f.kind === 'word' && f.subject), ...nouns]
+      const uniq = [...new Set(ordered)]
+      const subjects = uniq.filter(f => f.subject).map(f => DATIVE_VERBS.has(v.id) && DATIVE[f.subject!] ? fromMl(DATIVE[f.subject!], f.chip.src) : f.chip)
+      parts = [...subjects, ...uniq.filter(f => !f.subject).map(nounChip), formChip(main.chip.src, vform, neg || question ? undefined : v.forms[tense])]
+      label = `${neg ? 'négatif · ' : ''}${FORM_LABEL[tense]}`
+    }
+
+    if (parts && (parts.length >= 2 || modal || weather || imperative)) {
+      const text = (c: Chip) => (c.text ?? c.item!.manglish).replace(/[?!.,]+$/, '')
+      const gloss = (c: Chip) => (c.gloss ?? c.item!.ml).replace(/[?!.,]+$/, '')
+      let manglish = parts.map((c, n) => (n && !PROPER.test(text(c)) ? text(c).toLowerCase() : text(c))).join(' ')
+      let ml = parts.map(gloss).join(' ')
+      if (question) { manglish += '?'; ml += '?' }
+      built = { parts, manglish: manglish.charAt(0).toUpperCase() + manglish.slice(1), ml, label: question ? `${label} · question` : label }
+    }
   }
 
   return { exact, related, verbs: verbHits, words: exact.length ? [] : words, built }

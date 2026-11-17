@@ -1,5 +1,5 @@
 // Offline support: network-first for the page, cache-first for everything else.
-const CACHE = 'cheri-malayalam-v5'
+const CACHE = 'cheri-malayalam-v6'
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(['/', '/manifest.webmanifest', '/icon.svg'])))
   self.skipWaiting()
