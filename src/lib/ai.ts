@@ -21,9 +21,6 @@ export const AI_ERROR_TEXT: Record<AiError, string> = {
   failed: 'La traduction IA n’a pas marché. Réessaie un peu plus tard.',
 }
 
-/** Technical cause of the last failure, shown small under the error to help fix setup problems. */
-export let lastAiDetail = ''
-
 const CACHE_KEY = 'cheri-ai-cache'
 const CODE_KEY = 'cheri-ai-code'
 const MAX_CACHE = 150
@@ -47,7 +44,6 @@ export function setAiCode(code: string) {
 export async function aiTranslate(text: string, dir: Dir): Promise<AiTranslation> {
   const hit = cachedAi(text, dir)
   if (hit) return hit
-  lastAiDetail = ''
   if (!navigator.onLine) throw 'offline' as AiError
   let res: Response
   try {
@@ -60,10 +56,11 @@ export async function aiTranslate(text: string, dir: Dir): Promise<AiTranslation
   const data = await res.json().catch(() => null)
   if (!res.ok || !data || typeof data.manglish !== 'string') {
     const code = data?.error
-    lastAiDetail = data
-      ? `${res.status} ${code ?? ''} ${data.detail ?? ''}`.trim()
-      : `${res.status} : le serveur n’a pas renvoyé de JSON (fonction /api/translate non déployée ?)`
-    throw (['not-configured', 'bad-code', 'busy', 'too-long', 'refusal'].includes(code) ? code : res.status === 404 ? 'not-configured' : 'failed') as AiError
+    // Technical details go to the developer console only, never on her screen.
+    console.warn('[AI translation]', res.status, code ?? (data ? '' : 'non-JSON response: is /api/translate deployed?'))
+    // No JSON at all (404/405 from the static host) means the server function isn't deployed yet.
+    if (!data) throw 'not-configured' as AiError
+    throw (['not-configured', 'bad-code', 'busy', 'too-long', 'refusal'].includes(code) ? code : 'failed') as AiError
   }
   const result: AiTranslation = { ...data, words: Array.isArray(data.words) ? data.words : [] }
   try {

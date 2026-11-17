@@ -174,7 +174,11 @@ export async function onRequestPost({ request, env }: Context): Promise<Response
   if (env.TRANSLATE_CODE && request.headers.get('x-translate-code') !== env.TRANSLATE_CODE) return json({ error: 'bad-code' }, 401)
   // Only the app itself may call this endpoint from a browser.
   const origin = request.headers.get('origin')
-  if (origin && new URL(origin).host !== new URL(request.url).host) return json({ error: 'forbidden' }, 403)
+  if (origin) {
+    let sameHost = false
+    try { sameHost = new URL(origin).host === new URL(request.url).host } catch { /* e.g. « Origin: null » */ }
+    if (!sameHost) return json({ error: 'forbidden' }, 403)
+  }
 
   let body: { text?: unknown; dir?: unknown }
   try { body = await request.json() } catch { return json({ error: 'bad-request' }, 400) }
@@ -199,6 +203,8 @@ export async function onRequestPost({ request, env }: Context): Promise<Response
       // Try the next provider (e.g. Gemini's free daily limit reached → Claude).
     }
   }
-  // The detail (provider + HTTP status + short message, never the key) helps fix setup problems.
-  return json({ error: last, detail: details.join(' | ') }, STATUS[last])
+  // Provider details (HTTP status, short message) go to the server logs only (Cloudflare → Logs);
+  // the browser just gets a short error code.
+  console.error('[translate] all providers failed:', details.join(' | '))
+  return json({ error: last }, STATUS[last])
 }

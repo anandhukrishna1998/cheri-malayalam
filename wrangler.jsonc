@@ -1,0 +1,16 @@
+// Cloudflare Workers configuration (the dashboard's default project type).
+// The static app is served from ./dist; /api/* runs worker/index.ts first.
+// Secrets (GEMINI_API_KEY, TRANSLATE_CODE, optional ANTHROPIC_API_KEY) are set in the
+// dashboard: the Worker → Settings → Variables and Secrets. They are never stored here.
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "cheri-malayalam",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"]
+  },
+  "observability": { "enabled": true }
+}

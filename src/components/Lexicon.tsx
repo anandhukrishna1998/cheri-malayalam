@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { AI_ERROR_TEXT, aiTranslate, cachedAi, lastAiDetail, setAiCode, type AiError, type AiTranslation } from '../lib/ai'
+import { AI_ERROR_TEXT, aiTranslate, cachedAi, setAiCode, type AiError, type AiTranslation } from '../lib/ai'
 import { FORMS, FORM_LABEL, dictCategories, phraseCategories, sourceOf, units, verbs, type Form, type Item, type Verb } from '../lib/content'
 import { play, playAndWait } from '../lib/audio'
 import { translate, type Chip, type Dir } from '../lib/translate'
@@ -248,9 +248,7 @@ function AiCard({ state, dir, prominent, onAsk, showScript, tooLong }: {
   if (state.err) return (
     <section className="tr-ai card" aria-live="polite">
       <p className="kicker">✨ Traduction IA</p>
-      <p>{AI_ERROR_TEXT[state.err]}</p>
-      {lastAiDetail && state.err !== 'bad-code' && state.err !== 'offline' && <p className="tr-ai-detail">Détail technique : {lastAiDetail}</p>}
-      {state.err === 'bad-code' && (
+      <p>{AI_ERROR_TEXT[state.err]}</p>      {state.err === 'bad-code' && (
         <form className="tr-ai-code" onSubmit={e => { e.preventDefault(); setAiCode(code); onAsk() }}>
           <input className="type-input" value={code} onChange={e => setCode(e.target.value)} placeholder="Code secret" aria-label="Code secret" autoComplete="off" />
           <button className="btn primary" type="submit">OK</button>

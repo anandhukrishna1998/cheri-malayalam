@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "audio": "node scripts/gen-audio.mjs",
-    "deploy": "npm run build && npx wrangler pages deploy dist --project-name cheri-malayalam",
+    "deploy": "npm run build && npx wrangler deploy",
+    "deploy:pages": "npm run build && npx wrangler pages deploy dist --project-name cheri-malayalam",
     "check": "node scripts/check-content.mjs"
   },
   "dependencies": {
