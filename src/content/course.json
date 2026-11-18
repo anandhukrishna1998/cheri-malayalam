@@ -1,0 +1,448 @@
+{
+  "sessions": [
+    {
+      "id": "vocab-famille",
+      "date": "2026-10-01",
+      "title": "Vocabulaire général - Famille",
+      "emoji": "👨‍👩‍👧‍👦",
+      "intro": "Les membres de la famille proche et élargie en malayalam.",
+      "items": [
+        { "id": "c-fam-achan", "manglish": "Achan", "fr": "Père / Papa", "ml": "അച്ഛൻ", "hint": "A-tchan", "category": "Famille", "date": "2026-10-01", "note": "On dit aussi Appa." },
+        { "id": "c-fam-amma", "manglish": "Amma", "fr": "Mère / Maman", "ml": "അമ്മ", "hint": "AM-ma", "category": "Famille", "date": "2026-10-01" },
+        { "id": "c-fam-chettan", "manglish": "Chettan", "fr": "Grand frère", "ml": "ചേട്ടൻ", "hint": "TCHÉT-tan", "category": "Famille", "date": "2026-10-01", "note": "Aussi utilisé par respect envers un jeune homme." },
+        { "id": "c-fam-chechi", "manglish": "Chechi", "fr": "Grande sœur", "ml": "ചേച്ചി", "hint": "TCHÉ-tchi", "category": "Famille", "date": "2026-10-01", "note": "Aussi utilisé par respect envers une jeune femme." },
+        { "id": "c-fam-aniyan", "manglish": "Aniyan", "fr": "Petit frère", "ml": "അനിയൻ", "hint": "a-ni-YAN", "category": "Famille", "date": "2026-10-01" },
+        { "id": "c-fam-aniyathi", "manglish": "Aniyathi", "fr": "Petite sœur", "ml": "അനിയത്തി", "hint": "a-ni-YAT-thi", "category": "Famille", "date": "2026-10-01" },
+        { "id": "c-fam-ammayi", "manglish": "Ammayi", "fr": "Tante", "ml": "അമ്മായി", "hint": "am-MAA-yi", "category": "Famille", "date": "2026-10-01", "note": "Tante paternelle ou épouse de l'oncle maternel." },
+        { "id": "c-fam-ammavan", "manglish": "Ammavan", "fr": "Oncle (maternel)", "ml": "അമ്മാവൻ", "hint": "am-MAA-van", "category": "Famille", "date": "2026-10-01", "note": "Frère de la mère." },
+        { "id": "c-fam-valyamma", "manglish": "Valyamma", "fr": "Grande tante (sœur aînée de la mère)", "ml": "വല്യമ്മ", "hint": "val-YAM-ma", "category": "Famille", "date": "2026-10-01" },
+        { "id": "c-fam-valyachan", "manglish": "Valyachan", "fr": "Grand oncle (frère aîné du père)", "ml": "വല്യച്ഛൻ", "hint": "val-YA-tchan", "category": "Famille", "date": "2026-10-01" },
+        { "id": "c-fam-appooppan", "manglish": "Appooppan", "fr": "Grand-père", "ml": "അപ്പൂപ്പൻ", "hint": "ap-POUP-pan", "category": "Famille", "date": "2026-10-01" },
+        { "id": "c-fam-ammoomma", "manglish": "Ammoomma", "fr": "Grand-mère", "ml": "അമ്മൂമ്മ", "hint": "am-MOUM-ma", "category": "Famille", "date": "2026-10-01" }
+      ]
+    },
+    {
+      "id": "cours-2026-10-01",
+      "date": "2026-10-01",
+      "title": "Cours du 01/10/26 - Les bases",
+      "emoji": "🌱",
+      "intro": "Premiers pronoms, salutations, politesse et questions du quotidien.",
+      "items": [
+        { "id": "c-1001-njan", "manglish": "Njan", "fr": "Je / Moi", "ml": "ഞാൻ", "hint": "GNAAN", "category": "Bases", "date": "2026-10-01" },
+        { "id": "c-1001-ente", "manglish": "Ente", "fr": "Mon / Ma / Mes", "ml": "എന്റെ", "hint": "ÉN-té", "category": "Bases", "date": "2026-10-01" },
+        { "id": "c-1001-nee", "manglish": "Nee", "fr": "Tu / Toi", "ml": "നീ", "hint": "NII", "category": "Bases", "date": "2026-10-01", "note": "Familier entre proches." },
+        { "id": "c-1001-ninte", "manglish": "Ninte", "fr": "Ton / Ta / Tes", "ml": "നിന്റെ", "hint": "NIN-té", "category": "Bases", "date": "2026-10-01" },
+        { "id": "c-1001-entha", "manglish": "Entha", "fr": "Quoi ? / Qu'est-ce que", "ml": "എന്താ", "hint": "ÉN-thaa", "category": "Bases", "date": "2026-10-01" },
+        { "id": "c-1001-peeru", "manglish": "Peeru", "fr": "Prénom / Nom", "ml": "പേര്", "hint": "PÉÉ-rou", "category": "Bases", "date": "2026-10-01" },
+        { "id": "c-1001-aate-aanu", "manglish": "Aate / Aanu", "fr": "Oui / C'est", "ml": "ആതെ / ആണ്", "hint": "AA-thé / AA-nou", "category": "Bases", "date": "2026-10-01" },
+        { "id": "c-1001-illa", "manglish": "Illa", "fr": "Non / Ne pas", "ml": "ഇല്ല", "hint": "IL-la", "category": "Bases", "date": "2026-10-01" },
+        { "id": "c-1001-vellam", "manglish": "Vellam", "fr": "Eau", "ml": "വെള്ളം", "hint": "VEL-lam", "category": "Bases", "date": "2026-10-01" },
+        { "id": "c-1001-evide", "manglish": "Evide", "fr": "Où", "ml": "എവിടെ", "hint": "é-VI-dé", "category": "Bases", "date": "2026-10-01" },
+        { "id": "c-1001-sugamano", "manglish": "Sugamano?", "fr": "Ça va ?", "ml": "സുഖമാണോ?", "hint": "sou-kha-MAA-no", "category": "Bases", "date": "2026-10-01" },
+        { "id": "c-1001-sugamanu", "manglish": "Sugamanu", "fr": "Ça va bien", "ml": "സുഖമാണ്", "hint": "sou-kha-MAA-nou", "category": "Bases", "date": "2026-10-01" },
+        { "id": "c-1001-sugamalla", "manglish": "Sugamalla", "fr": "Ça ne va pas", "ml": "സുഖമല്ല", "hint": "sou-kha-MAL-la", "category": "Bases", "date": "2026-10-01" },
+        { "id": "c-1001-manasilayo", "manglish": "Manasilayo?", "fr": "Tu as compris ?", "ml": "മനസ്സിലായോ?", "hint": "ma-na-si-LAA-yo", "category": "Bases", "date": "2026-10-01" },
+        { "id": "c-1001-manasilayi", "manglish": "Manasilayi", "fr": "J'ai compris", "ml": "മനസ്സിലായി", "hint": "ma-na-si-LAA-yi", "category": "Bases", "date": "2026-10-01" },
+        { "id": "c-1001-manasilayilla", "manglish": "Manasilayilla", "fr": "Je n'ai pas compris", "ml": "മനസ്സിലായില്ല", "hint": "ma-na-si-LAA-yil-la", "category": "Bases", "date": "2026-10-01" },
+        { "id": "c-1001-ninde-peerendha", "manglish": "Ninde peerendha?", "fr": "Comment tu t'appelles ?", "ml": "നിന്റെ പേരെന്താ?", "hint": "nin-dé péé-rén-dha", "category": "Bases", "date": "2026-10-01" },
+        { "id": "c-1001-ente-peeru-julie", "manglish": "Ente peeru Julie", "fr": "Je m'appelle Julie", "ml": "എന്റെ പേര് ജൂലി", "hint": "én-té péé-rou dju-li", "category": "Bases", "date": "2026-10-01" },
+        { "id": "c-1001-vellam-veno", "manglish": "Vellam veno?", "fr": "Tu veux de l'eau ?", "ml": "വെള്ളം വേണോ?", "hint": "vel-lam VÉ-no", "category": "Bases", "date": "2026-10-01" },
+        { "id": "c-1001-vellam-venam", "manglish": "Vellam venam", "fr": "Je veux de l'eau", "ml": "വെള്ളം വേണം", "hint": "vel-lam VÉ-nam", "category": "Bases", "date": "2026-10-01" },
+        { "id": "c-1001-vellam-venda", "manglish": "Vellam venda", "fr": "Je ne veux pas d'eau", "ml": "വെള്ളം വേണ്ട", "hint": "vel-lam VÉN-da", "category": "Bases", "date": "2026-10-01" }
+      ]
+    },
+    {
+      "id": "cours-2026-10-08",
+      "date": "2026-10-08",
+      "title": "Cours du 08/10/26 - Verbes et pronoms",
+      "emoji": "🏃",
+      "intro": "Verbes d'action, pronoms personnels et terminaisons (-unnu, -um).",
+      "items": [
+        { "id": "c-1008-kazhikkuka", "manglish": "Kazhikkuka", "fr": "Manger", "ml": "കഴിക്കുക", "hint": "ka-zhi-KKOU-ka", "category": "Verbes", "date": "2026-10-08" },
+        { "id": "c-1008-uranguka", "manglish": "Uranguka", "fr": "Dormir", "ml": "ഉറങ്ങുക", "hint": "ou-ran-GOU-ka", "category": "Verbes", "date": "2026-10-08" },
+        { "id": "c-1008-kudikkuka", "manglish": "Kudikkuka", "fr": "Boire", "ml": "കുടിക്കുക", "hint": "kou-di-KKOU-ka", "category": "Verbes", "date": "2026-10-08" },
+        { "id": "c-1008-pokuka", "manglish": "Pokuka", "fr": "Aller", "ml": "പോകുക", "hint": "POH-kou-ka", "category": "Verbes", "date": "2026-10-08" },
+        { "id": "c-1008-pidikkuka", "manglish": "Pidikkuka", "fr": "Tenir / Attraper", "ml": "പിടിക്കുക", "hint": "pi-di-KKOU-ka", "category": "Verbes", "date": "2026-10-08" },
+        { "id": "c-1008-manakkuka", "manglish": "Manakkuka", "fr": "Sentir (odeur)", "ml": "മണക്കുക", "hint": "ma-na-KKOU-ka", "category": "Verbes", "date": "2026-10-08" },
+        { "id": "c-1008-vaanguka", "manglish": "Vaanguka", "fr": "Acheter", "ml": "വാങ്ങുക", "hint": "vaang-GOU-ka", "category": "Verbes", "date": "2026-10-08" },
+        { "id": "c-1008-vilikkuka", "manglish": "Vilikkuka", "fr": "Appeler", "ml": "വിളിക്കുക", "hint": "vi-li-KKOU-ka", "category": "Verbes", "date": "2026-10-08" },
+        { "id": "c-1008-njan", "manglish": "Njan", "fr": "Je / Moi", "ml": "ഞാൻ", "hint": "GNAAN", "category": "Pronoms", "date": "2026-10-08" },
+        { "id": "c-1008-nee", "manglish": "Nee", "fr": "Tu / Toi", "ml": "നീ", "hint": "NII", "category": "Pronoms", "date": "2026-10-08" },
+        { "id": "c-1008-avan", "manglish": "Avan", "fr": "Il / Lui", "ml": "അവൻ", "hint": "a-VAN", "category": "Pronoms", "date": "2026-10-08" },
+        { "id": "c-1008-aval", "manglish": "Aval", "fr": "Elle", "ml": "അവൾ", "hint": "a-VAL", "category": "Pronoms", "date": "2026-10-08" },
+        { "id": "c-1008-njangal", "manglish": "Njangal", "fr": "Nous (sans toi)", "ml": "ഞങ്ങൾ", "hint": "GNANG-ngal", "category": "Pronoms", "date": "2026-10-08", "note": "Nous exclusif." },
+        { "id": "c-1008-nammal", "manglish": "Nammal", "fr": "Nous (avec toi)", "ml": "നമ്മൾ", "hint": "nam-MAL", "category": "Pronoms", "date": "2026-10-08", "note": "Nous inclusif." },
+        { "id": "c-1008-ningal", "manglish": "Ningal", "fr": "Vous", "ml": "നിങ്ങൾ", "hint": "nin-NGAL", "category": "Pronoms", "date": "2026-10-08" },
+        { "id": "c-1008-avar", "manglish": "Avar", "fr": "Ils / Elles", "ml": "അവർ", "hint": "a-VAR", "category": "Pronoms", "date": "2026-10-08" },
+        { "id": "c-1008-unnu", "manglish": "-unnu", "fr": "Terminaison présent (-unnu)", "ml": "-ുന്നു", "hint": "OUN-nou", "category": "Grammaire", "date": "2026-10-08" },
+        { "id": "c-1008-um", "manglish": "-um", "fr": "Terminaison futur (-um)", "ml": "-ും", "hint": "OUM", "category": "Grammaire", "date": "2026-10-08" }
+      ]
+    },
+    {
+      "id": "cours-2026-10-22",
+      "date": "2026-10-22",
+      "title": "Cours du 22/10/26 - Verbes, questions en -o et quotidien",
+      "emoji": "💬",
+      "intro": "Questions directes en -o, mots d'honnêteté et d'appréciation, questions et nombres 1 à 10.",
+      "items": [
+        { "id": "c-1022-kazhikkuvanu", "manglish": "Kazhikkuvanu", "fr": "En train de manger", "ml": "കഴിക്കുകയാണ്", "hint": "ka-zhi-kkou-vaa-nou", "category": "Verbes & -o", "date": "2026-10-22" },
+        { "id": "c-1022-kazhicho", "manglish": "Kazhicho?", "fr": "As-tu mangé ?", "ml": "കഴിച്ചോ?", "hint": "ka-zhi-TCHO", "category": "Verbes & -o", "date": "2026-10-22" },
+        { "id": "c-1022-kudikkuvanu", "manglish": "Kudikkuvanu", "fr": "En train de boire", "ml": "കുടിക്കുകയാണ്", "hint": "kou-di-kkou-vaa-nou", "category": "Verbes & -o", "date": "2026-10-22" },
+        { "id": "c-1022-kudicho", "manglish": "Kudicho?", "fr": "As-tu bu ?", "ml": "കുടിച്ചോ?", "hint": "kou-di-TCHO", "category": "Verbes & -o", "date": "2026-10-22" },
+        { "id": "c-1022-padikkuvanu", "manglish": "Padikkuvanu", "fr": "En train d'étudier", "ml": "പഠിക്കുകയാണ്", "hint": "pa-di-kkou-vaa-nou", "category": "Verbes & -o", "date": "2026-10-22" },
+        { "id": "c-1022-padicho", "manglish": "Padicho?", "fr": "As-tu étudié ?", "ml": "പഠിച്ചോ?", "hint": "pa-di-TCHO", "category": "Verbes & -o", "date": "2026-10-22" },
+        { "id": "c-1022-uranguvanu", "manglish": "Uranguvanu", "fr": "En train de dormir", "ml": "ഉറങ്ങുകയാണ്", "hint": "ou-ran-gou-vaa-nou", "category": "Verbes & -o", "date": "2026-10-22" },
+        { "id": "c-1022-urangiyo", "manglish": "Urangiyo?", "fr": "As-tu dormi ?", "ml": "ഉറങ്ങിയോ?", "hint": "ou-ran-GI-yo", "category": "Verbes & -o", "date": "2026-10-22" },
+        { "id": "c-1022-nadakkuvanu", "manglish": "Nadakkuvanu", "fr": "En train de marcher", "ml": "നടക്കുകയാണ്", "hint": "na-da-kkou-vaa-nou", "category": "Verbes & -o", "date": "2026-10-22" },
+        { "id": "c-1022-nadanno", "manglish": "Nadanno?", "fr": "As-tu marché ?", "ml": "നടന്നോ?", "hint": "na-DAN-no", "category": "Verbes & -o", "date": "2026-10-22" },
+        { "id": "c-1022-sathyam", "manglish": "Sathyam", "fr": "Vérité", "ml": "സത്യം", "hint": "SAT-hyam", "category": "Vocabulaire", "date": "2026-10-22" },
+        { "id": "c-1022-sherikkum", "manglish": "Sherikkum", "fr": "Vraiment / Pour de vrai", "ml": "ശരിക്കും", "hint": "chéri-KKOUM", "category": "Vocabulaire", "date": "2026-10-22" },
+        { "id": "c-1022-kollam", "manglish": "Kollam", "fr": "Bien / C'est chouette", "ml": "കൊള്ളാം", "hint": "KOL-laam", "category": "Vocabulaire", "date": "2026-10-22" },
+        { "id": "c-1022-kallam", "manglish": "Kallam", "fr": "Mensonge", "ml": "കള്ളം", "hint": "KAL-lam", "category": "Vocabulaire", "date": "2026-10-22" },
+        { "id": "c-1022-eppo", "manglish": "Eppo", "fr": "Quand", "ml": "എപ്പോ", "hint": "ÉP-po", "category": "Questions", "date": "2026-10-22" },
+        { "id": "c-1022-evide", "manglish": "Evide", "fr": "Où", "ml": "എവിടെ", "hint": "é-VI-dé", "category": "Questions", "date": "2026-10-22" },
+        { "id": "c-1022-engane", "manglish": "Engane", "fr": "Comment", "ml": "എങ്ങനെ", "hint": "én-GA-né", "category": "Questions", "date": "2026-10-22" },
+        { "id": "c-1022-aara", "manglish": "Aara", "fr": "Qui", "ml": "ആരാ", "hint": "AA-raa", "category": "Questions", "date": "2026-10-22" },
+        { "id": "c-1022-office-il-poyo", "manglish": "Office il poyo?", "fr": "Tu es allé au bureau ?", "ml": "ഓഫീസിൽ പോയോ?", "hint": "oh-fis-il POH-yo", "category": "Phrases", "date": "2026-10-22" },
+        { "id": "c-1022-evide-pokuva", "manglish": "Evide pokuva?", "fr": "Où vas-tu ?", "ml": "എവിടെ പോകുവാ?", "hint": "é-vi-dé POH-kou-va", "category": "Phrases", "date": "2026-10-22" },
+        { "id": "c-num-1", "manglish": "Onnu", "fr": "1 (Un)", "ml": "ഒന്ന്", "hint": "ON-nou", "category": "Nombres", "date": "2026-10-22" },
+        { "id": "c-num-2", "manglish": "Randu", "fr": "2 (Deux)", "ml": "രണ്ട്", "hint": "RAN-dou", "category": "Nombres", "date": "2026-10-22" },
+        { "id": "c-num-3", "manglish": "Moonnu", "fr": "3 (Trois)", "ml": "മൂന്ന്", "hint": "MOUN-nou", "category": "Nombres", "date": "2026-10-22" },
+        { "id": "c-num-4", "manglish": "Naalu", "fr": "4 (Quatre)", "ml": "നാല്", "hint": "NAA-lou", "category": "Nombres", "date": "2026-10-22" },
+        { "id": "c-num-5", "manglish": "Anju", "fr": "5 (Cinq)", "ml": "അഞ്ച്", "hint": "AN-djou", "category": "Nombres", "date": "2026-10-22" },
+        { "id": "c-num-6", "manglish": "Aaru", "fr": "6 (Six)", "ml": "ആറ്", "hint": "AA-rou", "category": "Nombres", "date": "2026-10-22" },
+        { "id": "c-num-7", "manglish": "Ezhu", "fr": "7 (Sept)", "ml": "ഏഴ്", "hint": "ÉÉ-zhou", "category": "Nombres", "date": "2026-10-22" },
+        { "id": "c-num-8", "manglish": "Ettu", "fr": "8 (Huit)", "ml": "എട്ട്", "hint": "ÉT-tou", "category": "Nombres", "date": "2026-10-22" },
+        { "id": "c-num-9", "manglish": "Onpathu", "fr": "9 (Neuf)", "ml": "ഒൻപത്", "hint": "on-PA-thou", "category": "Nombres", "date": "2026-10-22" },
+        { "id": "c-num-10", "manglish": "Pathu", "fr": "10 (Dix)", "ml": "പത്ത്", "hint": "PAT-thou", "category": "Nombres", "date": "2026-10-22" }
+      ]
+    },
+    {
+      "id": "cours-2026-10-29",
+      "date": "2026-10-29",
+      "title": "Cours du 29/10/26 - Le corps et la douleur",
+      "emoji": "🩺",
+      "intro": "Parties du corps, exprimer une douleur, le verbe untakuka/undu et nombres 11 à 20.",
+      "items": [
+        { "id": "c-1029-kannu", "manglish": "Kannu", "fr": "Œil / Yeux", "ml": "കണ്ണ്", "hint": "KAN-nou", "category": "Corps", "date": "2026-10-29" },
+        { "id": "c-1029-mooku", "manglish": "Mooku", "fr": "Nez", "ml": "മൂക്ക്", "hint": "MOU-kkou", "category": "Corps", "date": "2026-10-29" },
+        { "id": "c-1029-vaya", "manglish": "Vaya", "fr": "Bouche", "ml": "വായ", "hint": "VAA-ya", "category": "Corps", "date": "2026-10-29" },
+        { "id": "c-1029-nakku", "manglish": "Nakku", "fr": "Langue", "ml": "നാക്ക്", "hint": "NAA-kkou", "category": "Corps", "date": "2026-10-29" },
+        { "id": "c-1029-kathu", "manglish": "Kathu", "fr": "Oreille", "ml": "കാത്", "hint": "KAA-thou", "category": "Corps", "date": "2026-10-29" },
+        { "id": "c-1029-thala", "manglish": "Thala", "fr": "Tête", "ml": "തല", "hint": "THA-la", "category": "Corps", "date": "2026-10-29" },
+        { "id": "c-1029-kai", "manglish": "Kai", "fr": "Main / Bras", "ml": "കൈ", "hint": "KAÏ", "category": "Corps", "date": "2026-10-29" },
+        { "id": "c-1029-kaalu", "manglish": "Kaalu", "fr": "Jambe / Pied", "ml": "കാല്", "hint": "KAA-lou", "category": "Corps", "date": "2026-10-29" },
+        { "id": "c-1029-vayaru", "manglish": "Vayaru", "fr": "Ventre / Estomac", "ml": "വയറ്", "hint": "va-YA-rou", "category": "Corps", "date": "2026-10-29" },
+        { "id": "c-1029-vedana", "manglish": "Vedana", "fr": "Douleur / Mal", "ml": "വേദന", "hint": "VÉ-da-na", "category": "Santé", "date": "2026-10-29" },
+        { "id": "c-1029-vedanikunnu", "manglish": "Vedanikunnu", "fr": "Ça fait mal", "ml": "വേദനിക്കുന്നു", "hint": "vé-da-ni-KKOUN-nou", "category": "Santé", "date": "2026-10-29" },
+        { "id": "c-1029-thala-vedanikunnu", "manglish": "Thala vedanikunnu", "fr": "J'ai mal à la tête", "ml": "തല വേദനിക്കുന്നു", "hint": "tha-la vé-da-ni-KKOUN-nou", "category": "Santé", "date": "2026-10-29" },
+        { "id": "c-1029-untakuka", "manglish": "Untakuka", "fr": "Créer / Avoir lieu", "ml": "ഉണ്ടാകുക", "hint": "oun-daa-GOU-ka", "category": "Grammaire", "date": "2026-10-29" },
+        { "id": "c-1029-undu", "manglish": "Undu", "fr": "Il y a / Avoir", "ml": "ഉണ്ട്", "hint": "OUN-dou", "category": "Grammaire", "date": "2026-10-29" },
+        { "id": "c-1029-undayirunnu", "manglish": "Undayirunnu", "fr": "Il y avait / J'avais", "ml": "ഉണ്ടായിരുന്നു", "hint": "oun-daa-yi-ROUN-nou", "category": "Grammaire", "date": "2026-10-29" },
+        { "id": "c-1029-undakum", "manglish": "Undakum", "fr": "Il y aura", "ml": "ഉണ്ടാകും", "hint": "oun-daa-GOUM", "category": "Grammaire", "date": "2026-10-29" },
+        { "id": "c-1029-engane-undu", "manglish": "Engane undu?", "fr": "Comment ça va ? / Comment c'est ?", "ml": "എങ്ങനെ ഉണ്ട്?", "hint": "én-ga-né OUN-dou", "category": "Phrases", "date": "2026-10-29" },
+        { "id": "c-1029-aara-varunne", "manglish": "Aara varunne?", "fr": "Qui vient ?", "ml": "ആരാ വരുന്നേ?", "hint": "aa-raa va-ROUN-né", "category": "Phrases", "date": "2026-10-29" },
+        { "id": "c-1029-eppo-ethum", "manglish": "Eppo ethum?", "fr": "Quand arriveras-tu ?", "ml": "എപ്പോ എത്തും?", "hint": "ép-po ÉT-thoum", "category": "Phrases", "date": "2026-10-29" },
+        { "id": "c-num-11", "manglish": "Pathinonnu", "fr": "11 (Onze)", "ml": "പതിനൊന്ന്", "hint": "pa-thi-NON-nou", "category": "Nombres", "date": "2026-10-29" },
+        { "id": "c-num-12", "manglish": "Pannirendu", "fr": "12 (Douze)", "ml": "പന്ത്രണ്ട്", "hint": "pan-TRAN-dou", "category": "Nombres", "date": "2026-10-29" },
+        { "id": "c-num-13", "manglish": "Pathimoonnu", "fr": "13 (Treize)", "ml": "പതിമൂന്ന്", "hint": "pa-thi-MOUN-nou", "category": "Nombres", "date": "2026-10-29" },
+        { "id": "c-num-14", "manglish": "Pathinaalu", "fr": "14 (Quatorze)", "ml": "പതിനാല്", "hint": "pa-thi-NAA-lou", "category": "Nombres", "date": "2026-10-29" },
+        { "id": "c-num-15", "manglish": "Pathinanju", "fr": "15 (Quinze)", "ml": "പതിനഞ്ച്", "hint": "pa-thi-NAN-djou", "category": "Nombres", "date": "2026-10-29" },
+        { "id": "c-num-16", "manglish": "Pathinaaru", "fr": "16 (Seize)", "ml": "പതിനാറ്", "hint": "pa-thi-NAA-rou", "category": "Nombres", "date": "2026-10-29" },
+        { "id": "c-num-17", "manglish": "Pathinezhu", "fr": "17 (Dix-sept)", "ml": "പതിനേഴ്", "hint": "pa-thi-NÉÉ-zhou", "category": "Nombres", "date": "2026-10-29" },
+        { "id": "c-num-18", "manglish": "Pathinettu", "fr": "18 (Dix-huit)", "ml": "പതിനെട്ട്", "hint": "pa-thi-NÉT-tou", "category": "Nombres", "date": "2026-10-29" },
+        { "id": "c-num-19", "manglish": "Pathonpathu", "fr": "19 (Dix-neuf)", "ml": "പത്തൊൻപത്", "hint": "pat-thon-PA-thou", "category": "Nombres", "date": "2026-10-29" },
+        { "id": "c-num-20", "manglish": "Irupathu", "fr": "20 (Vingt)", "ml": "ഇരുപത്", "hint": "i-rou-PA-thou", "category": "Nombres", "date": "2026-10-29" }
+      ]
+    },
+    {
+      "id": "cours-2026-11-05",
+      "date": "2026-11-05",
+      "title": "Cours du 05/11/26 - Conjugaisons & Conversation",
+      "emoji": "🗣️",
+      "intro": "Les 3 temps (passé, présent, futur), les questions en -o, les vocatifs complices Da / Di et dialogues en situation.",
+      "items": [
+        { "id": "c-1105-urangi", "manglish": "Urangi", "fr": "A dormi", "ml": "ഉറങ്ങി", "hint": "ou-ran-GI", "category": "Conjugaisons", "date": "2026-11-05" },
+        { "id": "c-1105-urangunnu", "manglish": "Urangunnu", "fr": "Dort", "ml": "ഉറങ്ങുന്നു", "hint": "ou-ran-GOU-nou", "category": "Conjugaisons", "date": "2026-11-05" },
+        { "id": "c-1105-urangum", "manglish": "Urangum", "fr": "Dormira", "ml": "ഉറങ്ങും", "hint": "ou-ran-GOUM", "category": "Conjugaisons", "date": "2026-11-05" },
+        { "id": "c-1105-nadannu", "manglish": "Nadannu", "fr": "A marché", "ml": "നടന്നു", "hint": "na-DAN-nou", "category": "Conjugaisons", "date": "2026-11-05" },
+        { "id": "c-1105-nadakkunnu", "manglish": "Nadakkunnu", "fr": "Marche", "ml": "നടക്കുന്നു", "hint": "na-da-KKOUN-nou", "category": "Conjugaisons", "date": "2026-11-05" },
+        { "id": "c-1105-nadakkum", "manglish": "Nadakkum", "fr": "Marchera", "ml": "നടക്കും", "hint": "na-da-KKOUM", "category": "Conjugaisons", "date": "2026-11-05" },
+        { "id": "c-1105-njan-urangi", "manglish": "Njan urangi", "fr": "J'ai dormi", "ml": "ഞാൻ ഉറങ്ങി", "hint": "gnaan ou-ran-GI", "category": "Phrases", "date": "2026-11-05" },
+        { "id": "c-1105-avan-ivide-urangi", "manglish": "Avan ivide urangi", "fr": "Il a dormi ici", "ml": "അവൻ ഇവിടെ ഉറങ്ങി", "hint": "a-van i-vi-dé ou-ran-GI", "category": "Phrases", "date": "2026-11-05" },
+        { "id": "c-1105-aval-urangunnu", "manglish": "Aval urangunnu", "fr": "Elle dort", "ml": "അവൾ ഉറങ്ങുന്നു", "hint": "a-val ou-ran-GOU-nou", "category": "Phrases", "date": "2026-11-05" },
+        { "id": "c-1105-avar-ivide-urangunnu", "manglish": "Avar ivide urangunnu", "fr": "Ils dorment ici", "ml": "അവർ ഇവിടെ ഉറങ്ങുന്നു", "hint": "a-var i-vi-dé ou-ran-GOU-nou", "category": "Phrases", "date": "2026-11-05" },
+        { "id": "c-1105-njan-urangum", "manglish": "Njan urangum", "fr": "Je dormirai", "ml": "ഞാൻ ഉറങ്ങും", "hint": "gnaan ou-ran-GOUM", "category": "Phrases", "date": "2026-11-05" },
+        { "id": "c-1105-avan-urangum", "manglish": "Avan urangum", "fr": "Il dormira", "ml": "അവൻ ഉറങ്ങും", "hint": "a-van ou-ran-GOUM", "category": "Phrases", "date": "2026-11-05" },
+        { "id": "c-1105-aval-nadannu", "manglish": "Aval nadannu", "fr": "Elle a marché", "ml": "അവൾ നടന്നു", "hint": "a-val na-DAN-nou", "category": "Phrases", "date": "2026-11-05" },
+        { "id": "c-1105-njan-ivide-nadannu", "manglish": "Njan ivide nadannu", "fr": "J'ai marché ici", "ml": "ഞാൻ ഇവിടെ നടന്നു", "hint": "gnaan i-vi-dé na-DAN-nou", "category": "Phrases", "date": "2026-11-05" },
+        { "id": "c-1105-avan-nadakkunnu", "manglish": "Avan nadakkunnu", "fr": "Il marche", "ml": "അവൻ നടക്കുന്നു", "hint": "a-van na-da-KKOUN-nou", "category": "Phrases", "date": "2026-11-05" },
+        { "id": "c-1105-avar-ivide-nadakkunnu", "manglish": "Avar ivide nadakkunnu", "fr": "Ils marchent ici", "ml": "അവർ ഇവിടെ നടക്കുന്നു", "hint": "a-var i-vi-dé na-da-KKOUN-nou", "category": "Phrases", "date": "2026-11-05" },
+        { "id": "c-1105-ni-nadakkum", "manglish": "Ni nadakkum", "fr": "Tu marcheras", "ml": "നീ നടക്കും", "hint": "nii na-da-KKOUM", "category": "Phrases", "date": "2026-11-05" },
+        { "id": "c-1105-avar-nadakkum", "manglish": "Avar nadakkum", "fr": "Ils marcheront", "ml": "അവർ നടക്കും", "hint": "a-var na-da-KKOUM", "category": "Phrases", "date": "2026-11-05" },
+        { "id": "c-1105-avan-urangiyo", "manglish": "Avan urangiyo?", "fr": "Est-ce qu'il a dormi ?", "ml": "അവൻ ഉറങ്ങിയോ?", "hint": "a-van ou-ran-GI-yo", "category": "Questions en -o", "date": "2026-11-05" },
+        { "id": "c-1105-aval-urangiyo", "manglish": "Aval urangiyo?", "fr": "Est-ce qu'elle a dormi ?", "ml": "അവൾ ഉറങ്ങിയോ?", "hint": "a-val ou-ran-GI-yo", "category": "Questions en -o", "date": "2026-11-05" },
+        { "id": "c-1105-avar-urangiyo", "manglish": "Avar urangiyo?", "fr": "Ont-ils dormi ?", "ml": "അവർ ഉറങ്ങിയോ?", "hint": "a-var ou-ran-GI-yo", "category": "Questions en -o", "date": "2026-11-05" },
+        { "id": "c-1105-ni-urangiyo", "manglish": "Ni urangiyo?", "fr": "Est-ce que tu as dormi ?", "ml": "നീ ഉറങ്ങിയോ?", "hint": "nii ou-ran-GI-yo", "category": "Questions en -o", "date": "2026-11-05" },
+        { "id": "c-1105-da-ni-urangiyo", "manglish": "Da ni urangiyo?", "fr": "Hé mec, tu as dormi ?", "ml": "ഡാ നീ ഉറങ്ങിയോ?", "hint": "daa nii ou-ran-GI-yo", "category": "Questions en -o", "date": "2026-11-05", "note": "'Da' s'adresse affectueusement à un ami masculin." },
+        { "id": "c-1105-di-aval-urangiyo", "manglish": "Di aval urangiyo?", "fr": "Hé meuf, elle a dormi ?", "ml": "ടീ അവൾ ഉറങ്ങിയോ?", "hint": "dii a-val ou-ran-GI-yo", "category": "Questions en -o", "date": "2026-11-05", "note": "'Di' s'adresse familièrement à une amie féminine." },
+        { "id": "c-1105-avan-nadanno", "manglish": "Avan nadanno?", "fr": "Est-ce qu'il a marché ?", "ml": "അവൻ നടന്നോ?", "hint": "a-van na-DAN-no", "category": "Questions en -o", "date": "2026-11-05" },
+        { "id": "c-1105-aval-nadanno", "manglish": "Aval nadanno?", "fr": "Est-ce qu'elle a marché ?", "ml": "അവൾ നടന്നോ?", "hint": "a-val na-DAN-no", "category": "Questions en -o", "date": "2026-11-05" },
+        { "id": "c-1105-avar-nadanno", "manglish": "Avar nadanno?", "fr": "Ont-ils marché ?", "ml": "അവർ നടന്നോ?", "hint": "a-var na-DAN-no", "category": "Questions en -o", "date": "2026-11-05" },
+        { "id": "c-1105-ni-nadanno", "manglish": "Ni nadanno?", "fr": "Est-ce que tu as marché ?", "ml": "നീ നടന്നോ?", "hint": "nii na-DAN-no", "category": "Questions en -o", "date": "2026-11-05" },
+        { "id": "c-1105-ni-ivide-varu", "manglish": "Ni ivide varu", "fr": "Viens ici", "ml": "നീ ഇവിടെ വരൂ", "hint": "nii i-vi-dé vaa-rou", "category": "Phrases", "date": "2026-11-05" },
+        { "id": "c-1105-da-ivide-varu", "manglish": "Da ivide varu", "fr": "Hé mec, viens ici", "ml": "ഡാ ഇവിടെ വരൂ", "hint": "daa i-vi-dé vaa-rou", "category": "Phrases", "date": "2026-11-05" },
+        { "id": "c-1105-ni-kazhicho", "manglish": "Ni kazhicho?", "fr": "As-tu mangé ?", "ml": "നീ കഴിച്ചോ?", "hint": "nii ka-zhi-TCHO", "category": "Questions en -o", "date": "2026-11-05" },
+        { "id": "c-1105-avan-kazhicho", "manglish": "Avan kazhicho?", "fr": "A-t-il mangé ?", "ml": "അവൻ കഴിച്ചോ?", "hint": "a-van ka-zhi-TCHO", "category": "Questions en -o", "date": "2026-11-05" },
+        { "id": "c-1105-aval-kazhicho", "manglish": "Aval kazhicho?", "fr": "A-t-elle mangé ?", "ml": "അവൾ കഴിച്ചോ?", "hint": "a-val ka-zhi-TCHO", "category": "Questions en -o", "date": "2026-11-05" },
+        { "id": "c-1105-da-ni-kazhicho", "manglish": "Da ni kazhicho?", "fr": "Hé mec, tu as mangé ?", "ml": "ഡാ നീ കഴിച്ചോ?", "hint": "daa nii ka-zhi-TCHO", "category": "Questions en -o", "date": "2026-11-05" },
+        { "id": "c-1105-di-ni-kazhicho", "manglish": "Di ni kazhicho?", "fr": "Hé meuf, tu as mangé ?", "ml": "ടീ നീ കഴിച്ചോ?", "hint": "dii nii ka-zhi-TCHO", "category": "Questions en -o", "date": "2026-11-05" },
+        { "id": "c-1105-ninde-da-di", "manglish": "Ninde da/di?", "fr": "Ton pote / ta pote ?", "ml": "നിന്റെ ഡാ/ടീ?", "hint": "nin-dé daa / dii", "category": "Phrases", "date": "2026-11-05" },
+        { "id": "c-1105-avan-ente", "manglish": "Avan ente...", "fr": "Il est mon...", "ml": "അവൻ എന്റെ...", "hint": "a-van én-té", "category": "Phrases", "date": "2026-11-05" },
+        { "id": "c-1105-aval-ivide-urangiyo", "manglish": "Aval ivide urangiyo?", "fr": "Est-ce qu'elle a dormi ici ?", "ml": "അവൾ ഇവിടെ ഉറങ്ങിയോ?", "hint": "a-val i-vi-dé ou-ran-GI-yo", "category": "Questions en -o", "date": "2026-11-05" }
+      ]
+    },
+    {
+      "id": "cours-2026-11-12",
+      "date": "2026-11-12",
+      "title": "Cours du 12/11/26 - Le temps & expressions",
+      "emoji": "⏰",
+      "intro": "Repères temporels, moments de la journée, expressions du quotidien et nombres 21 à 30.",
+      "items": [
+        { "id": "c-1112-innu", "manglish": "Innu", "fr": "Aujourd'hui", "ml": "ഇന്ന്", "hint": "IN-nou", "category": "Temps", "date": "2026-11-12" },
+        { "id": "c-1112-nale", "manglish": "Nale", "fr": "Demain", "ml": "നാളെ", "hint": "NAA-lé", "category": "Temps", "date": "2026-11-12" },
+        { "id": "c-1112-innale", "manglish": "Innale", "fr": "Hier", "ml": "ഇന്നലെ", "hint": "in-NA-lé", "category": "Temps", "date": "2026-11-12" },
+        { "id": "c-1112-ippo", "manglish": "Ippo", "fr": "Maintenant", "ml": "ഇപ്പോ", "hint": "IP-po", "category": "Temps", "date": "2026-11-12" },
+        { "id": "c-1112-aazhcha", "manglish": "Aazhcha", "fr": "Semaine", "ml": "ആഴ്ച", "hint": "AAZH-tcha", "category": "Temps", "date": "2026-11-12" },
+        { "id": "c-1112-masam", "manglish": "Masam", "fr": "Mois", "ml": "മാസം", "hint": "MAA-sam", "category": "Temps", "date": "2026-11-12" },
+        { "id": "c-1112-varsham", "manglish": "Varsham", "fr": "Année", "ml": "വർഷം", "hint": "VAR-cham", "category": "Temps", "date": "2026-11-12" },
+        { "id": "c-1112-rawile", "manglish": "Rawile", "fr": "Le matin", "ml": "രാവിലെ", "hint": "RAA-vi-lé", "category": "Temps", "date": "2026-11-12" },
+        { "id": "c-1112-ucha", "manglish": "Ucha", "fr": "Le midi", "ml": "ഉച്ച", "hint": "OU-tcha", "category": "Temps", "date": "2026-11-12" },
+        { "id": "c-1112-vayhunneram", "manglish": "Vayhunneram", "fr": "Le soir / Fin d'après-midi", "ml": "വൈകുന്നേരം", "hint": "vaï-koun-NÉ-ram", "category": "Temps", "date": "2026-11-12" },
+        { "id": "c-1112-rathri", "manglish": "Rathri", "fr": "La nuit", "ml": "രാത്രി", "hint": "RAA-thri", "category": "Temps", "date": "2026-11-12" },
+        { "id": "c-1112-pinne", "manglish": "Pinne", "fr": "Plus tard / Ensuite", "ml": "പിന്നെ", "hint": "PIN-né", "category": "Vocabulaire", "date": "2026-11-12" },
+        { "id": "c-1112-pinne-etha", "manglish": "Pinne etha", "fr": "Et puis quoi d'autre ?", "ml": "പിന്നെന്താ", "hint": "pin-nén-thaa", "category": "Phrases", "date": "2026-11-12" },
+        { "id": "c-1112-veedu", "manglish": "Veedu", "fr": "Maison", "ml": "വീട്", "hint": "VEE-dou", "category": "Vocabulaire", "date": "2026-11-12" },
+        { "id": "c-1112-venam", "manglish": "Venam", "fr": "Vouloir / Il faut", "ml": "വേണം", "hint": "VÉ-nam", "category": "Vocabulaire", "date": "2026-11-12" },
+        { "id": "c-1112-venda", "manglish": "Venda", "fr": "Ne pas vouloir / Pas besoin", "ml": "വേണ്ട", "hint": "VÉN-da", "category": "Vocabulaire", "date": "2026-11-12" },
+        { "id": "c-num-21", "manglish": "Irupathonnu", "fr": "21 (Vingt-et-un)", "ml": "ഇരുപത്തൊന്ന്", "hint": "i-rou-pat-thon-nou", "category": "Nombres", "date": "2026-11-12" },
+        { "id": "c-num-22", "manglish": "Irupathrandu", "fr": "22 (Vingt-deux)", "ml": "ഇരുപത്തിരണ്ട്", "hint": "i-rou-pat-thran-dou", "category": "Nombres", "date": "2026-11-12" },
+        { "id": "c-num-23", "manglish": "Irupathmoonnu", "fr": "23 (Vingt-trois)", "ml": "ഇരുപത്തിമൂന്ന്", "hint": "i-rou-pat-thmoun-nou", "category": "Nombres", "date": "2026-11-12" },
+        { "id": "c-num-24", "manglish": "Irupathnaalu", "fr": "24 (Vingt-quatre)", "ml": "ഇരുപത്തിനാല്", "hint": "i-rou-pat-thnaa-lou", "category": "Nombres", "date": "2026-11-12" },
+        { "id": "c-num-25", "manglish": "Irupathanju", "fr": "25 (Vingt-cinq)", "ml": "ഇരുപത്തഞ്ച്", "hint": "i-rou-pat-than-djou", "category": "Nombres", "date": "2026-11-12" },
+        { "id": "c-num-26", "manglish": "Irupathaaru", "fr": "26 (Vingt-six)", "ml": "ഇരുപത്താറ്", "hint": "i-rou-pat-thaa-rou", "category": "Nombres", "date": "2026-11-12" },
+        { "id": "c-num-27", "manglish": "Irupathezhu", "fr": "27 (Vingt-sept)", "ml": "ഇരുപത്തേഴ്", "hint": "i-rou-pat-théé-zhou", "category": "Nombres", "date": "2026-11-12" },
+        { "id": "c-num-28", "manglish": "Irupathettu", "fr": "28 (Vingt-huit)", "ml": "ഇരുപത്തെട്ട്", "hint": "i-rou-pat-thét-tou", "category": "Nombres", "date": "2026-11-12" },
+        { "id": "c-num-29", "manglish": "Irupathonpathu", "fr": "29 (Vingt-neuf)", "ml": "ഇരുപത്തൊൻപത്", "hint": "i-rou-pat-thon-pa-thou", "category": "Nombres", "date": "2026-11-12" },
+        { "id": "c-num-30", "manglish": "Muppathu", "fr": "30 (Trente)", "ml": "മുപ്പത്", "hint": "moup-PA-thou", "category": "Nombres", "date": "2026-11-12" }
+      ]
+    },
+    {
+      "id": "cours-2026-11-13",
+      "date": "2026-11-13",
+      "title": "Cours du 13/11/26 - Les 14 verbes et UND vs AANU",
+      "emoji": "🎓",
+      "intro": "Les 14 verbes d'action avec toutes leurs formes, la règle des questions en -o, et la grande leçon comparative UND vs AANU.",
+      "items": [
+        { "id": "c-1113-ithu-chaaya-aanu", "manglish": "Ithu chaaya aanu", "fr": "C'est du thé", "ml": "ഇത് ചായ ആണ്", "hint": "i-thou TCHAA-ya AA-nou", "category": "Und vs Aanu", "date": "2026-11-13", "note": "AANU exprime l'identité / la définition de la chose." },
+        { "id": "c-1113-ivide-chaaya-undu", "manglish": "Ivide chaaya undu", "fr": "Il y a du thé ici", "ml": "ഇവിടെ ചായ ഉണ്ട്", "hint": "i-vi-dé TCHAA-ya OUN-dou", "category": "Und vs Aanu", "date": "2026-11-13", "note": "UNDU exprime la présence / l'existence physique." },
+        { "id": "c-1113-avan-doctor-aanu", "manglish": "Avan doctor aanu", "fr": "Il est médecin", "ml": "അവൻ ഡോക്ടർ ആണ്", "hint": "a-van DOK-tar AA-nou", "category": "Und vs Aanu", "date": "2026-11-13", "note": "AANU exprime le rôle, métier ou statut." },
+        { "id": "c-1113-avan-ivide-undu", "manglish": "Avan ivide undu", "fr": "Il est ici / Il est là", "ml": "അവൻ ഇവിടെ ഉണ്ട്", "hint": "a-van i-vi-dé OUN-dou", "category": "Und vs Aanu", "date": "2026-11-13", "note": "UNDU exprime la présence physique en un lieu." },
+        { "id": "c-1113-ithu-ente-veedaanu", "manglish": "Ithu ente veedaanu", "fr": "C'est ma maison", "ml": "ഇത് എന്റെ വീടാണ്", "hint": "i-thou én-té VEE-daa-nou", "category": "Und vs Aanu", "date": "2026-11-13", "note": "AANU identifie la maison comme étant la mienne." },
+        { "id": "c-1113-enikku-veedundu", "manglish": "Enikku veedundu", "fr": "J'ai une maison", "ml": "എനിക്ക് വീടുണ്ട്", "hint": "é-ni-kkou VEE-doun-dou", "category": "Und vs Aanu", "date": "2026-11-13", "note": "UNDU avec le datif exprime la possession (j'ai une maison)." },
+        { "id": "c-1113-ithu-chaaya-alla", "manglish": "Ithu chaaya alla", "fr": "Ce n'est pas du thé", "ml": "ഇത് ചായ അല്ല", "hint": "i-thou TCHAA-ya AL-la", "category": "Und vs Aanu", "date": "2026-11-13", "note": "Négation de AANU = ALLA (ce n'est pas)." },
+        { "id": "c-1113-ivide-chaaya-illa", "manglish": "Ivide chaaya illa", "fr": "Il n'y a pas de thé ici", "ml": "ഇവിടെ ചായ ഇല്ല", "hint": "i-vi-dé TCHAA-ya IL-la", "category": "Und vs Aanu", "date": "2026-11-13", "note": "Négation de UNDU = ILLA (il n'y a pas)." }
+      ]
+    }
+  ],
+  "verbs": [
+    {
+      "inf": "Kazhikkuka",
+      "pres": "Kazhikkunnu",
+      "past": "Kazhichu",
+      "fut": "Kazhikkum",
+      "question": "Kazhicho?",
+      "imperative": "Kazhikku",
+      "fr": "Manger"
+    },
+    {
+      "inf": "Kudikkuka",
+      "pres": "Kudikkunnu",
+      "past": "Kudichu",
+      "fut": "Kudikkum",
+      "question": "Kudicho?",
+      "imperative": "Kudikku",
+      "fr": "Boire"
+    },
+    {
+      "inf": "Uranguka",
+      "pres": "Urangunnu",
+      "past": "Urangi",
+      "fut": "Urangum",
+      "question": "Urangiyo?",
+      "imperative": "Urangu",
+      "fr": "Dormir"
+    },
+    {
+      "inf": "Pokuka",
+      "pres": "Pokunnu",
+      "past": "Poyi",
+      "fut": "Pokum",
+      "question": "Poyo?",
+      "imperative": "Poku",
+      "fr": "Aller"
+    },
+    {
+      "inf": "Varuka",
+      "pres": "Varunnu",
+      "past": "Vannu",
+      "fut": "Varum",
+      "question": "Vanno?",
+      "imperative": "Vaa",
+      "fr": "Venir"
+    },
+    {
+      "inf": "Nadakkuka",
+      "pres": "Nadakkunnu",
+      "past": "Nadannu",
+      "fut": "Nadakkum",
+      "question": "Nadanno?",
+      "imperative": "Nadakku",
+      "fr": "Marcher"
+    },
+    {
+      "inf": "Padikkuka",
+      "pres": "Padikkunnu",
+      "past": "Padichu",
+      "fut": "Padikkum",
+      "question": "Padicho?",
+      "imperative": "Padikku",
+      "fr": "Étudier / Apprendre"
+    },
+    {
+      "inf": "Parayuka",
+      "pres": "Parayunnu",
+      "past": "Paranju",
+      "fut": "Parayum",
+      "question": "Paranyo?",
+      "imperative": "Parayu",
+      "fr": "Dire / Parler"
+    },
+    {
+      "inf": "Cheyyuka",
+      "pres": "Cheyyunnu",
+      "past": "Cheythu",
+      "fut": "Cheyyum",
+      "question": "Cheytho?",
+      "imperative": "Cheyyu",
+      "fr": "Faire"
+    },
+    {
+      "inf": "Kaanuka",
+      "pres": "Kaanunnu",
+      "past": "Kandu",
+      "fut": "Kaanum",
+      "question": "Kando?",
+      "imperative": "Kaanu",
+      "fr": "Voir / Regarder"
+    },
+    {
+      "inf": "Kelkkuka",
+      "pres": "Kelkkunnu",
+      "past": "Kettu",
+      "fut": "Kelkkum",
+      "question": "Ketto?",
+      "imperative": "Kelkku",
+      "fr": "Écouter / Entendre"
+    },
+    {
+      "inf": "Vaanguka",
+      "pres": "Vaangunnu",
+      "past": "Vaangi",
+      "fut": "Vaangum",
+      "question": "Vaangiyo?",
+      "imperative": "Vaangu",
+      "fr": "Acheter"
+    },
+    {
+      "inf": "Vilikkuka",
+      "pres": "Vilikkunnu",
+      "past": "Vilichu",
+      "fut": "Vilikkum",
+      "question": "Vilicho?",
+      "imperative": "Vilikku",
+      "fr": "Appeler"
+    },
+    {
+      "inf": "Pidikkuka",
+      "pres": "Pidikkunnu",
+      "past": "Pidichu",
+      "fut": "Pidikkum",
+      "question": "Pidicho?",
+      "imperative": "Pidikku",
+      "fr": "Attraper / Tenir"
+    }
+  ],
+  "grammar": {
+    "undVsAanu": {
+      "title": "La différence entre UNDU (ഉണ്ട്) et AANU (ആണ്)",
+      "ruleAanu": "AANU (ആണ്) s'utilise pour l'identité, la nature, la qualification (« c'est », « être »). Négation : ALLA (അല്ല).",
+      "ruleUndu": "UNDU (ഉണ്ട്) s'utilise pour la présence, l'existence ou la possession (« il y a », « se trouver », « avoir »). Négation : ILLA (ഇല്ല).",
+      "pairs": [
+        {
+          "aanu": {
+            "manglish": "Ithu chaaya aanu",
+            "fr": "C'est du thé (définition de la boisson)",
+            "ml": "ഇത് ചായ ആണ്",
+            "explanation": "AANU définit ce qu'est la boisson."
+          },
+          "undu": {
+            "manglish": "Ivide chaaya undu",
+            "fr": "Il y a du thé ici (disponibilité / présence)",
+            "ml": "ഇവിടെ ചായ ഉണ്ട്",
+            "explanation": "UNDU indique la présence physique du thé."
+          }
+        },
+        {
+          "aanu": {
+            "manglish": "Avan doctor aanu",
+            "fr": "Il est médecin (profession / identité)",
+            "ml": "അവൻ ഡോക്ടർ ആണ്",
+            "explanation": "AANU qualifie la profession ou l'identité d'une personne."
+          },
+          "undu": {
+            "manglish": "Avan ivide undu",
+            "fr": "Il est ici / Il est là (présence)",
+            "ml": "അവൻ ഇവിടെ ഉണ്ട്",
+            "explanation": "UNDU localise physiquement une personne dans un lieu."
+          }
+        },
+        {
+          "aanu": {
+            "manglish": "Ithu ente veedaanu",
+            "fr": "C'est ma maison (désignation)",
+            "ml": "ഇത് എന്റെ വീടാണ്",
+            "explanation": "AANU identifie cette maison comme m'appartenant."
+          },
+          "undu": {
+            "manglish": "Enikku veedundu",
+            "fr": "J'ai une maison (possession)",
+            "ml": "എനിക്ക് വീടുണ്ട്",
+            "explanation": "UNDU avec le pronom datif (Enikku) exprime 'avoir'."
+          }
+        }
+      ]
+    },
+    "questionO": {
+      "title": "Les questions familières en -O (-ഓ)",
+      "rule": "En malayalam oral familier, pour poser une question directe oui/non sur une action passée, on transforme la terminaison du passé en « -o » : Kazhichu ➔ Kazhicho ?, Urangi ➔ Urangiyo ?, Nadannu ➔ Nadanno ?",
+      "examples": [
+        { "manglish": "Kazhicho?", "fr": "As-tu mangé ?", "ml": "കഴിച്ചോ?" },
+        { "manglish": "Urangiyo?", "fr": "As-tu dormi ?", "ml": "ഉറങ്ങിയോ?" },
+        { "manglish": "Nadanno?", "fr": "As-tu marché ?", "ml": "നടന്നോ?" },
+        { "manglish": "Kudicho?", "fr": "As-tu bu ?", "ml": "കുടിച്ചോ?" },
+        { "manglish": "Poyo?", "fr": "Es-tu parti(e) ?", "ml": "പോയോ?" }
+      ]
+    }
+  }
+}
