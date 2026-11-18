@@ -1,4 +1,7 @@
 import { useSyncExternalStore } from 'react'
+import type { CourseCustomItem } from './course'
+
+export type { CourseCustomItem }
 
 export interface Progress {
   name: string
@@ -15,6 +18,7 @@ export interface Progress {
   xpByDay: Record<string, number>
   favorites: string[]
   chronoBest: number
+  customCourseItems: CourseCustomItem[]
   // settings
   showScript: boolean
   dailyGoal: number
@@ -27,13 +31,21 @@ const KEY = 'cheri-malayalam-v1'
 const fresh: Progress = {
   name: '', xp: 0, completed: [], perfect: [], streak: 0, bestStreak: 0,
   lastDay: null, freezeWeek: null, boxes: {}, misses: {}, badges: [], xpByDay: {}, favorites: [], chronoBest: 0,
+  customCourseItems: [],
   showScript: false, dailyGoal: 30, autoplay: true, sfx: true, theme: 'auto',
 }
 
 function load(): Progress {
   try {
     const raw = localStorage.getItem(KEY)
-    if (raw) return { ...fresh, ...JSON.parse(raw) }
+    if (raw) {
+      const parsed = JSON.parse(raw)
+      return {
+        ...fresh,
+        ...parsed,
+        customCourseItems: Array.isArray(parsed?.customCourseItems) ? parsed.customCourseItems : [],
+      }
+    }
   } catch { /* storage unavailable */ }
   return { ...fresh }
 }
@@ -49,7 +61,7 @@ export function setProgress(update: (p: Progress) => Progress) {
   listeners.forEach(l => l())
 }
 
-export function resetProgress() { setProgress(p => ({ ...fresh, name: p.name })) }
+export function resetProgress() { setProgress(p => ({ ...fresh, name: p.name, customCourseItems: p.customCourseItems || [] })) }
 
 /** Backup as a file, since progress only lives on this device. */
 export function exportProgress(): string { return JSON.stringify({ app: 'cheri-malayalam', v: 1, progress: state }) }
@@ -57,9 +69,32 @@ export function importProgress(text: string): boolean {
   try {
     const data = JSON.parse(text)
     if (data?.app !== 'cheri-malayalam' || typeof data.progress !== 'object') return false
-    setProgress(() => ({ ...fresh, ...data.progress }))
+    const importedProgress = data.progress
+    setProgress(() => ({
+      ...fresh,
+      ...importedProgress,
+      customCourseItems: Array.isArray(importedProgress?.customCourseItems)
+        ? importedProgress.customCourseItems
+        : [],
+    }))
     return true
   } catch { return false }
+}
+
+export function addCustomCourseItem(item: CourseCustomItem) {
+  const id = item.id || `custom-${Date.now()}`
+  const newItem = { ...item, id }
+  setProgress(p => ({
+    ...p,
+    customCourseItems: [...(p.customCourseItems || []).filter(c => c.id !== newItem.id), newItem],
+  }))
+}
+
+export function removeCustomCourseItem(id: string) {
+  setProgress(p => ({
+    ...p,
+    customCourseItems: (p.customCourseItems || []).filter(c => c.id !== id),
+  }))
 }
 
 export function useProgress(): Progress {
