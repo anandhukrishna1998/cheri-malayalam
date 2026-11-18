@@ -101,5 +101,6 @@ export function useProgress(): Progress {
   return useSyncExternalStore(
     cb => { listeners.add(cb); return () => listeners.delete(cb) },
     () => state,
+    () => state,
   )
 }

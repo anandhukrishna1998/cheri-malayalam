@@ -11,6 +11,7 @@ import { autoHint } from '../lib/hint'
 import { play } from '../lib/audio'
 import { addCustomCourseItem, removeCustomCourseItem, useProgress } from '../lib/store'
 import type { Item } from '../lib/content'
+import { verbs as contentVerbs } from '../lib/content'
 import { Modal } from './Common'
 import { SpeakerIcon } from './Exercises'
 
@@ -61,13 +62,16 @@ function exToItem(ex: { manglish: string; fr: string; ml: string }): Item {
   }
 }
 
-function verbToItem(v: CourseVerb): Item {
+function verbToItem(v: CourseVerb, pool?: CourseItem[]): Item {
+  const norm = (s: string) => s.trim().toLowerCase()
+  const matched = pool?.find(item => norm(item.manglish) === norm(v.inf))
+  const cv = contentVerbs.find(c => norm(c.id) === norm(v.inf) || norm(c.fr) === norm(v.fr))
   return {
-    id: `v-${v.inf.toLowerCase().replace(/[^a-z0-9]/g, '-')}`,
+    id: matched?.id || (cv ? cv.forms.pres.id : `v-${v.inf.toLowerCase().replace(/[^a-z0-9]/g, '-')}`),
     manglish: v.inf,
     fr: v.fr,
-    ml: '',
-    hint: autoHint(v.inf),
+    ml: matched?.ml || cv?.ml || '',
+    hint: matched?.hint || autoHint(v.inf),
   }
 }
 
@@ -170,11 +174,13 @@ export function Course({ onStartPractice }: CourseProps) {
     return pool
   }, [combinedItems, filter, search])
 
-  // Items to use when launching practice
-  const practiceItems = filteredItems.length > 0 ? filteredItems : combinedItems
+  // Items to use when launching practice (disables practice on 0 results)
+  const practiceItems = filteredItems
 
   const handleStartPractice = () => {
-    onStartPractice(practiceItems)
+    if (practiceItems.length > 0) {
+      onStartPractice(practiceItems)
+    }
   }
 
   const handleAddSubmit = (e: React.FormEvent) => {
@@ -238,7 +244,8 @@ export function Course({ onStartPractice }: CourseProps) {
             type="button"
             className="btn primary"
             onClick={handleStartPractice}
-            title="Lancer une session d'entraînement"
+            disabled={practiceItems.length === 0}
+            title={practiceItems.length === 0 ? 'Aucun élément à réviser' : "Lancer une session d'entraînement"}
           >
             ▶ S'entraîner sur mon cours ({practiceItems.length})
           </button>
@@ -279,14 +286,15 @@ export function Course({ onStartPractice }: CourseProps) {
       </div>
 
       <nav className="course-filters" aria-label="Filtres du cours">
-        {FILTER_PILLS.map(p => (
+        {FILTER_PILLS.map(pill => (
           <button
-            key={p.id}
+            key={pill.id}
             type="button"
-            className={filter === p.id ? 'on' : ''}
-            onClick={() => setFilter(p.id)}
+            className={filter === pill.id ? 'on' : ''}
+            aria-pressed={filter === pill.id}
+            onClick={() => setFilter(pill.id)}
           >
-            {p.label}
+            {pill.label}
           </button>
         ))}
       </nav>
@@ -344,7 +352,7 @@ export function Course({ onStartPractice }: CourseProps) {
 
       {!isSearching && (filter === 'all' || filter === 'verbs') && (
         <section className="course-section">
-          <VerbTableCard verbs={verbs} />
+          <VerbTableCard verbs={verbs} pool={combinedItems} />
         </section>
       )}
 
@@ -790,9 +798,10 @@ function QuestionOCard({ grammar, showScript }: QuestionOCardProps) {
 
 interface VerbTableCardProps {
   verbs: CourseVerb[]
+  pool?: CourseItem[]
 }
 
-function VerbTableCard({ verbs }: VerbTableCardProps) {
+function VerbTableCard({ verbs, pool }: VerbTableCardProps) {
   return (
     <div className="grammar-box card">
       <div className="grammar-box-head">
@@ -836,7 +845,7 @@ function VerbTableCard({ verbs }: VerbTableCardProps) {
                   <button
                     type="button"
                     className="course-play sm"
-                    onClick={() => play(verbToItem(v))}
+                    onClick={() => play(verbToItem(v, pool))}
                     aria-label={`Écouter « ${v.inf} »`}
                     title={`Écouter ${v.inf}`}
                   >
