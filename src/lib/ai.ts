@@ -41,6 +41,41 @@ export function setAiCode(code: string) {
   try { localStorage.setItem(CODE_KEY, code.trim()) } catch { /* private mode */ }
 }
 
+/* ---------- Voice for AI translations (Gemini text-to-speech via /api/tts) ---------- */
+const TTS_CACHE = 'cheri-tts-v1'
+const ttsUrls = new Map<string, string>()
+
+/** Audio URL for a Malayalam sentence: from memory, then the phone's cache, then the server (once). */
+export async function aiAudioUrl(malayalam: string): Promise<string> {
+  const text = malayalam.trim()
+  const known = ttsUrls.get(text)
+  if (known) return known
+  // Local cache key only (never sent anywhere).
+  const key = new Request(`/__tts-cache/${encodeURIComponent(text)}`)
+  let blob: Blob | null = null
+  try {
+    const hit = await (await caches.open(TTS_CACHE)).match(key)
+    if (hit) blob = await hit.blob()
+  } catch { /* no Cache Storage */ }
+  if (!blob) {
+    if (!navigator.onLine) throw 'offline' as AiError
+    const res = await fetch('/api/tts', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', 'x-translate-code': getAiCode() },
+      body: JSON.stringify({ text }),
+    }).catch(() => null)
+    if (!res?.ok || !(res.headers.get('content-type') ?? '').includes('audio')) {
+      console.warn('[AI voice]', res?.status ?? 'network error')
+      throw 'failed' as AiError
+    }
+    blob = await res.blob()
+    try { await (await caches.open(TTS_CACHE)).put(key, new Response(blob, { headers: { 'content-type': 'audio/wav' } })) } catch { /* storage full: fine */ }
+  }
+  const url = URL.createObjectURL(blob)
+  ttsUrls.set(text, url)
+  return url
+}
+
 export async function aiTranslate(text: string, dir: Dir): Promise<AiTranslation> {
   const hit = cachedAi(text, dir)
   if (hit) return hit

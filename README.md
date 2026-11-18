@@ -2,7 +2,7 @@
 
 A web app that teaches Malayalam to a French speaker, written entirely in Manglish. It installs on a phone like an app, works offline, and needs no account or server.
 
-**What's in it:** 4 sections, 24 units, 104 lessons, 67 verbs (present, past, future, negative), 13 dialogues, a ~400-word dictionary, a ~300-sentence phrasebook, all with audio.
+**What's in it:** 4 sections, 24 units, 104 lessons, 135 verbs (present, past, future, negative), 13 dialogues, a ~870-word dictionary and a ~600-sentence phrasebook, all with audio.
 
 **Screens:**
 - **Apprendre:** the lesson path through Kerala, with tips for each unit and an end-of-unit challenge.
@@ -29,7 +29,7 @@ On an iPhone, open the link in Safari, tap Share, then "Sur l'écran d'accueil".
 
 ## AI translation (optional)
 
-The Traduire tab works offline for everything already in the app. For other sentences it asks an AI through a small server function (`functions/api/translate.ts`), which Cloudflare Pages deploys automatically. Until a key is set, the app simply says AI translation isn't enabled.
+The Traduire tab works offline for everything already in the app. AI translations can also be heard: `functions/api/tts.ts` reads them aloud with Gemini text-to-speech (free tier, same key), and the phone keeps each one after the first time. For other sentences it asks an AI through a small server function (`functions/api/translate.ts`), which Cloudflare Pages deploys automatically. Until a key is set, the app simply says AI translation isn't enabled.
 
 It uses **Google Gemini's free tier** (`gemini-3.8-flash`) first. **Claude** is an optional paid backup, used only if Gemini fails or its free daily limit is reached.
 

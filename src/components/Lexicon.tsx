@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
-import { AI_ERROR_TEXT, aiTranslate, cachedAi, setAiCode, type AiError, type AiTranslation } from '../lib/ai'
+import { AI_ERROR_TEXT, aiAudioUrl, aiTranslate, cachedAi, setAiCode, type AiError, type AiTranslation } from '../lib/ai'
 import { FORMS, FORM_LABEL, dictCategories, phraseCategories, sourceOf, units, verbs, type Form, type Item, type Verb } from '../lib/content'
-import { play, playAndWait } from '../lib/audio'
+import { play, playAndWait, stop } from '../lib/audio'
 import { translate, type Chip, type Dir } from '../lib/translate'
 import { setProgress, useProgress } from '../lib/store'
 import { Modal } from './Common'
@@ -238,6 +238,7 @@ function AiCard({ state, dir, prominent, onAsk, showScript, tooLong }: {
   dir: Dir; prominent: boolean; onAsk: () => void; showScript: boolean; tooLong: boolean
 }) {
   const [code, setCode] = useState('')
+  const [voice, setVoice] = useState<'idle' | 'loading'>('idle')
   if (tooLong) return <p className="small center">Phrase trop longue pour l’IA (300 caractères maximum).</p>
   if (!state || (!state.data && !state.loading && !state.err)) {
     return prominent
@@ -259,11 +260,17 @@ function AiCard({ state, dir, prominent, onAsk, showScript, tooLong }: {
   )
   const d = state.data!
   const speakable: Item = { id: 'ai-' + d.manglish, manglish: d.manglish, fr: d.french, ml: d.malayalam, hint: '' }
+  // Real Malayalam voice from the server (saved on the phone after the first time); the phone's own voice as a fallback.
+  const speak = async () => {
+    if (voice === 'loading') return
+    setVoice('loading')
+    try { const url = await aiAudioUrl(d.malayalam); stop(); await new Audio(url).play() } catch { play(speakable) } finally { setVoice('idle') }
+  }
   return (
     <section className="tr-ai card" aria-live="polite">
       <p className="kicker">✨ Traduction IA · à vérifier avec ton chéri</p>
       <div className="tr-card-top">
-        <button className="speaker sm" onClick={() => play(speakable)} aria-label={`Écouter ${d.manglish}`}><SpeakerIcon /></button>
+        <button className={`speaker sm ${voice === 'loading' ? 'busy' : ''}`} onClick={speak} aria-busy={voice === 'loading'} aria-label={`Écouter ${d.manglish}`}><SpeakerIcon /></button>
         <div className="tr-card-text">
           <b className={dir === 'fr' ? 'manglish' : ''}>{dir === 'fr' ? d.manglish : d.french}</b>
           {showScript && <span className="script" lang="ml">{d.malayalam}</span>}

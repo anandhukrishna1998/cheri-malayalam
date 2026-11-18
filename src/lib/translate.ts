@@ -69,9 +69,31 @@ const IRREG: Record<string, string> = {
   vaykkuka: 'mettre mets met mettons mettez mettent mis mise mettrai mettra',
   jeevikkuka: 'vivre vis vit vivons vivez vivent vecu vivrai vivra',
   'thirichu-varuka': 'revenir reviens revient revenons revenez reviennent revenu revenue reviendrai reviendra',
+  kazhiyuka: 'finir finis finit finissons finissez finissent fini finie finira finirai terminer',
+  eriyuka: 'jette jettes jettent jettera jetterai',
+  vishwasikkuka: 'croire crois croit croyons croyez croient cru crue croira croirai',
+  aalochikkuka: 'reflechir reflechis reflechit reflechissons reflechissez reflechissent reflechi reflechira',
+  shramikkuka: 'essaie essaies essaient essaye essayons essayez essaiera essaierai',
+  nashtappeduka: 'perdre perds perd perdons perdez perdent perdu perdue perdra perdrai',
+  kittuka: 'recevoir recois recoit recevons recevez recoivent recu recue recevra recevrai obtenir obtiens obtient obtenu',
+  santhoshikkuka: 'rejouir rejouis rejouit rejoui',
+  porikkuka: 'frire frit frits',
+  niraykkuka: 'remplir remplis remplit remplissons remplissez remplissent rempli remplie remplira',
+  thudaykkuka: 'essuyer essuie essuies essuient essuyons essuyez essuye essuiera',
+  vrithiyaakkuka: 'nettoie nettoies nettoient nettoierai nettoiera',
+  keduthuka: 'eteindre eteins eteint eteignons eteignez eteignent eteindra eteindrai',
+  'thirichu-kodukkuka': 'rendre rends rend rendons rendez rendent rendu rendra rendrai',
+  janikkuka: 'naitre nait nee nes naitra',
+  valaruka: 'grandir grandis grandit grandissons grandissent grandi grandira',
+  marikkuka: 'mourir meurs meurt mourons mourez meurent mort morte mourra',
+  'uttaram-parayuka': 'repondre reponds repond repondons repondez repondent repondu repondra',
+  'nuna-parayuka': 'mentir mens ment mentons mentez mentent menti mentira',
+  aakuka: 'devenir deviens devient devenons devenez deviennent devenu devenue deviendra',
+  kadikkuka: 'mordre mords mord mordons mordez mordent mordu mordra',
+  vevikkuka: 'cuire cuis cuit cuisons cuisent cuira',
   ariyuka: 'savoir sais sait savons savez savent su saurai saura connaitre connais connait connaissons connu connaitra',
 }
-const PARTICIPLES = new Set('parti partie su connu descendu descendue sorti sortie compris vendu conduit vecu revenu revenue mis mise plu bu alle allee alles allees venu venue venus assis assise dormi fait vu vue dit entendu appris lu ecrit pris prise attendu souvenu couru ri ouvert'.split(' '))
+const PARTICIPLES = new Set('fini finie cru crue reflechi perdu perdue recu recue rejoui rempli remplie essuye eteint rendu nee nes grandi mort morte repondu menti devenu devenue mordu cuit parti partie su connu descendu descendue sorti sortie compris vendu conduit vecu revenu revenue mis mise plu bu alle allee alles allees venu venue venus assis assise dormi fait vu vue dit entendu appris lu ecrit pris prise attendu souvenu couru ri ouvert'.split(' '))
 const ER_ENDINGS = new Set('e es ent ons ez er eons eait eant ais ait aient ant era erai eras erons erez eront'.split(' '))
 const FUTURE = /(rai|ras|ra|rons|rez|ront)$/
 
@@ -197,7 +219,7 @@ const SKIP = new Set(['ce', 'que', 'qu', 'est-ce', 'y'])
 /** Verbs of movement take « vers » (veettilekku) instead of « à / dans » (veettil). */
 const MOTION = new Set(['pokuka', 'varuka', 'thirichu-varuka', 'konduvaruka', 'ayakkuka'])
 /** Verbs whose subject is in the dative: « je comprends » → Enikku manassilaakunnu, « je sais » → Enikku ariyaam. */
-const DATIVE_VERBS = new Set(['manassilaakuka', 'ariyuka', 'ishtappeduka'])
+const DATIVE_VERBS = new Set(['manassilaakuka', 'ariyuka', 'ishtappeduka', 'kittuka', 'nashtappeduka', 'pedikkuka'])
 /** « avec toi » → ninte koode */
 const WITH: Record<string, MlForm> = {
   moi: { manglish: 'ente koode', ml: 'എന്റെ കൂടെ' }, toi: { manglish: 'ninte koode', ml: 'നിന്റെ കൂടെ' },
@@ -210,6 +232,10 @@ const QWORDS = new Set(['evide', 'evideyaanu', 'eppol', 'enthaa', 'enthu', 'enth
 const BE = ['suis', 'es', 'est', 'sommes', 'êtes', 'sont']
 /** Names that keep their capital letter inside a sentence. */
 const PROPER = /^(France|Frans|India|Keralam|Keralath|Kochi|Paris|Marie)/
+/** Time words come right after the subject in Malayalam: Njaan innale kadappurathekku poyi. */
+const TIME = new Set(['innu', 'naale', 'innale', 'ippol', 'pinne', 'raavile', 'uchaykku', 'vaikunneram', 'raathri', 'innuraathri', 'innuraavile', 'eppozhum', 'ennum', 'udane', 'pinneedu', 'munpu', 'shesham'])
+/** Verbs whose grammatical subject is the thing, not the person (« mon travail est fini »). */
+const NO_SUBJECT_VERBS = new Set(['kazhiyuka', 'theeruka', 'avasaanikkuka'])
 
 /** kazhikkuka → kazhikk / കഴിക്ക */
 const stemOf = (v: Verb): MlForm => ({ manglish: v.id.replace(/-/g, ' ').replace(/uka$/, ''), ml: v.ml.replace(/ുക$/, '') })
@@ -277,7 +303,8 @@ function fromFrench(q: string): Translation {
     const reflexive = REFLEXIVE.has(norm[k - 1] ?? '')
     if (REFLEXIVE.has(w) && w !== 'nous' && w !== 'vous' && k + 1 < norm.length && matchFrVerb(norm[k + 1], true)) continue
     // « appelle-moi » : moi / toi right after an order is the object (enne / ninne)
-    if ((w === 'moi' || w === 'toi') && k === 1 && matchFrVerb(norm[0])) {
+    // also « je rêve de toi » / « je pense à toi » : moi / toi after a verb is the object
+    if ((w === 'moi' || w === 'toi') && ((k === 1 && matchFrVerb(norm[0])) || found.some(f => f.kind === 'verb'))) {
       const o = w === 'moi' ? { manglish: 'enne', ml: 'എന്നെ' } : { manglish: 'ninne', ml: 'നിന്നെ' }
       const chip: Chip = { src: orig, text: o.manglish, gloss: o.ml }
       words.push(chip)
@@ -293,7 +320,7 @@ function fromFrench(q: string): Translation {
       if (n > 1 && (ARTICLES.has(span[n - 1]) || span.some(x => matchFrVerb(x) || WANT.has(x) || CAN.has(x) || AUX.has(x)))) continue
       const key = span.filter(x => !ARTICLES.has(x)).join(' ')
       // masculine / singular fallbacks only for longer words (so « mère » never becomes « mer »)
-      const keys = n === 1 ? [key, ...[key.replace(/e$/, ''), key.replace(/s$/, ''), key.replace(/es$/, ''), key.replace(/x$/, '')].filter(x => x !== key && x.length >= 5)] : [key]
+      const keys = n === 1 ? [key, ...[key.replace(/s$/, ''), key.replace(/x$/, '')].filter(x => x !== key && x.length >= 3), ...[key.replace(/e$/, ''), key.replace(/es$/, '')].filter(x => x !== key && x.length >= 5)] : [key]
       const found1 = keys.find(x => x && frIndex.has(x))
       if (found1) { hit = frIndex.get(found1); len = n }
     }
@@ -344,7 +371,9 @@ function fromFrench(q: string): Translation {
     const subj = found.find(f => f.subject)
     const dat = subj ? DATIVE[subj.subject!] : undefined
     // « avec toi » goes right after the subject: Njaan ninte koode kadal nokkunnu
-    const nouns = found.filter(f => f.kind === 'word' && !f.subject).sort((a, b) => Number(!!b.lead) - Number(!!a.lead))
+    // Order after the subject: « avec toi » / object pronouns, then time words, then the rest.
+    const rankOf = (f: Found) => (f.lead ? 0 : TIME.has(mlKey(f.chip.item?.manglish ?? '')) ? 1 : 2)
+    const nouns = found.filter(f => f.kind === 'word' && !f.subject).sort((a, b) => rankOf(a) - rankOf(b))
     const vfound = found.filter(f => f.kind === 'verb')
     const motion = vfound.some(f => MOTION.has(f.fv!.verb.id))
     const nounChip = (f: Found): Chip => {
@@ -420,7 +449,9 @@ function fromFrench(q: string): Translation {
       if (neg) vform = tense === 'pres' ? v.forms.neg : negOf(v.forms[tense], tense as 'past' | 'fut')
       const ordered = [...nouns.filter(f => f.subject), ...found.filter(f => f.kind === 'word' && f.subject), ...nouns]
       const uniq = [...new Set(ordered)]
-      const subjects = uniq.filter(f => f.subject).map(f => DATIVE_VERBS.has(v.id) && DATIVE[f.subject!] ? fromMl(DATIVE[f.subject!], f.chip.src) : f.chip)
+      // « j'ai fini mon travail » → Ente joli kazhinju (the work is the subject; no « Njaan »)
+      const subjects = NO_SUBJECT_VERBS.has(v.id) && nouns.length ? []
+        : uniq.filter(f => f.subject).map(f => DATIVE_VERBS.has(v.id) && DATIVE[f.subject!] ? fromMl(DATIVE[f.subject!], f.chip.src) : f.chip)
       parts = [...subjects, ...uniq.filter(f => !f.subject).map(nounChip), formChip(main.chip.src, vform, neg || question ? undefined : v.forms[tense])]
       label = `${neg ? 'négatif · ' : ''}${FORM_LABEL[tense]}`
     }

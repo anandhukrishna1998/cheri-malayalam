@@ -13,8 +13,8 @@
  *                                          (asked once in the app) — stops strangers using your keys.
  */
 import Anthropic from '@anthropic-ai/sdk'
+import { guard, json, type Env } from './_shared'
 
-interface Env { GEMINI_API_KEY?: string; ANTHROPIC_API_KEY?: string; TRANSLATE_CODE?: string }
 interface Context { request: Request; env: Env }
 
 type ErrCode = 'bad-key' | 'busy' | 'refusal' | 'too-long' | 'empty' | 'api'
@@ -65,9 +65,6 @@ const SCHEMA = {
   additionalProperties: false,
 } as const
 
-const json = (data: unknown, status = 200) =>
-  new Response(JSON.stringify(data), { status, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' } })
-
 const STATUS: Record<ErrCode, number> = { 'bad-key': 502, busy: 429, refusal: 422, 'too-long': 422, empty: 502, api: 502 }
 
 /** The model's answer, checked so the app always gets the fields it expects. */
@@ -96,7 +93,14 @@ async function callGemini(key: string, text: string, dir: 'fr' | 'ml') {
     systemInstruction: { parts: [{ text: SYSTEM + '\nRéponds uniquement avec un objet JSON contenant les clés manglish, malayalam, french, literal, words (liste de {manglish, fr}) et note.' }] },
     contents: [{ role: 'user', parts: [{ text: userMessage(text, dir) }] }],
   }
-  const withSchema = { ...base, generationConfig: { responseFormat: { text: { mimeType: 'APPLICATION_JSON', schema: SCHEMA } } } }
+  const responseFormat = { text: { mimeType: 'APPLICATION_JSON', schema: SCHEMA } }
+  // Most to least specific. « low » thinking makes a short translation much faster;
+  // if a field is rejected (400), the next request drops it.
+  const attempts = [
+    { ...base, generationConfig: { responseFormat, thinkingConfig: { thinkingLevel: 'low' } } },
+    { ...base, generationConfig: { responseFormat } },
+    base,
+  ]
   const send = (model: string, body: unknown) => fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
     method: 'POST',
     headers: { 'content-type': 'application/json', 'x-goog-api-key': key },
@@ -108,18 +112,17 @@ async function callGemini(key: string, text: string, dir: 'fr' | 'ml') {
   let detail = ''
   for (const model of GEMINI_MODELS) {
     try {
-      // Structured JSON output; if the field is rejected, retry with the prompt alone.
-      res = await send(model, withSchema)
-      if (res.status === 400) {
+      for (const body of attempts) {
+        res = await send(model, body)
+        if (res.status !== 400) break
         detail = await why(res)
         if (/API.?key/i.test(detail)) throw new ProviderError('bad-key', detail)
-        res = await send(model, base)
       }
     } catch (e) {
       if (e instanceof ProviderError) throw e
       throw new ProviderError('api', `gemini network: ${String(e).slice(0, 120)}`)
     }
-    if (res.status !== 404) break // 404 = unknown model: try the next name
+    if (!res || res.status !== 404) break // 404 = unknown model: try the next name
     detail = await why(res)
   }
   if (!res) throw new ProviderError('api', detail)
@@ -171,14 +174,9 @@ async function callClaude(key: string, text: string, dir: 'fr' | 'ml') {
 
 export async function onRequestPost({ request, env }: Context): Promise<Response> {
   if (!env.GEMINI_API_KEY && !env.ANTHROPIC_API_KEY) return json({ error: 'not-configured' }, 503)
-  if (env.TRANSLATE_CODE && request.headers.get('x-translate-code') !== env.TRANSLATE_CODE) return json({ error: 'bad-code' }, 401)
-  // Only the app itself may call this endpoint from a browser.
-  const origin = request.headers.get('origin')
-  if (origin) {
-    let sameHost = false
-    try { sameHost = new URL(origin).host === new URL(request.url).host } catch { /* e.g. « Origin: null » */ }
-    if (!sameHost) return json({ error: 'forbidden' }, 403)
-  }
+  // Secret code + only the app itself may call this endpoint from a browser.
+  const denied = guard(request, env)
+  if (denied) return denied
 
   let body: { text?: unknown; dir?: unknown }
   try { body = await request.json() } catch { return json({ error: 'bad-request' }, 400) }

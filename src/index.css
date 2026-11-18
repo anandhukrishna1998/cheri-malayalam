@@ -212,6 +212,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; letter-spacing:
 .speaker.sm svg { width: 20px; height: 20px; }
 .speaker.slow { width: 46px; height: 46px; background: var(--paper); border: 2px solid var(--line); box-shadow: 0 3px 0 var(--line); font-size: 20px; }
 .speaker:active { transform: translateY(2px); }
+.speaker.busy { opacity: .6; animation: pulse 1s ease-in-out infinite; }
 
 .options { display: grid; gap: 12px; }
 .option { background: var(--paper); border: 2px solid var(--line); border-radius: 14px; padding: 16px; font-size: 18px; font-weight: 700; text-align: left; box-shadow: 0 3px 0 var(--line); transition: background-color .15s, border-color .15s; }
