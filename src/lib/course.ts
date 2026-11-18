@@ -62,7 +62,7 @@ export interface CourseGrammar {
 }
 
 export interface CourseCustomItem {
-  id: string
+  id?: string
   manglish: string
   fr: string
   ml?: string

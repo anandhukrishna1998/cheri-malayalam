@@ -82,7 +82,7 @@ export function importProgress(text: string): boolean {
 }
 
 export function addCustomCourseItem(item: CourseCustomItem) {
-  const id = item.id || `custom-${Date.now()}`
+  const id = item.id || `custom-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`
   const newItem = { ...item, id }
   setProgress(p => ({
     ...p,
