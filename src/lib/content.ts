@@ -8,6 +8,7 @@ import rewardsData from '../content/rewards.json'
 import dictionaryData from '../content/dictionary.json'
 import phrasebookData from '../content/phrasebook.json'
 import { autoHint, slug } from './hint'
+import { getAllCourseItems } from './course'
 
 /* ---------- Types ---------- */
 export type Form = 'pres' | 'past' | 'fut' | 'neg'
@@ -187,5 +188,19 @@ export const phrasebookOnly: Item[] = [...new Map(phraseCategories.flatMap(c => 
 for (const c of phraseCategories) for (const p of c.phrases) if (!sourceOf.has(p.id)) sourceOf.set(p.id, `Phrases utiles · ${c.title}`)
 for (const p of phrasebookOnly) itemById.set(p.id, p)
 
+/* ---------- Course items (Julie's notebook) ---------- */
+export const courseItems: Item[] = getAllCourseItems().map(ci => ({
+  id: ci.id,
+  manglish: ci.manglish,
+  fr: ci.fr,
+  ml: ci.ml,
+  hint: ci.hint,
+  ...(ci.note ? { note: ci.note } : {}),
+}))
+for (const ci of courseItems) {
+  if (!itemById.has(ci.id)) itemById.set(ci.id, ci)
+  if (!sourceOf.has(ci.id)) sourceOf.set(ci.id, 'Mon cours')
+}
+
 /** Everything the translator can search. */
-export const searchItems: Item[] = [...allItems, ...phrasebookOnly, ...dialogues.flatMap(d => d.lines), ...dictionaryOnly]
+export const searchItems: Item[] = [...allItems, ...phrasebookOnly, ...dialogues.flatMap(d => d.lines), ...dictionaryOnly, ...courseItems]
