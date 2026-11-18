@@ -35,9 +35,14 @@ export function GoalRing({ pct, size = 40 }: { pct: number; size?: number }) {
 }
 
 /* ---------------- Bottom tabs ---------------- */
-export type Tab = 'learn' | 'dialogues' | 'practice' | 'lexicon' | 'profile'
-const TABS: [Tab, string, string][] = [
-  ['learn', '🏝️', 'Apprendre'], ['dialogues', '💬', 'Dialogues'], ['practice', '🎯', 'Entraînement'], ['lexicon', '🔤', 'Traduire'], ['profile', '👤', 'Profil'],
+export type Tab = 'learn' | 'cours' | 'dialogues' | 'practice' | 'lexicon' | 'profile'
+export const TABS: [Tab, string, string][] = [
+  ['learn', '🏝️', 'Apprendre'],
+  ['cours', '📝', 'Mon cours'],
+  ['dialogues', '💬', 'Dialogues'],
+  ['practice', '🎯', 'Entraînement'],
+  ['lexicon', '🔤', 'Traduire'],
+  ['profile', '👤', 'Profil'],
 ]
 export function TabBar({ tab, onTab, badge }: { tab: Tab; onTab: (t: Tab) => void; badge?: Partial<Record<Tab, number>> }) {
   return (

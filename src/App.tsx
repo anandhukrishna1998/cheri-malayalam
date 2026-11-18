@@ -10,6 +10,9 @@ import { DialogueList, DialogueView } from './components/Dialogues'
 import { Chrono, PracticeHub, type PracticeMode } from './components/Practice'
 import { Lexicon } from './components/Lexicon'
 import { Profile } from './components/Profile'
+import { Course } from './components/Course'
+import { generateCourseExercises } from './lib/courseExercises'
+import type { CourseItem } from './lib/course'
 
 type Overlay =
   | null
@@ -19,9 +22,9 @@ type Overlay =
   | { name: 'chrono'; pool: Item[] }
   | { name: 'result'; result: LessonResult; outcome: LessonOutcome; chrono?: number; back: Overlay }
 
-export default function App() {
+export default function App({ initialTab = 'learn' }: { initialTab?: Tab } = {}) {
   const p = useProgress()
-  const [tab, setTab] = useState<Tab>('learn')
+  const [tab, setTab] = useState<Tab>(initialTab)
   const [overlay, setOverlay] = useState<Overlay>(null)
   const [welcomed, setWelcomed] = useState(!!p.name)
 
@@ -62,6 +65,22 @@ export default function App() {
     name: 'lesson', nodeId: `dlg:${d.id}`, kind: 'dialogue', items: d.lines, title: `🎭 ${d.title}`,
     exercises: dialogueExercises(d), back: { name: 'dialogue', d },
   })
+  const startCoursePractice = (items: CourseItem[]) => {
+    if (!items || items.length === 0) return
+    const lessonItems: Item[] = items.map(ci => ({
+      id: ci.id,
+      manglish: ci.manglish,
+      fr: ci.fr,
+      ml: ci.ml || '',
+      hint: ci.hint || '',
+      note: ci.note,
+    }))
+    setOverlay({
+      name: 'lesson', nodeId: null, kind: 'review', items: lessonItems,
+      title: '📝 Mon cours · Entraînement',
+      exercises: generateCourseExercises(items), back: null,
+    })
+  }
 
   const finish = (o: Extract<Overlay, { name: 'lesson' }>, outcome: LessonOutcome) => {
     const { next, result } = finishSession(getProgress(), { nodeId: o.nodeId, kind: o.kind, ...outcome })
@@ -96,6 +115,7 @@ export default function App() {
       {overlay?.name === 'dialogue' && <DialogueView d={overlay.d} onBack={() => setOverlay(null)} onPractice={() => startDialogue(overlay.d)} />}
       {!overlay && <>
         {tab === 'learn' && <><Stats onProfile={() => setTab('profile')} /><Learn onStart={startNode} onReview={() => startPractice('review')} onGuide={() => setOverlay({ name: 'guide' })} /></>}
+        {tab === 'cours' && <Course onStartPractice={startCoursePractice} />}
         {tab === 'dialogues' && <DialogueList onOpen={d => setOverlay({ name: 'dialogue', d })} />}
         {tab === 'practice' && <PracticeHub onStart={startPractice} />}
         {tab === 'lexicon' && <Lexicon />}
