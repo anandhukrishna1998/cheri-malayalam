@@ -3,15 +3,31 @@
 // Usage: npm run audio
 // Dialogue lines use a male or female voice depending on the speaker.
 import { MsEdgeTTS, OUTPUT_FORMAT } from 'msedge-tts'
-import { existsSync, mkdirSync, copyFileSync, rmSync, mkdtempSync } from 'node:fs'
+import { existsSync, mkdirSync, copyFileSync, rmSync, mkdtempSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { tmpdir } from 'node:os'
 import { loadContent } from './load-content.mjs'
 
 const VOICES = { f: 'ml-IN-SobhanaNeural', m: 'ml-IN-MidhunNeural' }
 const c = await loadContent()
+
+// Course grammar items (Und vs Aanu pairs + Question -O examples)
+const courseRaw = JSON.parse(readFileSync('src/content/course.json', 'utf8'))
+const courseGrammarItems = [
+  ...courseRaw.grammar.undVsAanu.pairs.flatMap((p, idx) => [
+    { id: `aanu-${idx}-${p.aanu.manglish.toLowerCase().replace(/[^a-z0-9]/g, '-')}`, manglish: p.aanu.manglish, fr: p.aanu.fr, ml: p.aanu.ml },
+    { id: `undu-${idx}-${p.undu.manglish.toLowerCase().replace(/[^a-z0-9]/g, '-')}`, manglish: p.undu.manglish, fr: p.undu.fr, ml: p.undu.ml }
+  ]),
+  ...courseRaw.grammar.questionO.examples.map(ex => ({
+    id: `ex-${ex.manglish.toLowerCase().replace(/[^a-z0-9]/g, '-')}`,
+    manglish: ex.manglish,
+    fr: ex.fr,
+    ml: ex.ml
+  }))
+]
+
 const jobs = [
-  ...[...c.allItems, ...c.dictionaryOnly, ...c.phrasebookOnly, ...(c.courseItems ?? [])].map(i => ({ item: i, voice: VOICES.f })),
+  ...[...c.allItems, ...c.dictionaryOnly, ...c.phrasebookOnly, ...(c.courseItems ?? []), ...courseGrammarItems].map(i => ({ item: i, voice: VOICES.f })),
   ...c.dialogues.flatMap(d => d.lines.map(i => ({ item: i, voice: VOICES[c.speakers[i.speaker]?.voice ?? 'f'] }))),
 ].filter(j => !existsSync(join('public/audio', `${j.item.id}.mp3`)))
 

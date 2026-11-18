@@ -29,7 +29,21 @@ for (const d of c.dialogues) {
   for (const l of d.lines) if (!c.speakers[l.speaker]) problems.push(`Dialogue « ${d.id} » : personnage « ${l.speaker} » inconnu`)
 }
 // Audio
-const all = [...c.allItems, ...c.dialogues.flatMap(d => d.lines), ...c.dictionaryOnly, ...c.phrasebookOnly]
+import { readFileSync } from 'node:fs'
+const courseRaw = JSON.parse(readFileSync('src/content/course.json', 'utf8'))
+const courseGrammarItems = [
+  ...courseRaw.grammar.undVsAanu.pairs.flatMap((p, idx) => [
+    { id: `aanu-${idx}-${p.aanu.manglish.toLowerCase().replace(/[^a-z0-9]/g, '-')}`, manglish: p.aanu.manglish, fr: p.aanu.fr, ml: p.aanu.ml },
+    { id: `undu-${idx}-${p.undu.manglish.toLowerCase().replace(/[^a-z0-9]/g, '-')}`, manglish: p.undu.manglish, fr: p.undu.fr, ml: p.undu.ml }
+  ]),
+  ...courseRaw.grammar.questionO.examples.map(ex => ({
+    id: `ex-${ex.manglish.toLowerCase().replace(/[^a-z0-9]/g, '-')}`,
+    manglish: ex.manglish,
+    fr: ex.fr,
+    ml: ex.ml
+  }))
+]
+const all = [...c.allItems, ...c.dialogues.flatMap(d => d.lines), ...c.dictionaryOnly, ...c.phrasebookOnly, ...(c.courseItems ?? []), ...courseGrammarItems]
 // Dictionary: same word listed twice with different meanings
 const dictSeen = new Map()
 for (const w of c.dictionaryOnly) {
