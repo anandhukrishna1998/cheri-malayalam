@@ -85,20 +85,21 @@ const userMessage = (text: string, dir: 'fr' | 'ml') =>
   `Direction : ${dir === 'fr' ? 'français → manglish' : 'manglish → français'}\n<texte>${text}</texte>`
 
 /* ---------------- Gemini (free tier) ---------------- */
-// Newest model first; the alias is a safety net if Google renames or retires a model.
-const GEMINI_MODELS = [GEMINI_MODEL, 'gemini-flash-latest']
+// Best model first; fall back to lighter Flash-Lite models if the flagship model is overloaded (503/429) or unavailable (404).
+const GEMINI_MODELS = [GEMINI_MODEL, 'gemini-3.5-flash-lite', 'gemini-3.1-flash-lite', 'gemini-flash-latest']
+const RETRYABLE_MODEL_STATUS = new Set([404, 429, 500, 502, 503, 504])
 
 async function callGemini(key: string, text: string, dir: 'fr' | 'ml') {
   const base = {
     systemInstruction: { parts: [{ text: SYSTEM + '\nRéponds uniquement avec un objet JSON contenant les clés manglish, malayalam, french, literal, words (liste de {manglish, fr}) et note.' }] },
     contents: [{ role: 'user', parts: [{ text: userMessage(text, dir) }] }],
   }
-  const responseFormat = { text: { mimeType: 'APPLICATION_JSON', schema: SCHEMA } }
   // Most to least specific. « low » thinking makes a short translation much faster;
   // if a field is rejected (400), the next request drops it.
   const attempts = [
-    { ...base, generationConfig: { responseFormat, thinkingConfig: { thinkingLevel: 'low' } } },
-    { ...base, generationConfig: { responseFormat } },
+    { ...base, generationConfig: { responseMimeType: 'application/json', responseJsonSchema: SCHEMA, thinkingConfig: { thinkingLevel: 'low' } } },
+    { ...base, generationConfig: { responseMimeType: 'application/json', thinkingConfig: { thinkingLevel: 'low' } } },
+    { ...base, generationConfig: { responseMimeType: 'application/json' } },
     base,
   ]
   const send = (model: string, body: unknown) => fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
@@ -106,30 +107,41 @@ async function callGemini(key: string, text: string, dir: 'fr' | 'ml') {
     headers: { 'content-type': 'application/json', 'x-goog-api-key': key },
     body: JSON.stringify(body),
   })
-  const why = async (r: Response) => `gemini ${r.status}: ${(await r.text()).replace(/\s+/g, ' ').slice(0, 160)}`
+  const why = async (model: string, r: Response) => `gemini(${model}) ${r.status}: ${(await r.text()).replace(/\s+/g, ' ').slice(0, 160)}`
 
-  let res: Response | null = null
-  let detail = ''
+  let okRes: Response | null = null
+  let sawBusy = false
+  const errors: string[] = []
   for (const model of GEMINI_MODELS) {
+    let res: Response | null = null
+    let consumedDetail = ''
     try {
       for (const body of attempts) {
+        consumedDetail = ''
         res = await send(model, body)
         if (res.status !== 400) break
-        detail = await why(res)
-        if (/API.?key/i.test(detail)) throw new ProviderError('bad-key', detail)
+        consumedDetail = await why(model, res)
+        if (/API.?key/i.test(consumedDetail)) throw new ProviderError('bad-key', consumedDetail)
       }
     } catch (e) {
       if (e instanceof ProviderError) throw e
-      throw new ProviderError('api', `gemini network: ${String(e).slice(0, 120)}`)
+      errors.push(`gemini(${model}) network: ${String(e).slice(0, 120)}`)
+      continue
     }
-    if (!res || res.status !== 404) break // 404 = unknown model: try the next name
-    detail = await why(res)
+    if (!res) continue
+    if (res.ok) { okRes = res; break }
+    if (res.status === 429 || res.status === 503) sawBusy = true
+    const detail = consumedDetail || await why(model, res)
+    errors.push(detail)
+    if (res.status === 401 || res.status === 403) throw new ProviderError('bad-key', detail)
+    if (!RETRYABLE_MODEL_STATUS.has(res.status)) break
   }
-  if (!res) throw new ProviderError('api', detail)
-  if (res.status === 401 || res.status === 403) throw new ProviderError('bad-key', await why(res))
-  if (res.status === 429) throw new ProviderError('busy', await why(res))
-  if (!res.ok) throw new ProviderError('api', await why(res))
-  const data = await res.json() as {
+  if (!okRes) {
+    const summary = errors.join(' ; ')
+    if (sawBusy) throw new ProviderError('busy', summary)
+    throw new ProviderError('api', summary || 'gemini: no response')
+  }
+  const data = await okRes.json() as {
     promptFeedback?: { blockReason?: string }
     candidates?: { finishReason?: string; content?: { parts?: { text?: string; thought?: boolean }[] } }[]
   }

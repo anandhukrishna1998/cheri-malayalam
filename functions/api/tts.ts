@@ -47,12 +47,16 @@ export async function onRequestPost({ request, env }: Context): Promise<Response
   const speechConfigs = [{ voiceConfig: { voice: VOICE } }, { voiceConfig: { prebuiltVoiceConfig: { voiceName: VOICE } } }]
 
   let res: Response | null = null
+  const errors: string[] = []
   try {
     outer: for (const model of MODELS) {
       for (const sc of speechConfigs) {
         res = await send(model, sc)
+        if (res.ok) break outer
+        const detail = `${model} ${res.status}: ${(await res.text()).replace(/\s+/g, ' ').slice(0, 160)}`
+        errors.push(detail)
         if (res.status === 400) continue
-        if (res.status === 404) continue outer
+        if (res.status === 404 || res.status === 429 || res.status >= 500) continue outer
         break outer
       }
     }
@@ -61,9 +65,8 @@ export async function onRequestPost({ request, env }: Context): Promise<Response
     return json({ error: 'api' }, 502)
   }
   if (!res || !res.ok) {
-    const detail = res ? `${res.status}: ${(await res.text()).replace(/\s+/g, ' ').slice(0, 160)}` : 'no response'
-    console.error('[tts] gemini failed:', detail)
-    return res?.status === 429 ? json({ error: 'busy' }, 429) : json({ error: 'api' }, 502)
+    console.error('[tts] gemini failed:', errors.join(' ; ') || 'no response')
+    return res?.status === 429 || res?.status === 503 ? json({ error: 'busy' }, 429) : json({ error: 'api' }, 502)
   }
   const data = await res.json() as { candidates?: { content?: { parts?: { inlineData?: { mimeType?: string; data?: string } }[] } }[] }
   const part = data.candidates?.[0]?.content?.parts?.find(p => p.inlineData?.data)?.inlineData
